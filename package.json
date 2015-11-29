@@ -1,0 +1,32 @@
+{
+  "name": "voetbalpool-app",
+  "version": "1.0.0",
+  "description": "Voetbalpool",
+  "main": "voetbalpool-app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XCMP/voetbalpool.git"
+  },
+  "author": "XCMP",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "backbone": "^1.2.3",
+    "del": "^2.0.2",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-handlebars": "^4.0.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-shell": "^0.5.0",
+    "gulp-uglify": "^1.4.2",
+    "gulp-war": "^0.1.2",
+    "gulp-zip": "^3.0.2",
+    "handlebars": "^4.0.3",
+    "jquery": "^1.11.3",
+    "underscore": "^1.8.3"
+  },
+  "homepage": "https://github.com/XCMP/voetbalpool#readme"
+}
