@@ -1,0 +1,41 @@
+element {
+  --main-color: red;
+}
+
+body {
+  font-family: Impact;
+  padding: 1em;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+li {
+  cursor: pointer;
+}
+
+li:hover {
+  background-color: lightgrey;
+}
+
+a {
+    text-decoration: none !important;
+    color: black;
+}
+
+.header {
+  padding-bottom: .5em;
+}
+
+.menu {
+  width: 10%;
+  float: left;
+}
+
+.content {
+  width: 90%;
+  float: right;
+}

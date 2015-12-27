@@ -23,7 +23,12 @@ var paths = {
       'src/app/voetbalpool-app.js',
       'src/app/common/utils.js',
       'src/app/common/validation.js',
-      'src/app/models/voetbalpool.js'
+      'src/app/models/voetbalpool.js',
+      'src/app/collections/poolplayers.js',
+      'src/app/views/menu.js',
+      'src/app/views/poolplayer_view.js',
+      'src/app/views/poolplayers_view.js',
+      'src/app/router/router.js'
     ]
   },
   styles: 'src/css/*.css',

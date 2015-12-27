@@ -1,0 +1,21 @@
+{
+  "requests": [
+    {
+      "url": "/vp/poolplayers",
+      "data": [
+        {
+          "name": "Owen",
+          "notes": "Owen Prins / S.C. Buitenboys"
+        },
+        {
+          "name": "Marco",
+          "notes": "Marco Prins / A.S.V. Meerboys"
+        },
+        {
+          "name": "Eline",
+          "notes": "Eline Prins / Turning Spirit Almere"
+        }
+      ]
+    }
+  ]
+}
