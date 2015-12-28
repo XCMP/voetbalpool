@@ -9,16 +9,17 @@
     $selectedPoolPlayer: null,
 
     events: {
-      'click tr.poolplayer': 'selectPoolPlayer'
+      'click tr.poolplayer': 'selectPoolPlayer',
+      'click button.js_button_delete': 'deletePoolPlayer'
     },
 
     initialize: function() {
       this.collection.on('sync', this.render, this);
+      this.collection.on('remove', this.render, this);
       this.collection.fetch();
     },
 
     selectPoolPlayer: function(ev) {
-      // TODO refactor???
       var $clickedPoolPlayer = $(ev.currentTarget);
 
       // no pool player selcted
@@ -41,6 +42,13 @@
       this.setButtons();
     },
 
+    deletePoolPlayer: function() {
+      var id = this.$selectedPoolPlayer.data('id');
+      var model = this.collection.get(id);
+      model.destroy();
+      this.collection.remove(model);
+    },
+
     removeSelectedPoolPlayer: function() {
       if (this.$selectedPoolPlayer) {
         this.$selectedPoolPlayer.removeClass('selected');
@@ -56,7 +64,7 @@
     render: function() {
       this.$el.html(this.template({
         poolplayers: this.collection.toJSON(),
-        active: this.$selectedPoolPlayer === null? 'disabled':''
+        activate: this.$selectedPoolPlayer === null? 'disabled':''
       }));
       return this;
     },

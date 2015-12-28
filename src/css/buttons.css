@@ -1,6 +1,7 @@
 button {
     outline: none;
     border: none;
+    position: relative;
 }
 
 button {
@@ -17,5 +18,4 @@ button {
 button:active {
   top: 1px;
   border: none;
-  border-bottom: 1px solid transparent;
 }

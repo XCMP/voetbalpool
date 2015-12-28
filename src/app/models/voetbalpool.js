@@ -1,15 +1,24 @@
 (function() {
 
   VP.Models.PoolPlayer = Backbone.Model.extend({
-    url: 'voetbalpool/poolplayer',
+
+    url: function() {
+      return '/vp/poolplayer/' + this.id;
+    },
+
     defaults: {
       name: null,
       notes: null
     }
+
   });
 
   VP.Models.Game = Backbone.Model.extend({
-    url: '/voetbalpool/game',
+
+    url: function() {
+      return '/vp/game/' + this.id;
+    },
+
     defaults: {
       dateTime: null,
       homeTeam: null,
@@ -18,10 +27,15 @@
       awayTeamGoals: null,
       notes: null
     }
+
   });
 
   VP.Models.Prediction = Backbone.Model.extend({
-    url: '/voetbalpool/prediction',
+
+    url: function() {
+      return '/vp/prediction/' + this.id;
+    },
+
     defaults: {
       poolPlayer: null,
       game: null,
@@ -29,6 +43,7 @@
       awayTeamGoals: null,
       score: null
     }
+
   });
 
 })();
