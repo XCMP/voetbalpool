@@ -1,0 +1,21 @@
+button {
+    outline: none;
+    border: none;
+}
+
+button {
+  position: relative;
+  background-color: lightblue;
+  font-family: Impact;
+  font-size: medium;
+  padding: .5em;
+  margin-top: .5em;
+  border-bottom: 1px outset buttonface;
+  border-color: black;
+}
+
+button:active {
+  top: 1px;
+  border: none;
+  border-bottom: 1px solid transparent;
+}

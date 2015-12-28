@@ -7,10 +7,13 @@
   </thead>
   <tbody>
     {{#each poolplayers}}
-      <tr class='poolplayer'>
+      <tr class="poolplayer" data-id="{{id}}">
         <td>{{name}}</td>
         <td>{{notes}}</td>
       </tr>
     {{/each}}
   </tbody>
 </table>
+<button type="button" class="js_button_add">Toevoegen</button>
+<button type="button" class="js_button_update" disabled>Wijzigen</button>
+<button type="button" class="js_button_delete" disabled>Verwijderen</button>
