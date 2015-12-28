@@ -6,7 +6,7 @@
     tagName:  'table',
     template: Handlebars.templates['poolplayers.hbs'],
 
-    $selectedPlayer: null,
+    $selectedPoolPlayer: null,
 
     events: {
       'click tr.poolplayer': 'selectPoolPlayer'
@@ -19,41 +19,44 @@
 
     selectPoolPlayer: function(ev) {
       // TODO refactor???
-      var $clickedPlayer = $(ev.currentTarget);
+      var $clickedPoolPlayer = $(ev.currentTarget);
 
-      if (this.$selectedPlayer === null) {
-        this.setSelectedPoolPlayer($clickedPlayer);
+      // no pool player selcted
+      if (this.$selectedPoolPlayer === null) {
+        this.setSelectedPoolPlayer($clickedPoolPlayer);
         this.setButtons();
         return;
       }
 
-      if ($clickedPlayer.data('id') === this.$selectedPlayer.data('id')) {
+      // same pool player already selcted
+      if ($clickedPoolPlayer.data('id') === this.$selectedPoolPlayer.data('id')) {
         this.removeSelectedPoolPlayer();
         this.setButtons();
         return;
       }
     
+      // select an other pool player
       this.removeSelectedPoolPlayer();
-      this.setSelectedPoolPlayer($clickedPlayer);
+      this.setSelectedPoolPlayer($clickedPoolPlayer);
       this.setButtons();
     },
 
     removeSelectedPoolPlayer: function() {
-      if (this.$selectedPlayer) {
-        this.$selectedPlayer.removeClass('selected');
-        this.$selectedPlayer = null;
+      if (this.$selectedPoolPlayer) {
+        this.$selectedPoolPlayer.removeClass('selected');
+        this.$selectedPoolPlayer = null;
       }
     },
 
-    setSelectedPoolPlayer: function($clickedPlayer) {
-        $clickedPlayer.addClass('selected');
-        this.$selectedPlayer = $clickedPlayer;
+    setSelectedPoolPlayer: function($clickedPoolPlayer) {
+        $clickedPoolPlayer.addClass('selected');
+        this.$selectedPoolPlayer = $clickedPoolPlayer;
     },
 
     render: function() {
       this.$el.html(this.template({
         poolplayers: this.collection.toJSON(),
-        active: this.$selectedPlayer === null? 'disabled':''
+        active: this.$selectedPoolPlayer === null? 'disabled':''
       }));
       return this;
     },
@@ -61,7 +64,7 @@
     setButtons: function() {
       var self = this;
       $(['.js_button_update', '.js_button_delete']).each(function(i, selector) {
-        $(selector).prop("disabled", self.$selectedPlayer === null? true:false);
+        $(selector).prop("disabled", self.$selectedPoolPlayer === null? true:false);
       });
     }
 
