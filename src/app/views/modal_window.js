@@ -5,20 +5,30 @@
     tagName: 'div',
     className: 'modal_window',
     template: Handlebars.templates['modal_window.hbs'],
-
-    events: {
+    templateData: {
+      header: null,
+      content: null      
     },
 
-    initialize: function() {
+    events: {
+      'click .close': 'close'
+    },
+
+    initialize: function(options) {
+      this.templateData.header = options.header,
+      this.templateData.content = options.content
     },
 
     render: function() {
       $('body').append(this.$el.html(this.template({
-        header: 'Verwijderen',
-        content: 'Weet je zeker dat je Marco wilt verwijderen?'
+        data: this.templateData
       })));
       return this;
     },
+
+    close: function() {
+      this.remove();
+    }
 
   });
 

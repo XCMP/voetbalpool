@@ -7,10 +7,11 @@
     template: Handlebars.templates['poolplayers.hbs'],
 
     $selectedPoolPlayer: null,
+    confirmationView: null,
 
     events: {
       'click tr.poolplayer': 'selectPoolPlayer',
-      'click button.js_button_delete': 'deletePoolPlayer'
+      'click button.js_button_delete': 'confirmDeletePoolPlayer'
     },
 
     initialize: function() {
@@ -40,6 +41,16 @@
       this.removeSelectedPoolPlayer();
       this.setSelectedPoolPlayer($clickedPoolPlayer);
       this.setButtons();
+    },
+
+    confirmDeletePoolPlayer: function() {
+      var id = this.$selectedPoolPlayer.data('id');
+      var model = this.collection.get(id);
+      this.confirmationView = new VP.Views.ModalWindow({
+        header: 'Verwijderen',
+        content: 'Weet je zeker dat je ' + model.getName() + ' wilt verwijderen?'
+      });
+      this.confirmationView.render();
     },
 
     deletePoolPlayer: function() {
