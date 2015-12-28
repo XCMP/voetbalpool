@@ -9,6 +9,10 @@
     defaults: {
       name: null,
       notes: null
+    },
+
+    getName: function() {
+      return this.get('name');
     }
 
   });
