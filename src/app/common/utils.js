@@ -10,6 +10,9 @@ VP.utils = {
     return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
   },
 
+  /**
+   * example: YYYY-MM-DDT00:00:00.000Z
+   */
   calculateAge: function(jsonDate) {
     if (jsonDate) {
       var ageDifMs = Date.now() - new Date(jsonDate);
