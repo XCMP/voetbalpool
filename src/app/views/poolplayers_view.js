@@ -46,7 +46,6 @@
     confirmDeletePoolPlayer: function() {
       var id = this.$selectedPoolPlayer.data('id');
       var model = this.collection.get(id);
-      console.log(model.get('birthday'));
       this.confirmationView = new VP.Views.ModalWindow({
         header: 'Verwijderen',
         content: 'Weet je zeker dat je ' + model.getName() + ' wilt verwijderen?',
