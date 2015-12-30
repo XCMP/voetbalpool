@@ -8,6 +8,16 @@ VP.utils = {
     z = z || '0';
     n = n + '';
     return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
-  }
+  },
+
+  calculateAge: function(jsonDate) {
+      if (jsonDate) {
+        var ageDifMs = Date.now() - new Date(jsonDate);
+        var ageDate = new Date(ageDifMs);
+        return Math.abs(ageDate.getUTCFullYear() - 1970);
+      } else {
+        return '-';
+      }
+    }
 
 };
