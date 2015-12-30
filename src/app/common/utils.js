@@ -11,13 +11,13 @@ VP.utils = {
   },
 
   calculateAge: function(jsonDate) {
-      if (jsonDate) {
-        var ageDifMs = Date.now() - new Date(jsonDate);
-        var ageDate = new Date(ageDifMs);
-        return Math.abs(ageDate.getUTCFullYear() - 1970);
-      } else {
-        return '-';
-      }
+    if (jsonDate) {
+      var ageDifMs = Date.now() - new Date(jsonDate);
+      var ageDate = new Date(ageDifMs);
+      return Math.abs(ageDate.getUTCFullYear() - 1970);
+    } else {
+      return '-';
     }
+  }
 
 };
