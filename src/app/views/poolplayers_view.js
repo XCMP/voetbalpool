@@ -48,7 +48,8 @@
       var model = this.collection.get(id);
       this.confirmationView = new VP.Views.ModalWindow({
         header: 'Verwijderen',
-        content: 'Weet je zeker dat je ' + model.getName() + ' wilt verwijderen?'
+        content: 'Weet je zeker dat je ' + model.getName() + ' wilt verwijderen?',
+        yes: _.bind(this.deletePoolPlayer, this)
       });
       this.confirmationView.render();
     },
