@@ -21,6 +21,15 @@ VP.utils = {
     } else {
       return '-';
     }
-  }
+  },
+  
+  showModalWindow: function(data) {
+    var modalWindow = new VP.Views.ModalWindow({
+        header: data.header,
+        content: data.content,
+        yes: data.yes
+      });
+      modalWindow.confirmationView.render();
+    }
 
 };
