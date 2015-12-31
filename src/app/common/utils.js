@@ -28,8 +28,7 @@ VP.utils = {
         header: data.header,
         content: data.content,
         yes: data.yes
-      });
-      modalWindow.confirmationView.render();
+      }).render();
     }
 
 };
