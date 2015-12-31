@@ -3,25 +3,6 @@ body {
   padding: 1em;
 }
 
-ul {
-  list-style-type: none;
-  margin: 0px;
-  padding: 0px;
-}
-
-li {
-  cursor: pointer;
-}
-
-li:hover {
-  background-color: lightgrey;
-}
-
-a {
-    text-decoration: none !important;
-    color: black;
-}
-
 .header {
   padding-bottom: .5em;
 }
@@ -34,4 +15,8 @@ a {
 .content {
   width: 90%;
   float: right;
+}
+
+.right {
+  text-align: right;
 }
