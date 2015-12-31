@@ -27,7 +27,7 @@ var paths = {
       'src/app/collections/poolplayers.js',
       'src/app/views/menu.js',
       'src/app/views/modal_window.js',
-      'src/app/views/poolplayer_view.js',
+      'src/app/views/addpoolplayer_view.js',
       'src/app/views/poolplayers_view.js',
       'src/app/router/router.js'
     ]

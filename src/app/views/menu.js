@@ -9,13 +9,12 @@
       'click li'            : 'setMenuItemActive_temp'
     },
 
-    initialize: function(options) {
-      this.router = options.router
+    initialize: function() {
     },
 
     showPoolPlayers: function(ev) {
       this.setMenuItemActive($(ev.currentTarget));
-      this.router.navigate('list/poolplayers',  {trigger: true});
+      VP.router.navigate('list/poolplayers',  {trigger: true});
     },
 
     setMenuItemActive_temp: function(ev) {

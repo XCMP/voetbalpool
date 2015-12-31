@@ -1,3 +1,11 @@
+/* disable browser behaviour */
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
 body {
   font-family: Impact;
   padding: 1em;

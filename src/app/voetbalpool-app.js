@@ -15,11 +15,11 @@ var VP = {
 
 $(document).ready(function() {
 
-  var router = new VP.Router();
+  VP.router = new VP.Router();
   Backbone.history.start();
 
   new VP.Views.Menu({
-    router: router
+    router: VP.router
   });
 
 });

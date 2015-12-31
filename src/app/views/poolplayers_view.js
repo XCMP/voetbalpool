@@ -11,6 +11,7 @@
 
     events: {
       'click tr.poolplayer': 'selectPoolPlayer',
+      'click button.js_button_add': 'renderAddPoolPlayer',
       'click button.js_button_delete': 'confirmDeletePoolPlayer'
     },
 
@@ -41,6 +42,11 @@
       this.removeSelectedPoolPlayer();
       this.setSelectedPoolPlayer($clickedPoolPlayer);
       this.setButtons();
+    },
+
+    renderAddPoolPlayer: function() {
+      console.log('add pool player');
+      VP.router.navigate('add/poolplayer',  {trigger: true});
     },
 
     confirmDeletePoolPlayer: function() {

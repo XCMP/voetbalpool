@@ -1,0 +1,35 @@
+fieldset {
+  border-radius: 10px;
+}
+
+legend {
+  font-size: x-large;
+}
+
+input {
+  font-family: Impact;
+  font-size: x-large;
+  border-style: groove;
+}
+
+.form label {
+  vertical-align: top;
+  display: inline-block;
+}
+
+textarea {
+  font-family: Impact;
+  font-size: x-large;
+  border-style: groove;
+}
+
+div.block {
+  padding-bottom: 1em;
+}
+
+.block label {
+  display: inline-block;
+  width: 10em;
+  text-align: right;
+  padding-right: 0.75em;
+}
