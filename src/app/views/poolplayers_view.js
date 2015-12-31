@@ -89,4 +89,4 @@
 
   });
 
-})(VP.Events, VP.Utils);
+})(VP.Events, VP.utils);
