@@ -30,7 +30,3 @@ table.poolplayers {
 .poolplayers tbody tr:hover td:first-child {
   border-left: 3px solid black;
 }
-
-.age {
-  text-align: right;
-}
