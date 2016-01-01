@@ -10,7 +10,7 @@
       birthday: null
     },
 
-    initialize: function(model) {
+    initialize: function() {
     },
 
     parse: function(model, xhr) {
