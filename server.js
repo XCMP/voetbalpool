@@ -8,37 +8,37 @@
   //var HEADER_REDIRECT_TO_INDEX = {'Location': };
 
   var handle_requests = function(req, res) {
-    var pathname = url.parse(req.url).pathname;
-    console.log(pathname);
+    var path = url.parse(req.url).pathname;
+    console.log(req.method + ' ' + path);
 
-    if (_s.startsWith(pathname, '/vp/')) {
-      handleJsonRequest(pathname, res);
+    if (_s.startsWith(path, '/vp/')) {
+      handleJsonRequest(req.method + '|' + path, res);
     } else {
-      handleAssets(pathname, res);
+      handleAssets(path, res);
     }
     // } else {
     //   handlePageNotFound(res);
     // }
   };
 
-  var handleJsonRequest = function(pathname, res) {
+  var handleJsonRequest = function(method_path, res) {
     var data = _.find(JSONDATA.requests, function(request){
-      return request.url === pathname;
+      return request.method_path === method_path;
     });
     if (data) {
-      send_response(200, {'header': HEADER_CONTENT_TYPE_JSON, 'data': JSON.stringify(data.data)}, res);
+      send_response(data.data.statusCode, {'header': HEADER_CONTENT_TYPE_JSON, 'data': JSON.stringify(data.data.object)}, res);
     } else {
       send_response(404, {'header': HEADER_CONTENT_TYPE_JSON, 'data':'RESOURCE NOT FOUND'}, res);
     }
   };
 
-  var handleAssets = function(pathname, res) {
-    var fileName = _s.strRightBack('/Users/Marco/Documents/Code/javascript/voetbalpool/dist' + pathname, 'utf8');
+  var handleAssets = function(path, res) {
+    var fileName = _s.strRightBack('/Users/Marco/Documents/Code/javascript/voetbalpool/dist' + path, 'utf8');
     fs.readFile(fileName, 'utf8', function(err, data) {
       if (err && err.code === 'ENOENT') {
         console.log(err);
       } else {
-        if (pathname.endsWith('css')) {
+        if (path.endsWith('css')) {
           send_response(200, {'header': HEADER_CONTENT_TYPE_CSS, 'data': data}, res);
         } else {
           send_response(200, {'header': HEADER_CONTENT_TYPE_HTML, 'data': data}, res);

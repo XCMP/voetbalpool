@@ -1,27 +1,42 @@
 {
   "requests": [
     {
-      "url": "/vp/poolplayers",
-      "data": [
-        {
-          "id": 1,
-          "name": "Owen",
-          "notes": "Owen Prins / S.C. Buitenboys",
-          "birthday": "2005-09-04T00:00:00.000Z"
-        },
-        {
-          "id": 2,
-          "name": "Marco",
-          "notes": "Marco Prins / A.S.V. Meerboys",
-          "birthday": "1969-06-15T00:00:00.000Z"
-        },
-        {
-          "id": 3,
-          "name": "Eline",
-          "notes": "Eline Prins / Turning Spirit Almere",
-          "birthday": "2008-05-22T00:00:00.000Z"
-        }
-      ]
+      "method_path": "GET|/vp/poolplayers",
+      "data": {
+        "statusCode": 200,
+        "object":[
+          {
+            "id": 1,
+            "name": "Owen",
+            "notes": "Owen Prins / S.C. Buitenboys",
+            "birthday": "2005-09-04T00:00:00.000Z"
+          },
+          {
+            "id": 2,
+            "name": "Marco",
+            "notes": "Marco Prins / A.S.V. Meerboys",
+            "birthday": "1969-06-15T00:00:00.000Z"
+          },
+          {
+            "id": 3,
+            "name": "Eline",
+            "notes": "Eline Prins / Turning Spirit Almere",
+            "birthday": "2008-05-22T00:00:00.000Z"
+          }
+        ]
+      }
+    },
+    {
+      "method_path": "POST|/vp/poolplayer",
+      "data": {
+        "statusCode": 201,
+         "object": {
+            "id": 4,
+            "name": "Ingrid",
+            "notes": "Ingrid van der Veer / Volleybal Vereniging Amstelveen",
+            "birthday": "1974-09-21T00:00:00.000Z"
+          }
+      }
     }
   ]
 }
