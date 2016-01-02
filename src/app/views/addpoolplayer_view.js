@@ -14,6 +14,7 @@
       // this.listenTo(this.model, 'change', this.render);
       // this.listenTo(this.model, 'destroy', this.remove);
       // this.listenTo(this.model, 'error', this.saveError);
+      _.bindAll(this, "handleErrors");
     },
 
     saveAddPoolPlayer: function(ev) {
@@ -26,19 +27,19 @@
           console.log('model', model);
           console.log('options', options);
         },
-        error: function(object, response, options) {
-          console.log('error');
-          console.log('object', object);
-          console.log('response', response);
-          console.log('options', options);
-        },
+        error: this.handleErrors,
       };
       var result = this.model.save(formData, options);
-      console.log('xcmp ', result);
     },
 
     toPoolPlayerList: function() {
       VP.router.navigate('list/poolplayers',  {trigger: true});
+    },
+
+    handleErrors: function(object, response, options) {
+      _.each(response.responseJSON.errors, function(errorObject, i) {
+        _utils.displayError(errorObject);
+      });
     },
 
     render: function() {
