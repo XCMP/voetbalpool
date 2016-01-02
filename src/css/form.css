@@ -33,3 +33,7 @@ div.block {
   text-align: right;
   padding-right: 0.75em;
 }
+
+.error input {
+  border-color: red;
+}
