@@ -37,9 +37,13 @@
     },
 
     handleErrors: function(object, response, options) {
-      _.each(response.responseJSON.errors, function(errorObject, i) {
-        _utils.displayError(errorObject);
-      });
+      if (response.status === 400) {
+        _.each(response.responseJSON.errors, function(errorObject, i) {
+          _utils.displayFieldError(errorObject);
+        });
+      } else {
+        _utils.displayErrorMessage(response.status + ' | ' + response.statusText);
+      }
     },
 
     render: function() {
