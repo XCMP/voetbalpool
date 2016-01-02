@@ -45,6 +45,18 @@ VP.utils = {
         }
     });
     return o;
+  },
+
+  displayError: function(errorObject) {
+    var $divFieldContainer = $('[field=\''+errorObject.fieldName+'\']');
+    this.removeError($divFieldContainer);
+    $divFieldContainer.addClass('error');
+    $divFieldContainer.append('<span class=\'errorMessage\'>'+errorObject.errorMessage+'</span>');
+  },
+
+  removeError: function($divFieldContainer) {
+    $divFieldContainer.removeClass('error');
+    $divFieldContainer.find('span[class=\'errorMessage\']').last().remove();
   }
 
 };
