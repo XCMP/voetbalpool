@@ -45,7 +45,6 @@
     },
 
     renderAddPoolPlayer: function() {
-      console.log('add pool player');
       VP.router.navigate('add/poolplayer',  {trigger: true});
     },
 
