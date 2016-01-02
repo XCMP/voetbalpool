@@ -27,8 +27,8 @@
 }
 
 .close {
-    background: #606061;
-    color: #FFFFFF;
+    background: lightblue;
+    color: black;
     line-height: 25px;
     position: absolute;
     right: -12px;
@@ -46,5 +46,5 @@
 }
 
 .close:hover {
-    background: lightblue;
+    color: white;
 }
