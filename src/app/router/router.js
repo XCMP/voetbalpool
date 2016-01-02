@@ -19,7 +19,7 @@
       if (viewid == 'poolplayers') {
         this.listPoolPlayers();
       } else {
-        console.log('route ' + viewid + ' not handled');
+        console.log('list route ' + viewid + ' not handled');
       }
     },
 
@@ -27,7 +27,7 @@
       if (viewid == 'poolplayer') {
         this.addPoolPlayer();
       } else {
-        console.log('route ' + viewid + ' not handled');
+        console.log('add route ' + viewid + ' not handled');
       }
     },
 
