@@ -29,13 +29,34 @@
     {
       "method_path": "POST|/vp/poolplayer",
       "data": {
+        "statusCode": 400,
+        "object": {
+          "name": "",
+          "notes": "Ingrid van der Veer / Volleybal Vereniging Amstelveen",
+          "birthday": "1974-09-21T00:00:00.000Z",
+          "errors": [
+            {
+              "fieldName": "name",
+              "errorMessage": "Naam is verplicht."
+            },
+            {
+              "fieldName": "birthday",
+              "errorMessage": "Geboortedatum kan niet in de toekomst liggen."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "method_path": "POST|/vp/poolplayer",
+      "data": {
         "statusCode": 201,
-         "object": {
-            "id": 4,
-            "name": "Ingrid",
-            "notes": "Ingrid van der Veer / Volleybal Vereniging Amstelveen",
-            "birthday": "1974-09-21T00:00:00.000Z"
-          }
+        "object": {
+          "id": 4,
+          "name": "Ingrid",
+          "notes": "Ingrid van der Veer / Volleybal Vereniging Amstelveen",
+          "birthday": "1974-09-21T00:00:00.000Z"
+        }
       }
     }
   ]
