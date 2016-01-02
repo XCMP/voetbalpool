@@ -37,3 +37,7 @@ div.block {
 .error input {
   border-color: red;
 }
+
+span.errorMessage {
+  color: red;
+}
