@@ -3,6 +3,7 @@
   VP.Models.PoolPlayer = Backbone.Model.extend({
 
     urlRoot: '/vp/poolplayer',
+    idAttribute: '_id',
 
     defaults: {
       name: null,
@@ -29,6 +30,7 @@
     url: function() {
       return '/vp/game/' + this.id;
     },
+    idAttribute: '_id',
 
     defaults: {
       dateTime: null,
@@ -46,6 +48,7 @@
     url: function() {
       return '/vp/prediction/' + this.id;
     },
+    idAttribute: '_id',
 
     defaults: {
       poolPlayer: null,

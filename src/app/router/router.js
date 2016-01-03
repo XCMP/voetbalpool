@@ -38,7 +38,7 @@
           collection: poolPlayersCollection
         });
       } else {
-        this.playersView.render();
+        this.playersView.collection.fetch();
       }
     },
 
