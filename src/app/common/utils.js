@@ -4,6 +4,12 @@ VP.utils = {
     return this.pad(dateObject.getDate(), 2)  + '-' + this.pad((dateObject.getMonth()+1), 2) + '-' + dateObject.getFullYear();
   },
 
+  // input DD-MM-YYY: output MM/DD/YYYY
+  toDate: function(dateString) {
+    var parts = dateString.split('-');
+    return this.pad(parts[1], 2) + '/' + this.pad(parts[0],2) + '/' + this.pad(parts[2], 4);
+  },
+
   pad: function(n, width, z) {
     z = z || '0';
     n = n + '';
