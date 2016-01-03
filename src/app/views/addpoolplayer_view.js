@@ -21,12 +21,13 @@
       ev.preventDefault();
       var formData = _utils.formDataToJSON($(ev.currentTarget));
       var options = {
-        success: function(object, model, options) {
-          console.log('success');
-          console.log('object', object);
-          console.log('model', model);
-          console.log('options', options);
-        },
+        success: this.toPoolPlayerList,
+        // function(object, model, options) {
+        //   console.log('success');
+        //   console.log('object', object);
+        //   console.log('model', model);
+        //   console.log('options', options);
+        // },
         error: this.handleErrors,
       };
       var result = this.model.save(formData, options);
