@@ -20,15 +20,15 @@
     saveAddPoolPlayer: function(ev) {
       ev.preventDefault();
       var formData = _utils.formDataToJSON($(ev.currentTarget));
-      formData.birthday = _utils.toDate(formData.birthday);
+      // formData.birthday = _utils.toDate(formData.birthday);
       var options = {
-        success: this.toPoolPlayerList,
-        // function(object, model, options) {
-        //   console.log('success');
-        //   console.log('object', object);
-        //   console.log('model', model);
-        //   console.log('options', options);
-        // },
+        success: //this.toPoolPlayerList,
+        function(object, model, options) {
+          console.log('success');
+          console.log('object', object);
+          console.log('model', model);
+          console.log('options', options);
+        },
         error: this.handleErrors,
       };
       var result = this.model.save(formData, options);

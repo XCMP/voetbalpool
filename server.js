@@ -1,4 +1,4 @@
-(function(express, path, bodyparser, mongoOp) {
+(function(express, path, bodyparser, Poolplayer) {
 
   var server = express();
   var router = express.Router();
@@ -14,7 +14,7 @@
   router.route("/vp/poolplayers")
     .get(function(req,res){
       var response = {};
-      mongoOp.find({},function(err,data){
+      Poolplayer.find({},function(err,data){
       // Mongo command to fetch all data from collection.
           if(err) {
               response = {"error" : true,"message" : "Error fetching data"};
@@ -27,35 +27,29 @@
 
   router.route("/vp/poolplayer")
     .post(function(req,res){
-      var db = new mongoOp();
-      var response = {};
-      // fetch email and password from REST request.
-      // Add strict validation when you use this in Production.
-      db.name = req.body.name; 
-      db.birthday =  new Date(req.body.birthday);
-      db.notes = req.body.notes; 
-      db.save(function(err){
-      // save() will run insert() command of MongoDB.
-      // it will add new data in collection.
-        if(err) {
-            response = {"error" : true,"message" : "Error adding data"};
+      var poolplayer = new Poolplayer();
+      poolplayer.name = req.body.name;
+      poolplayer.birthday =  req.body.birthday;
+      poolplayer.notes = req.body.notes;
+      poolplayer.save(function(err){
+        if (err) {
+          res.send(err);
         } else {
-            response = {"error" : false,"message" : "Data added"};
+          res.json({ message: 'Bear created!' });
         }
-        res.json(response);
-      })
+      });
     });
 
   router.route("/vp/poolplayer/:id")
     .delete(function(req,res){
       var response = {};
       // find the data
-      mongoOp.findById(req.params.id,function(err,data){
+      Poolplayer.findById(req.params.id,function(err,data){
           if(err) {
               response = {"error" : true,"message" : "Error fetching data"};
           } else {
               // data exists, remove it.
-              mongoOp.remove({_id : req.params.id},function(err){
+              Poolplayer.remove({_id : req.params.id},function(err){
                   if(err) {
                       response = {"error" : true,"message" : "Error deleting data"};
                   } else {
@@ -72,4 +66,4 @@
   server.listen(3000);
   console.log("Listening to PORT 3000");
 
-})(require('express'), require('path'), require('body-parser'), require('./src/app/models/mongo'));
+})(require('express'), require('path'), require('body-parser'), require('./src/app/models/mongo/poolplayer'));
