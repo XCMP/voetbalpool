@@ -38,11 +38,7 @@
       if (err && err.code === 'ENOENT') {
         console.log(err);
       } else {
-        if (path.endsWith('css')) {
-          send_response(200, {'header': HEADER_CONTENT_TYPE_CSS, 'data': data}, res);
-        } else {
-          send_response(200, {'header': HEADER_CONTENT_TYPE_HTML, 'data': data}, res);
-        }
+        send_response(200, {'header': path.endsWith('css') ? HEADER_CONTENT_TYPE_CSS : HEADER_CONTENT_TYPE_HTML, 'data': data}, res);
       }
     });
   };
