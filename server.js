@@ -1,5 +1,6 @@
 (function(express, path) {
 
+  var PORT = 3000;
   var server = express();
   var router = express.Router();
 
@@ -11,7 +12,7 @@
 
   server.use('/',router);
 
-  server.listen(3000);
-  console.log("Listening to PORT 3000");
+  server.listen(PORT);
+  console.log('Voetbalpool frontend server running on PORT %s', PORT);
 
 })(require('express'), require('path'));
