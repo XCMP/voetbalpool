@@ -33,12 +33,14 @@
     },
 
     handleResult: function(object, response, options) {
-      console.log('succes', object);
-      console.log('succes', response.response.errors);
-      console.log('succes', options);
+      // console.log('succes', object);
+      // console.log('succes', response.response.errorsu);
+      // console.log('succes', options);
+      _utils.removeFieldErrors();
       if (response.error) {
-        _.each(response.response.errors, function(e) {
-          console.log(e);
+        _.each(response.response.errors, function(errorObject) {
+          console.log(errorObject);
+          _utils.displayFieldError(errorObject);
         });
       } else {
 
@@ -47,16 +49,6 @@
 
     handleErrors: function(object, response, options) {
       console.log('error');
-      console.log('succes', object);
-      console.log('succes', response);
-      console.log('succes', options);
-      if (response.status === 400) {
-        _.each(response.responseJSON.errors, function(errorObject, i) {
-          _utils.displayFieldError(errorObject);
-        });
-      } else {
-        _utils.displayErrorMessage(response.status + ' | ' + response.statusText);
-      }
     },
 
     render: function() {

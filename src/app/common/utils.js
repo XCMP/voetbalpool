@@ -53,16 +53,18 @@ VP.utils = {
     return o;
   },
 
-  displayErrorMessage: function(errorMessage) {
-    var $form = $('form');
-    $form.find('span[class=\'errorMessage\']').first().text(errorMessage);
+  displayFieldError: function(errorObject) {
+    var $divFieldContainer = $('[field=\''+errorObject.path+'\']');
+    this.removeFieldError($divFieldContainer);
+    $divFieldContainer.addClass('error');
+    $divFieldContainer.append('<span class=\'errorMessage\'>'+errorObject.message+'</span>');
   },
 
-  displayFieldError: function(errorObject) {
-    var $divFieldContainer = $('[field=\''+errorObject.fieldName+'\']');
-    this.removeError($divFieldContainer);
-    $divFieldContainer.addClass('error');
-    $divFieldContainer.append('<span class=\'errorMessage\'>'+errorObject.errorMessage+'</span>');
+  removeFieldErrors: function() {
+    var _this = this;
+    $('div.error').each(function(i, el) {
+      _this.removeFieldError($(el));
+    })
   },
 
   removeFieldError: function($divFieldContainer) {
