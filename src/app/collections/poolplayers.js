@@ -2,8 +2,6 @@
 
     model: VP.Models.PoolPlayer,
 
-    urlRoot: 'http://localhost:1337',
-    
-    url: '/vp/poolplayers'
+    url: 'http://localhost:3001/vp/poolplayers'
 
   });
