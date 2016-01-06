@@ -26,7 +26,7 @@
     },
 
     toPoolPlayerList: function() {
-      VP.router.navigate('list/poolplayers',  {trigger: true});
+      VP.router.navigate('list/poolplayers', {trigger: true});
     },
 
     handleResult: function(object, response, options) {

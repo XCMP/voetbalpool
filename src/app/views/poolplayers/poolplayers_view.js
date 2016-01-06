@@ -2,6 +2,7 @@
 
   VP.Views.PoolPlayers = Backbone.View.extend({
 
+
     el: '.content',
     tagName:  'table',
     template: Handlebars.templates['poolplayers.hbs'],
