@@ -36,7 +36,7 @@
           _utils.displayFieldError(errorObject);
         });
       } else {
-
+        this.toPoolPlayerList();
       }
     },
 
