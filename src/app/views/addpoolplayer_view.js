@@ -11,9 +11,6 @@
     },
 
     initialize: function() {
-      // this.listenTo(this.model, 'change', this.render);
-      // this.listenTo(this.model, 'destroy', this.remove);
-      // this.listenTo(this.model, 'error', this.saveError);
       _.bindAll(this, "handleErrors", "handleResult");
     },
 
@@ -33,13 +30,9 @@
     },
 
     handleResult: function(object, response, options) {
-      // console.log('succes', object);
-      // console.log('succes', response.response.errorsu);
-      // console.log('succes', options);
       _utils.removeFieldErrors();
       if (response.error) {
         _.each(response.response.errors, function(errorObject) {
-          console.log(errorObject);
           _utils.displayFieldError(errorObject);
         });
       } else {
