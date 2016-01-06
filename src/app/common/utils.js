@@ -4,10 +4,19 @@ VP.utils = {
     return this.pad(dateObject.getDate(), 2)  + '-' + this.pad((dateObject.getMonth()+1), 2) + '-' + dateObject.getFullYear();
   },
 
-  // input DD-MM-YYY: output MM/DD/YYYY
+  // input DD-MM-YYY
+  // output MM/DD/YYYY
   toDate: function(dateString) {
+    if (dateString.length == 0) {
+      return null;
+    }
+
     var parts = dateString.split('-');
-    return this.pad(parts[1], 2) + '/' + this.pad(parts[0],2) + '/' + this.pad(parts[2], 4);
+    if (parts.length == 3) { 
+      return this.pad(parts[1], 2) + '/' + this.pad(parts[0],2) + '/' + this.pad(parts[2], 4);
+    } else {
+      return '00/00/0000'; // invalid date
+    }
   },
 
   pad: function(n, width, z) {
