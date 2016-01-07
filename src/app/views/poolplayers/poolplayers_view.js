@@ -2,9 +2,6 @@
 
   VP.Views.PoolPlayers = Backbone.View.extend({
 
-
-    el: '.content',
-    tagName:  'table',
     template: Handlebars.templates['poolplayers.hbs'],
 
     $selectedPoolPlayer: null,
@@ -13,6 +10,7 @@
     events: {
       'click tr.poolplayer': 'selectPoolPlayer',
       'click button.js_button_add': 'renderAddPoolPlayer',
+      'click button.js_button_update': 'renderUpdatePoolPlayer',
       'click button.js_button_delete': 'confirmDeletePoolPlayer'
     },
 
@@ -47,6 +45,11 @@
 
     renderAddPoolPlayer: function() {
       VP.router.navigate('add/poolplayer',  {trigger: true});
+    },
+
+    renderUpdatePoolPlayer: function() {
+      var id = this.$selectedPoolPlayer.data('id');
+      VP.router.navigate('update/poolplayer/'+id,  {trigger: true});
     },
 
     confirmDeletePoolPlayer: function() {
@@ -91,6 +94,12 @@
       $(['.js_button_update', '.js_button_delete']).each(function(i, selector) {
         $(selector).prop("disabled", self.$selectedPoolPlayer === null? true:false);
       });
+    },
+
+    close: function() {
+      this.unbind();
+      this.remove();
+      this.collection.unbind();
     }
 
   });

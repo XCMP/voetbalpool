@@ -1,13 +1,28 @@
 VP.utils = {
 
-  formattedDate: function(dateObject) {
-    return this.pad(dateObject.getDate(), 2)  + '-' + this.pad((dateObject.getMonth()+1), 2) + '-' + dateObject.getFullYear();
+  /**
+   * input  MM/DD/YYYY
+   * output DD-MM-YYYY
+  */
+  formatDate: function(dateString) {
+    if (dateString == undefined || dateString.length == 0) {
+      return null;
+    }
+
+    var parts = dateString.split('/');
+    if (parts.length == 3) { 
+      return this.pad(parts[1], 2) + '-' + this.pad(parts[0],2) + '-' + this.pad(parts[2], 4);
+    } else {
+      return '00-00-0000'; // invalid date
+    }
   },
 
-  // input DD-MM-YYY
-  // output MM/DD/YYYY
+  /**
+   * input  DD-MM-YYYY
+   * output MM/DD/YYYY
+  */
   toDate: function(dateString) {
-    if (dateString.length == 0) {
+    if (dateString == undefined || dateString.length == 0) {
       return null;
     }
 
@@ -26,7 +41,7 @@ VP.utils = {
   },
 
   /**
-   * example: YYYY-MM-DDT00:00:00.000Z
+   * input example: 09/21/1974
    */
   calculateAge: function(jsonDate) {
     if (jsonDate) {

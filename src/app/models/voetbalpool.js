@@ -16,6 +16,7 @@
 
     parse: function(model, xhr) {
       model.age = _utils.calculateAge(model.birthday);
+      model.formattedBirthday = _utils.formatDate(model.birthday);
       return model;
     },
 

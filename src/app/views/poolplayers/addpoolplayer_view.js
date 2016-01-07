@@ -2,8 +2,6 @@
 
   VP.Views.AddPoolPlayer = Backbone.View.extend({
 
-    el: '.content',
-    model: new VP.Models.PoolPlayer(),
     template: Handlebars.templates['addpoolplayer.hbs'],
     events: {
       'submit form': 'saveAddPoolPlayer',
@@ -47,6 +45,12 @@
     render: function() {
       this.$el.html(this.template(this.model.toJSON()));
       return this;
+    },
+
+    close: function() {
+      this.unbind();
+      this.remove();
+      this.model.unbind();
     }
 
   });
