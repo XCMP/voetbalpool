@@ -1,8 +1,8 @@
 (function(_utils) {
 
-  VP.Views.AddPoolPlayer = Backbone.View.extend({
+  VP.Views.AddUpdatePoolPlayer = Backbone.View.extend({
 
-    template: Handlebars.templates['addpoolplayer.hbs'],
+    template: Handlebars.templates['add_update_poolplayer.hbs'],
     events: {
       'submit form': 'saveAddPoolPlayer',
       'click button.js_button_back': 'toPoolPlayerList'

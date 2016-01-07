@@ -65,7 +65,7 @@
       }
       var poolPlayer = new VP.Models.PoolPlayer({});
       if (this.addPlayerView == null) {
-        this.addPlayerView = new VP.Views.AddPoolPlayer({
+        this.addPlayerView = new VP.Views.AddUpdatePoolPlayer({
           model: poolPlayer
         });
       }
@@ -80,7 +80,7 @@
       var poolplayer = new VP.Models.PoolPlayer({_id:modelid});
       poolplayer.fetch().done(function() {
         if (this.updatePlayerView == null) {
-          this.updatePlayerView = new VP.Views.AddPoolPlayer({
+          this.updatePlayerView = new VP.Views.AddUpdatePoolPlayer({
             model:poolplayer
           });
         }
