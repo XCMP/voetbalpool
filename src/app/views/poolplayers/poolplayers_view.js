@@ -56,7 +56,7 @@
       var id = this.$selectedPoolPlayer.data('id');
       var model = this.collection.get(id);
       this.confirmationView = _utils.showModalWindow({
-        header: 'Verwijderen',
+        header: 'Speler verwijderen',
         content: 'Weet je zeker dat je <strong>' + model.getName() + '</strong> wilt verwijderen?',
         yes: _.bind(this.deletePoolPlayer, this)
       });
