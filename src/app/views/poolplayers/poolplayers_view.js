@@ -57,7 +57,7 @@
       var model = this.collection.get(id);
       this.confirmationView = _utils.showModalWindow({
         header: 'Verwijderen',
-        content: 'Weet je zeker dat je ' + model.getName() + ' wilt verwijderen?',
+        content: 'Weet je zeker dat je <strong>' + model.getName() + '</strong> wilt verwijderen?',
         yes: _.bind(this.deletePoolPlayer, this)
       });
     },
