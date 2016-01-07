@@ -7,14 +7,9 @@
     updatePlayerView: null,
 
     routes: {
-      '': 'log',
       'list/:viewid'           : 'handleRouteList',
       'add/:viewid'            : 'handleRouteAdd',
       'update/:viewid/:modelid': 'handleRouteUpdate'
-    },
-
-    log: function () {
-      console.log('caught');
     },
 
     handleRouteList: function (viewid) {
