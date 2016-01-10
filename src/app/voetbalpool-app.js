@@ -19,7 +19,6 @@ $(document).ready(function() {
   Backbone.history.start();
 
   new VP.Views.Menu({
-    router: VP.router
   });
 
 });

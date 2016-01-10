@@ -3,10 +3,9 @@
   VP.Views.Menu = Backbone.View.extend({
 
     el: '.menu',
-    router: null,
     events: {
       'click li.poolplayer' : 'showPoolPlayers',
-      'click li'            : 'setMenuItemActive_temp'
+      'click li'            : 'setMenuItemActive'
     },
 
     initialize: function() {
@@ -17,13 +16,9 @@
       VP.router.navigate('list/poolplayers',  {trigger: true});
     },
 
-    setMenuItemActive_temp: function(ev) {
-      this.setMenuItemActive($(ev.currentTarget));
-    },
-
-    setMenuItemActive: function($el) {
+    setMenuItemActive: function(ev) {
       this.removeMenuItemActive();
-      $el.addClass('active');
+      $(ev.currentTarget).addClass('active');
     },
 
     removeMenuItemActive: function() {
