@@ -28,9 +28,7 @@
 
   VP.Models.Game = Backbone.Model.extend({
 
-    url: function() {
-      return '/vp/game/' + this.id;
-    },
+    urlRoot: 'http://localhost:3001/vp/game',
     idAttribute: '_id',
 
     defaults: {
@@ -46,9 +44,7 @@
 
   VP.Models.Prediction = Backbone.Model.extend({
 
-    url: function() {
-      return '/vp/prediction/' + this.id;
-    },
+    urlRoot: 'http://localhost:3001/vp/prediction',
     idAttribute: '_id',
 
     defaults: {
