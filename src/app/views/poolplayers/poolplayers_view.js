@@ -77,8 +77,8 @@
     },
 
     setSelectedPoolPlayer: function($clickedPoolPlayer) {
-        $clickedPoolPlayer.addClass('selected');
-        this.$selectedPoolPlayer = $clickedPoolPlayer;
+      $clickedPoolPlayer.addClass('selected');
+      this.$selectedPoolPlayer = $clickedPoolPlayer;
     },
 
     render: function() {
