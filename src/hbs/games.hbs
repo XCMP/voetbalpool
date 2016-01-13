@@ -1,0 +1,25 @@
+<table class='games'>
+  <thead>
+    <tr>
+      <th>Datum</th>
+      <th>Thuis</th>
+      <th>Uit</th>
+      <th>Uitslag</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each games}}
+      <tr class="game" data-id="{{_id}}">
+        <td>{{matchDay}}</td>
+        <td>{{homeTeam}}</td>
+        <td>{{awayTeam}}</td>
+        <td>{{homeTeamGoals}} - {{awayTeamGoals}}</td>
+        <td>{{notes}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+<button type="button" class="js_button_add">Toevoegen</button>
+<button type="button" class="js_button_update" disabled>Wijzigen</button>
+<button type="button" class="js_button_delete" disabled>Verwijderen</button>
