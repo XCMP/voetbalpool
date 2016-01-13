@@ -2,9 +2,10 @@
 
   VP.Router = Backbone.Router.extend({
 
-    playersView: null,
-    addPlayerView: null,
-    updatePlayerView: null,
+    poolplayersView: null,
+    addPoolplayerView: null,
+    updatePoolplayerView: null,
+    gamesView: null,
 
     routes: {
       'list/:viewid'           : 'handleRouteList',
@@ -15,6 +16,8 @@
     handleRouteList: function (viewid) {
       if (viewid == 'poolplayers') {
         this.listPoolPlayers();
+      } else if (viewid == 'games') {
+        this.listGames();
       } else {
         console.log('list route ' + viewid + ' not handled');
       }
@@ -37,51 +40,69 @@
     },
 
     listPoolPlayers: function () {
-      if (this.playersView !== null) {
-        this.playersView.close();
-        this.playersView = null;
+      if (this.poolplayersView !== null) {
+        this.poolplayersView.close();
+        this.poolplayersView = null;
       }
 
-      if (this.playersView == null) {
+      if (this.poolplayersView == null) {
         var poolPlayersCollection = new VP.Collections.PoolPlayers();
-        this.playersView = new VP.Views.PoolPlayers({
+        this.poolplayersView = new VP.Views.PoolPlayers({
           collection: poolPlayersCollection
         });
-        $('div.content').html(this.playersView.render().$el);
+        $('div.content').html(this.poolplayersView.render().$el);
       } else {
-        this.playersView.collection.fetch();
+        this.poolplayersView.collection.fetch();
       }
     },
 
     addPoolPlayer: function () {
-      if (this.addPlayerView !== null) {
-        this.addPlayerView.close();
-        this.addPlayerView = null;
+      if (this.addPoolplayerView !== null) {
+        this.addPoolplayerView.close();
+        this.addPoolplayerView = null;
       }
       var poolPlayer = new VP.Models.PoolPlayer({});
-      if (this.addPlayerView == null) {
-        this.addPlayerView = new VP.Views.AddUpdatePoolPlayer({
+      if (this.addPoolplayerView == null) {
+        this.addPoolplayerView = new VP.Views.AddUpdatePoolPlayer({
           model: poolPlayer
         });
       }
-      $('div.content').html(this.addPlayerView.render().$el);
+      $('div.content').html(this.addPoolplayerView.render().$el);
     },
 
     updatePoolPlayer: function (modelid) {
-      if (this.updatePlayerView !== null) {
-        this.updatePlayerView.close();
-        this.updatePlayerView = null;
+      if (this.updatePoolplayerView !== null) {
+        this.updatePoolplayerView.close();
+        this.updatePoolplayerView = null;
       }
       var poolplayer = new VP.Models.PoolPlayer({_id:modelid});
       poolplayer.fetch().done(function() {
-        if (this.updatePlayerView == null) {
-          this.updatePlayerView = new VP.Views.AddUpdatePoolPlayer({
+        if (this.updatePoolplayerView == null) {
+          this.updatePoolplayerView = new VP.Views.AddUpdatePoolPlayer({
             model:poolplayer
           });
         }
-      $('div.content').html(this.updatePlayerView.render().$el);
+      $('div.content').html(this.updatePoolplayerView.render().$el);
       });
-    }  
+    },
+
+    listGames: function () {
+      if (this.gamesView !== null) {
+        this.gamesView.close();
+        this.gamesView = null;
+      }
+
+      if (this.gamesView == null) {
+        var gamesCollection = new VP.Collections.Games();
+        this.gamesView = new VP.Views.Games({
+          collection: gamesCollection
+        });
+        $('div.content').html(this.gamesView.render().$el);
+      } else {
+        this.gamesView.collection.fetch();
+      }
+    },
+
 
   });
 

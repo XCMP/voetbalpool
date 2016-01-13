@@ -4,7 +4,8 @@
 
     el: '.menu',
     events: {
-      'click li.poolplayer' : 'showPoolPlayers',
+      'click li.poolplayers' : 'showPoolPlayers',
+      'click li.games'       : 'showGames',
       'click li'            : 'setMenuItemActive'
     },
 
@@ -14,6 +15,11 @@
     showPoolPlayers: function(ev) {
       this.setMenuItemActive($(ev.currentTarget));
       VP.router.navigate('list/poolplayers',  {trigger: true});
+    },
+
+    showGames: function(ev) {
+      this.setMenuItemActive($(ev.currentTarget));
+      VP.router.navigate('list/games',  {trigger: true});
     },
 
     setMenuItemActive: function(ev) {
