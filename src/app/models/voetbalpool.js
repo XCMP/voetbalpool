@@ -32,12 +32,29 @@
     idAttribute: '_id',
 
     defaults: {
-      dateTime: null,
+      matchDay: null,
       homeTeam: null,
       awayTeam: null,
       homeTeamGoals: null,
       awayTeamGoals: null,
       notes: null
+    },
+
+    parse: function(model, xhr) {
+      console.log(model.matchDay);
+      console.log(moment(model.matchDay));
+      var date = moment(model.matchDay);
+      date.locale('du');
+      model.formattedMatchDay = date.format('llll');
+      return model;
+    },
+
+    getGame: function() {
+      return this.get('homeTeam') + ' - ' + this.get('awayTeam');
+    },
+
+    getMatchDay: function() {
+      return this.get('matchDay');
     }
 
   });

@@ -17,7 +17,8 @@ var paths = {
       'node_modules/jquery/dist/jquery.min.js',
       'node_modules/underscore/underscore.js',
       'node_modules/backbone/backbone.js',
-      'node_modules/handlebars/dist/handlebars.runtime.js'
+      'node_modules/handlebars/dist/handlebars.runtime.js',
+      'node_modules/moment/moment.js'
     ],
     app: [
       'src/app/voetbalpool-app.js',

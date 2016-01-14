@@ -28,6 +28,7 @@
     "gulp-zip": "^3.0.2",
     "handlebars": "^4.0.3",
     "jquery": "^1.11.3",
+    "moment": "^2.11.1",
     "mongoose": "^4.3.4",
     "path": "^0.12.7",
     "underscore": "^1.8.3",

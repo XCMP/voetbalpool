@@ -11,7 +11,7 @@
       'click tr.game': 'selectGame',
       // 'click button.js_button_add': 'renderAddPoolPlayer',
       // 'click button.js_button_update': 'renderUpdatePoolPlayer',
-      // 'click button.js_button_delete': 'confirmDeletePoolPlayer'
+      'click button.js_button_delete': 'confirmDeleteGame'
     },
 
     initialize: function() {
@@ -53,6 +53,23 @@
         this.$selectedGame.removeClass('selected');
         this.$selectedGame = null;
       }
+    },
+
+    confirmDeleteGame: function() {
+      var id = this.$selectedGame.data('id');
+      var model = this.collection.get(id);
+      this.confirmationView = _utils.showModalWindow({
+        header: 'Wedstrijd verwijderen',
+        content: 'Weet je zeker dat je de wedstrijd <strong>' + model.getGame() + '</strong>  op <strong>' + model.getMatchDay() + '</strong> wilt verwijderen?',
+        yes: _.bind(this.deleteGame, this)
+      });
+    },
+
+    deleteGame: function() {
+      var id = this.$selectedGame.data('id');
+      var model = this.collection.get(id);
+      model.destroy();
+      this.collection.remove(model);
     },
 
     render: function() {
