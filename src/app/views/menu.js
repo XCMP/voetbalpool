@@ -3,13 +3,16 @@
   VP.Views.Menu = Backbone.View.extend({
 
     el: '.menu',
+    template: Handlebars.templates['menu.hbs'],
+
     events: {
       'click li.poolplayers' : 'showPoolPlayers',
       'click li.games'       : 'showGames',
-      'click li'            : 'setMenuItemActive'
+      'click li'             : 'setMenuItemActive'
     },
 
     initialize: function() {
+      this.render();
     },
 
     showPoolPlayers: function(ev) {
@@ -31,6 +34,12 @@
       $('li').each(function(i, el) {
         $(el).removeClass('active');
       });
+    },
+
+    render: function() {
+      this.$el.html(this.template({
+      }));
+      return this;
     }
 
   });
