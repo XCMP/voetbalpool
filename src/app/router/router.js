@@ -6,8 +6,10 @@
     addPoolplayerView: null,
     updatePoolplayerView: null,
     gamesView: null,
+    menuView: null,
 
     routes: {
+      ''                       : 'renderMenu',
       'list/:viewid'           : 'handleRouteList',
       'add/:viewid'            : 'handleRouteAdd',
       'update/:viewid/:modelid': 'handleRouteUpdate'
@@ -16,8 +18,10 @@
     handleRouteList: function (viewid) {
       if (viewid == 'poolplayers') {
         this.listPoolPlayers();
+        this.renderMenu('poolplayers');
       } else if (viewid == 'games') {
         this.listGames();
+        this.renderMenu('games');
       } else {
         console.log('list route ' + viewid + ' not handled');
       }
@@ -103,6 +107,12 @@
       }
     },
 
+    renderMenu: function(activeMenuItem) {
+      if (this.menuView === null) {
+        this.menuView = new VP.Views.Menu({});
+      }
+      this.menuView.setMenuItemActive(activeMenuItem);
+    }
 
   });
 
