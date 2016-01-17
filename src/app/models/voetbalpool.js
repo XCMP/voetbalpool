@@ -41,11 +41,7 @@
     },
 
     parse: function(model, xhr) {
-      console.log(model.matchDay);
-      console.log(moment(model.matchDay));
-      var date = moment(model.matchDay);
-      date.locale('du');
-      model.formattedMatchDay = date.format('llll');
+      model.formattedMatchDay = moment(new Date(model.matchDay)).format('ddd DD MMM YYYY');
       return model;
     },
 
