@@ -5,13 +5,13 @@
       <th>Thuis</th>
       <th>Uit</th>
       <th>Uitslag</th>
-      <th>Notes</th>
+      <th>Notities</th>
     </tr>
   </thead>
   <tbody>
     {{#each games}}
       <tr class="game" data-id="{{_id}}">
-        <td>{{formattedMatchDay}}</td>
+        <td class="right">{{formattedMatchDay}}</td>
         <td>{{homeTeam}}</td>
         <td>{{awayTeam}}</td>
         <td>{{homeTeamGoals}} - {{awayTeamGoals}}</td>
