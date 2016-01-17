@@ -30,12 +30,14 @@ var paths = {
 
       'src/app/collections/poolplayers.js',
       'src/app/collections/games.js',
+      'src/app/collections/clubs.js',
 
       'src/app/views/menu.js',
       'src/app/views/modal_window.js',
       'src/app/views/poolplayers/add_update_poolplayer_view.js',
       'src/app/views/poolplayers/poolplayers_view.js',
       'src/app/views/games/games_view.js',
+      'src/app/views/clubs/clubsoverview_view.js',
 
       'src/app/router/router.js'
     ]

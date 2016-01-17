@@ -6,13 +6,19 @@
     addPoolplayerView: null,
     updatePoolplayerView: null,
     gamesView: null,
+    clubsOverviewView: null,
     menuView: null,
 
     routes: {
-      ''                       : 'renderMenu',
+      ''                       : 'index',
       'list/:viewid'           : 'handleRouteList',
       'add/:viewid'            : 'handleRouteAdd',
       'update/:viewid/:modelid': 'handleRouteUpdate'
+    },
+
+    index: function() {
+      this.renderMenu();
+      this.renderClubsOverview();
     },
 
     handleRouteList: function (viewid) {
@@ -112,7 +118,24 @@
         this.menuView = new VP.Views.Menu({});
       }
       this.menuView.setMenuItemActive(activeMenuItem);
+    },
+
+    renderClubsOverview: function() {
+      if (this.clubsOverviewView !== null) {
+        this.clubsOverviewView.close();
+        this.clubsOverviewView = null;
+      }
+      if (this.clubsOverviewView == null) {
+        var clubsCollection = new VP.Collections.Clubs();
+        this.clubsOverviewView = new VP.Views.ClubsOverview({
+          collection: clubsCollection
+        });
+        $('div.content').html(this.clubsOverviewView.render().$el);
+      } else {
+        this.clubsOverviewView.collection.fetch();
+      }
     }
+
 
   });
 

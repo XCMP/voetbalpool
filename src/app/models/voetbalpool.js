@@ -26,6 +26,18 @@
 
   });
 
+  VP.Models.Club = Backbone.Model.extend({
+
+    urlRoot: 'http://localhost:3001/vp/club',
+    idAttribute: '_id',
+
+    defaults: {
+      name: null,
+      logoBase64Url: null
+    }
+
+  });
+
   VP.Models.Game = Backbone.Model.extend({
 
     urlRoot: 'http://localhost:3001/vp/game',
