@@ -60,7 +60,7 @@
       var model = this.collection.get(id);
       this.confirmationView = _utils.showModalWindow({
         header: 'Wedstrijd verwijderen',
-        content: 'Weet je zeker dat je de wedstrijd <strong>' + model.getGame() + '</strong>  op <strong>' + model.getMatchDay() + '</strong> wilt verwijderen?',
+        content: 'Weet je zeker dat je de wedstrijd <strong>' + model.getGame() + '</strong>  op <strong>' + model.getFormattedMatchDay() + '</strong> wilt verwijderen?',
         yes: _.bind(this.deleteGame, this)
       });
     },

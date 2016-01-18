@@ -63,7 +63,12 @@
 
     getMatchDay: function() {
       return this.get('matchDay');
-    }
+    },
+
+    getFormattedMatchDay: function() {
+      return this.get('formattedMatchDay');
+    },
+
 
   });
 
