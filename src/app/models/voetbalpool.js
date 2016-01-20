@@ -53,7 +53,7 @@
     },
 
     parse: function(model, xhr) {
-      model.formattedMatchDay = moment(new Date(model.matchDay)).format('ddd DD MMM YYYY');
+      model.formattedMatchDay = moment(new Date(model.matchDay)).format('ddd DD MMM YYYY HH:mm');
       return model;
     },
 
