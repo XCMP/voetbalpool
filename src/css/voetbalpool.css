@@ -29,6 +29,10 @@ body {
   text-align: right;
 }
 
+.padding-left-s {
+  padding-left: .5em;
+}
+
 img.large {
   width: 150px;
   height: 150px;
