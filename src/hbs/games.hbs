@@ -12,8 +12,18 @@
     {{#each games}}
       <tr class="game" data-id="{{_id}}">
         <td class="right">{{formattedMatchDay}}</td>
-        <td>{{homeTeam}}</td>
-        <td>{{awayTeam}}</td>
+        {{#with homeTeam}}
+          <td>
+            <img class="small" alt="{{name}}" src="{{logoBase64Url}}" />
+            {{name}}
+          </td>
+        {{/with}}
+        {{#with awayTeam}}
+          <td>
+            <img class="small" alt="{{name}}" src="{{logoBase64Url}}" />
+            {{name}}
+          </td>
+        {{/with}}
         <td>{{homeTeamGoals}} - {{awayTeamGoals}}</td>
         <td>{{notes}}</td>
       </tr>
