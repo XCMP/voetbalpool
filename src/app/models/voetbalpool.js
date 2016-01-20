@@ -58,7 +58,7 @@
     },
 
     getGame: function() {
-      return this.get('homeTeam') + ' - ' + this.get('awayTeam');
+      return this.get('homeTeam').name + ' - ' + this.get('awayTeam').name;
     },
 
     getMatchDay: function() {
