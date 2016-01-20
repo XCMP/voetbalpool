@@ -126,7 +126,6 @@
     },
 
     addGame: function () {
-      console.log('add game');
       if (this.addGameView !== null) {
         this.addGameView.close();
         this.addGameView = null;
