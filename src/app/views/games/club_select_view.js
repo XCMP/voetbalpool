@@ -18,7 +18,6 @@
 
     render: function() {
       this.setSelectedOption();
-      console.log('rendering select...', this.name, this.selected);
       this.$el.attr('name', this.name);
       this.$el.html(this.template({
         name: this.name,
@@ -32,7 +31,6 @@
       if (this.selected) {
         var option = this.collection.get({
           _id:this.selected});
-        console.log(option);
         option.set('selected', true);
       }
     },
