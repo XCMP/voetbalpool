@@ -1,4 +1,8 @@
+<select name="{{name}}" class="club_select">
   <option value="" selected disabled>kies een club</option>
   {{#each clubs}}
     <option value="{{_id}}" {{#if selected}}selected{{/if}}>{{this.name}}</option>
   {{/each}}
+</select>
+<img class="logo small padding-left-s" src="{{selected.logoBase64Url}}"/>
+

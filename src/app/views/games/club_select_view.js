@@ -2,11 +2,11 @@
 
   VP.Views.ClubSelect = Backbone.View.extend({
 
-    tagName: 'select',
-    className: 'club_select',
+    tagName: 'span',
     template: Handlebars.templates['club_select.hbs'],
 
     events: {
+      'change': 'setLogo'
     },
 
     initialize: function(options) {
@@ -16,22 +16,25 @@
       this.collection.fetch();
     },
 
+    setLogo: function() {
+      console.log('changed!');
+    },
+
     render: function() {
-      this.setSelectedOption();
-      this.$el.attr('name', this.name);
+      var club = this.getSelectedClub();
       this.$el.html(this.template({
         name: this.name,
         clubs: this.collection.toJSON(),
-        selected: this.selected
+        selected: club ? club.toJSON() : null
       }));
       return this;
     },
 
-    setSelectedOption: function() {
+    getSelectedClub: function() {
       if (this.selected) {
-        var option = this.collection.get({
-          _id:this.selected});
-        option.set('selected', true);
+        var club = this.collection.get(this.selected);
+        club.set('selected', true);
+        return club;
       }
     },
 
