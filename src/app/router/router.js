@@ -6,6 +6,7 @@
     addPoolplayerView: null,
     updatePoolplayerView: null,
     gamesView: null,
+    addGameView: null,
     clubsOverviewView: null,
     menuView: null,
 
@@ -35,7 +36,11 @@
 
     handleRouteAdd: function (viewid) {
       if (viewid == 'poolplayer') {
+        this.renderMenu('poolplayers');
         this.addPoolPlayer();
+      } else if (viewid == 'game') {
+        this.addGame();
+        this.renderMenu('games');
       } else {
         console.log('add route ' + viewid + ' not handled');
       }
@@ -113,6 +118,21 @@
       }
     },
 
+    addGame: function () {
+      console.log('add game');
+      if (this.addGameView !== null) {
+        this.addGameView.close();
+        this.addGameView = null;
+      }
+      var game = new VP.Models.Game({});
+      if (this.addGameView == null) {
+        this.addGameView = new VP.Views.AddUpdateGame({
+          model: game
+        });
+      }      
+      $('div.content').html(this.addGameView.render().$el);
+    },
+
     renderMenu: function(activeMenuItem) {
       if (this.menuView === null) {
         this.menuView = new VP.Views.Menu({});
@@ -135,7 +155,6 @@
         this.clubsOverviewView.collection.fetch();
       }
     }
-
 
   });
 

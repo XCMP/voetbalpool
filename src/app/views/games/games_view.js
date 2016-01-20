@@ -9,8 +9,8 @@
 
     events: {
       'click tr.game': 'selectGame',
-      // 'click button.js_button_add': 'renderAddPoolPlayer',
-      // 'click button.js_button_update': 'renderUpdatePoolPlayer',
+      'click button.js_button_add': 'renderAddGame',
+      // 'click button.js_button_update': 'renderUpdateGame',
       'click button.js_button_delete': 'confirmDeleteGame'
     },
 
@@ -23,21 +23,21 @@
     selectGame: function(ev) {
       var $clickedGame = $(ev.currentTarget);
 
-      // no pool player selcted
+      // no game selcted
       if (this.$selectedGame === null) {
         this.setSelectedGame($clickedGame);
         this.setButtons();
         return;
       }
 
-      // same pool player already selcted
+      // same game already selcted
       if ($clickedGame.data('id') === this.$selectedGame.data('id')) {
         this.removeSelectedGame();
         this.setButtons();
         return;
       }
     
-      // select an other pool player
+      // select an other game
       this.removeSelectedGame();
       this.setSelectedGame($clickedGame);
       this.setButtons();
@@ -70,6 +70,10 @@
       var model = this.collection.get(id);
       model.destroy();
       this.collection.remove(model);
+    },
+
+    renderAddGame: function() {
+      VP.router.navigate('add/game',  {trigger: true});
     },
 
     render: function() {

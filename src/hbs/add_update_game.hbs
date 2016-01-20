@@ -1,0 +1,27 @@
+<form class="form">
+  <fieldset>
+    <legend>Wedstrijd {{#if _id}}wijzigen{{else}}toevoegen{{/if}}</legend>
+    <div class="block">
+      <label/>
+      <span class="errorMessage"></span>
+    </div>
+    <div class="block" field="name">
+      <label for="name">Speeldatum</label>
+      <input type="text" id="matchDay" name="matchDay" value="{{matchDay}}" />
+    </div>
+    <div class="block" field="homeTeam">
+      <label for="homeTeam">Thuis team</label>
+      <span class="homeTeam"></span>
+    </div>
+    <div class="block" field="awayTeam">
+      <label for="awayTeam">Uit team</label>
+      <span class="awayTeam"></span>
+    </div>
+    <div class="block" field="notes">
+      <label for="description">Omschrijving</label>
+      <textarea type="text" id="description" name="notes" cols="50" rows="5">{{notes}}</textarea>
+    </div>
+  </fieldset>
+  <button type="submit" class="js_button_add">Opslaan</button>
+  <button type="button" class="js_button_back">Terug</button>
+</form>

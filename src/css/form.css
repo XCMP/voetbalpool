@@ -6,10 +6,17 @@ legend {
   font-size: x-large;
 }
 
-input {
+input, select, textarea {
   font-family: Impact;
   font-size: x-large;
   border-style: groove;
+}
+
+/*???????*/
+select.club_select option {
+  background-repeat:no-repeat;
+  background-position:bottom left;
+  padding-left:50px;
 }
 
 .form label {

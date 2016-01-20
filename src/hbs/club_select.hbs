@@ -1,0 +1,4 @@
+  <option value="" selected disabled>kies een club</option>
+  {{#each clubs}}
+    <option value="{{_id}}" {{#if selected}}selected{{/if}}>{{this.name}}</option>
+  {{/each}}
