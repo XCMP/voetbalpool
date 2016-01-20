@@ -5,8 +5,11 @@
     poolplayersView: null,
     addPoolplayerView: null,
     updatePoolplayerView: null,
+
     gamesView: null,
     addGameView: null,
+    updateGameView: null,
+
     clubsOverviewView: null,
     menuView: null,
 
@@ -36,8 +39,8 @@
 
     handleRouteAdd: function (viewid) {
       if (viewid == 'poolplayer') {
-        this.renderMenu('poolplayers');
         this.addPoolPlayer();
+        this.renderMenu('poolplayers');
       } else if (viewid == 'game') {
         this.addGame();
         this.renderMenu('games');
@@ -49,6 +52,10 @@
     handleRouteUpdate: function (viewid, modelid) {
       if (viewid == 'poolplayer') {
         this.updatePoolPlayer(modelid);
+        this.renderMenu('poolplayers');
+      } else if (viewid == 'game') {
+        this.updateGame(modelid);
+        this.renderMenu('games');
       } else {
         console.log('update route ' + viewid + ' not handled');
       }
@@ -131,6 +138,22 @@
         });
       }      
       $('div.content').html(this.addGameView.render().$el);
+    },
+    
+    updateGame: function (modelid) {
+      if (this.updateGameView !== null) {
+        this.updateGameView.close();
+        this.updateGameView = null;
+      }
+      var game = new VP.Models.Game({_id:modelid});
+      game.fetch().done(function() {
+        if (this.updateGameView == null) {
+          this.updateGameView = new VP.Views.AddUpdateGame({
+            model:game
+          });
+        }
+        $('div.content').html(this.updateGameView.render().$el);
+      });
     },
 
     renderMenu: function(activeMenuItem) {

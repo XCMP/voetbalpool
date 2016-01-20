@@ -43,28 +43,23 @@
     // },
 
     render: function() {
-      var homeTeam = this.getClubSelect('homeTeam', null);
-      var awayTeam = this.getClubSelect('awayTeam', null);
-      this.$el.html(this.template({
-        game: this.model.toJSON()
-        // homeTeam: homeTeam,
-        // awayTeam: awayTeam
-      }));
+      console.log('rendering game view...');
+      this.$el.html(this.template(this.model.toJSON()));
+      var homeTeam = this.getClubSelect('homeTeam', this.model.get('homeTeam'));
+      var awayTeam = this.getClubSelect('awayTeam', this.model.get('awayTeam'));
       this.$('span.homeTeam').html(homeTeam);
       this.$('span.awayTeam').html(awayTeam);
       return this;
     },
 
     getClubSelect: function(name, selected) {
-      console.log('getClubSelect');
       var clubs = new VP.Collections.Clubs({});
       var view = new VP.Views.ClubSelect({
         name: name,
         collection: clubs,
         selected: selected
       });
-      console.log(view.render().$el);
-      return view.render().$el;
+      return view.$el;
     },
 
     close: function() {

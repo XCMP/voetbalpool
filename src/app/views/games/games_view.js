@@ -10,7 +10,7 @@
     events: {
       'click tr.game': 'selectGame',
       'click button.js_button_add': 'renderAddGame',
-      // 'click button.js_button_update': 'renderUpdateGame',
+      'click button.js_button_update': 'renderUpdateGame',
       'click button.js_button_delete': 'confirmDeleteGame'
     },
 
@@ -74,6 +74,11 @@
 
     renderAddGame: function() {
       VP.router.navigate('add/game',  {trigger: true});
+    },
+
+    renderUpdateGame: function() {
+      var id = this.$selectedGame.data('id');
+      VP.router.navigate('update/game/'+id,  {trigger: true});
     },
 
     render: function() {
