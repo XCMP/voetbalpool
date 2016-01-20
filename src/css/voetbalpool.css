@@ -28,3 +28,15 @@ body {
 .right {
   text-align: right;
 }
+
+img.large {
+  width: 150px;
+  height: 150px;
+  vertical-align: middle;
+}
+
+img.small {
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+}
