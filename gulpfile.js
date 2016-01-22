@@ -38,7 +38,9 @@ var paths = {
       'src/app/views/poolplayers/add_update_poolplayer_view.js',
       'src/app/views/games/games_view.js',
       'src/app/views/games/add_update_game_view.js',
+
       'src/app/views/clubs/clubsoverview_view.js',
+      'src/app/views/clubs/clubs_view.js',
       'src/app/views/games/club_select_view.js',
 
       'src/app/router/router.js'
