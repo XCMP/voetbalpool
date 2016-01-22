@@ -7,7 +7,8 @@
 
     events: {
       'click li.poolplayers' : 'showPoolPlayers',
-      'click li.games'       : 'showGames'
+      'click li.games'       : 'showGames',
+      'click li.clubs'       : 'showClubs'
     },
 
     initialize: function() {
@@ -20,6 +21,10 @@
 
     showGames: function(ev) {
       VP.router.navigate('list/games',  {trigger: true});
+    },
+
+    showClubs: function(ev) {
+      VP.router.navigate('list/clubs',  {trigger: true});
     },
 
     setMenuItemActive: function(menuItemClass) {
