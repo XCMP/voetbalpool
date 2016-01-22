@@ -34,6 +34,10 @@
     defaults: {
       name: null,
       logoBase64Url: null
+    },
+
+    getLogoUrl: function() {
+      return this.get('logoBase64Url');
     }
 
   });
