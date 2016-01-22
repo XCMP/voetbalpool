@@ -36,6 +36,10 @@
       logoBase64Url: null
     },
 
+    getName: function() {
+      return this.get('name');
+    },
+
     getLogoUrl: function() {
       return this.get('logoBase64Url');
     }
