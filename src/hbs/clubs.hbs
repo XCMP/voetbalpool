@@ -1,0 +1,19 @@
+<table class='clubs'>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Logo</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each clubs}}
+      <tr class="club" data-id="{{_id}}">
+        <td>{{name}}</td>
+        <td><img class="small" src="{{logoBase64Url}}"/></td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+<button type="button" class="js_button_add">Toevoegen</button>
+<button type="button" class="js_button_update" disabled>Wijzigen</button>
+<button type="button" class="js_button_delete" disabled>Verwijderen</button>

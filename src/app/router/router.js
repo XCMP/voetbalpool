@@ -11,6 +11,8 @@
     updateGameView: null,
 
     clubsOverviewView: null,
+    clubsView: null,
+
     menuView: null,
 
     routes: {
@@ -32,6 +34,9 @@
       } else if (viewid == 'games') {
         this.listGames();
         this.renderMenu('games');
+      } else if (viewid == 'clubs') {
+        this.listClubs();
+        this.renderMenu('clubs');
       } else {
         console.log('list route ' + viewid + ' not handled');
       }
@@ -153,6 +158,23 @@
         }
         $('div.content').html(this.updateGameView.render().$el);
       });
+    },
+
+    listClubs: function () {
+      if (this.clubsView !== null) {
+        this.clubsView.close();
+        this.clubsView = null;
+      }
+
+      if (this.clubsView == null) {
+        var clubsCollection = new VP.Collections.Clubs();
+        this.clubView = new VP.Views.Clubs({
+          collection: clubsCollection
+        });
+        $('div.content').html(this.clubView.render().$el);
+      } else {
+        this.clubsView.collection.fetch();
+      }
     },
 
     renderMenu: function(activeMenuItem) {
