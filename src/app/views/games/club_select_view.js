@@ -5,6 +5,9 @@
     tagName: 'span',
     template: Handlebars.templates['club_select.hbs'],
 
+    // caching elements
+    $logoImage: null,
+
     events: {
       'change': 'setLogo'
     },
@@ -16,10 +19,6 @@
       this.collection.fetch();
     },
 
-    setLogo: function() {
-      console.log('changed!');
-    },
-
     render: function() {
       var club = this.getSelectedClub();
       this.$el.html(this.template({
@@ -27,6 +26,8 @@
         clubs: this.collection.toJSON(),
         selected: club ? club.toJSON() : null
       }));
+      // cache elements
+      this.$logoImage = this.$el.find('img.logo.' + this.name);
       return this;
     },
 
@@ -36,6 +37,12 @@
         club.set('selected', true);
         return club;
       }
+    },
+
+    setLogo: function(ev) {
+      var club = this.collection.get(ev.target.value);
+      this.$logoImage.attr('src', club.getLogoUrl());
+      this.$logoImage.removeClass('hide');
     },
 
     close: function() {

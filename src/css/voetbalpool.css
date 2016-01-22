@@ -44,3 +44,7 @@ img.small {
   height: 25px;
   vertical-align: middle;
 }
+
+.hide {
+  display: none;
+}
