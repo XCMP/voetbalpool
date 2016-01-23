@@ -3,6 +3,7 @@
   VP.Views.Clubs = Backbone.View.extend({
 
     template: Handlebars.templates['clubs.hbs'],
+    deleteTemplate: Handlebars.templates['club_delete.hbs'],
 
     $selectedClub: null,
     confirmationView: null,
@@ -60,7 +61,7 @@
       var model = this.collection.get(id);
       this.confirmationView = _utils.showModalWindow({
         header: 'Club verwijderen',
-        content: 'Weet je zeker dat je de club <strong>' + model.getName() + '</strong> ' + '<img class="small" src="' + model.getLogoUrl() + '" /> wilt verwijderen?',
+        content: this.deleteTemplate({model: model.toJSON()}),
         yes: _.bind(this.deleteClub, this)
       });
     },
