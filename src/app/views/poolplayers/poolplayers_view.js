@@ -3,6 +3,7 @@
   VP.Views.PoolPlayers = Backbone.View.extend({
 
     template: Handlebars.templates['poolplayers.hbs'],
+    deleteTemplate: Handlebars.templates['poolplayer_delete.hbs'],
 
     $selectedPoolPlayer: null,
     confirmationView: null,
@@ -57,7 +58,7 @@
       var model = this.collection.get(id);
       this.confirmationView = _utils.showModalWindow({
         header: 'Speler verwijderen',
-        content: 'Weet je zeker dat je <strong>' + model.getName() + '</strong> wilt verwijderen?',
+        content: this.deleteTemplate({model: model.toJSON()}),
         yes: _.bind(this.deletePoolPlayer, this)
       });
     },
