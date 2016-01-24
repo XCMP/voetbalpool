@@ -3,6 +3,7 @@
   VP.Views.Games = Backbone.View.extend({
 
     template: Handlebars.templates['games.hbs'],
+    deleteTemplate: Handlebars.templates['game_delete.hbs'],
 
     $selectedGame: null,
     confirmationView: null,
@@ -60,7 +61,7 @@
       var model = this.collection.get(id);
       this.confirmationView = _utils.showModalWindow({
         header: 'Wedstrijd verwijderen',
-        content: 'Weet je zeker dat je de wedstrijd <strong>' + model.getGame() + '</strong>  op <strong>' + model.getFormattedMatchDay() + '</strong> wilt verwijderen?',
+        content: this.deleteTemplate({model: model.toJSON()}),
         yes: _.bind(this.deleteGame, this)
       });
     },

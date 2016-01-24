@@ -29,8 +29,16 @@ body {
   text-align: right;
 }
 
+.center {
+  text-align: center;
+}
+
 .padding-left-s {
   padding-left: .5em;
+}
+
+.padding-bottom-s {
+  padding-bottom: .5em;
 }
 
 img.large {

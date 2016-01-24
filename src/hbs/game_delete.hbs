@@ -1,0 +1,13 @@
+{{#with model}}
+  Weet je zeker dat je deze wedstrijd wilt verwijderen?
+  <div class="center">
+    <strong>
+      <div class="padding-bottom-s">
+        {{formattedMatchDay}}
+      </div>
+      <img class="small" src="{{homeTeam.logoBase64Url}}" /> {{homeTeam.name}}
+        -
+      <img class="small" src="{{awayTeam.logoBase64Url}}" /> {{awayTeam.name}}
+    </strong>
+  </div>
+{{/with}}
