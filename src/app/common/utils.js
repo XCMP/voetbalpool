@@ -45,7 +45,6 @@ VP.utils = {
 
     var parts = dateString.split(/[\s,-]+/);
     if (parts.length == 4) { 
-      console.log(this.pad(parts[1], 2) + '/' + this.pad(parts[0],2) + '/' + this.pad(parts[2], 4) + ' ' + parts[3]);
       return this.pad(parts[1], 2) + '/' + this.pad(parts[0],2) + '/' + this.pad(parts[2], 4) + ' ' + parts[3];
     } else {
       return '00/00/0000 00:00'; // invalid date time
