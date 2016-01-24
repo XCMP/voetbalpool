@@ -15,7 +15,7 @@
     saveAddPoolPlayer: function(ev) {
       ev.preventDefault();
       var formData = _utils.formDataToJSON($(ev.currentTarget));
-      formData.birthday = _utils.toDate(formData.birthday);
+      formData.birthday = _utils.ddmmyyyyToDate(formData.birthday);
       var options = {
         success: this.handleResult,
         error: this.handleErrors,
