@@ -5,8 +5,8 @@
       <label/>
       <span class="errorMessage"></span>
     </div>
-    <div class="block" field="name">
-      <label for="name">Speeldatum</label>
+    <div class="block" field="matchDay">
+      <label for="matchDay">Speeldatum</label>
       <input type="text" id="matchDay" name="matchDay" value="{{formattedMatchDayEdit}}" />
     </div>
     <div class="block" field="homeTeam">
@@ -16,6 +16,12 @@
     <div class="block" field="awayTeam">
       <label for="awayTeam">Uit team</label>
       <span class="awayTeam"></span>
+    </div>
+    <div class="block" field="score">
+      <label>uitslag</label>
+      <input type="text" size="2" length="2" name="homeTeamGoals" class="center" value="{{homeTeamGoals}}" />
+      -
+      <input type="text" size="2" length="2" name="awayTeamGoals" class="center" value="{{awayTeamGoals}}" />
     </div>
     <div class="block" field="notes">
       <label for="description">Omschrijving</label>

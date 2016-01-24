@@ -4,43 +4,43 @@
 
     template: Handlebars.templates['add_update_game.hbs'],
     events: {
-      // 'submit form': 'saveAddGame',
+      'submit form': 'saveAddGame',
       'click button.js_button_back': 'toGameList'
     },
 
     initialize: function() {
-      // _.bindAll(this, "handleErrors", "handleResult");
+      _.bindAll(this, "handleErrors", "handleResult");
     },
 
-    // saveAddPoolPlayer: function(ev) {
-    //   ev.preventDefault();
-    //   var formData = _utils.formDataToJSON($(ev.currentTarget));
-    //   formData.birthday = _utils.toDate(formData.birthday);
-    //   var options = {
-    //     success: this.handleResult,
-    //     error: this.handleErrors,
-    //   };
-    //   var result = this.model.save(formData, options);
-    // },
+    saveAddGame: function(ev) {
+      ev.preventDefault();
+      var formData = _utils.formDataToJSON($(ev.currentTarget));
+      formData.matchDay = _utils.ddmmyyyyhhmmToDateTime(formData.matchDay);
+      var options = {
+        success: this.handleResult,
+        error: this.handleErrors,
+      };
+      var result = this.model.save(formData, options);
+    },
 
     toGameList: function() {
       VP.router.navigate('list/games', {trigger: true});
     },
 
-    // handleResult: function(object, response, options) {
-    //   _utils.removeFieldErrors();
-    //   if (response.error) {
-    //     _.each(response.response.errors, function(errorObject) {
-    //       _utils.displayFieldError(errorObject);
-    //     });
-    //   } else {
-    //     this.toPoolPlayerList();
-    //   }
-    // },
+    handleResult: function(object, response, options) {
+      _utils.removeFieldErrors();
+      if (response.error) {
+        _.each(response.response.errors, function(errorObject) {
+          _utils.displayFieldError(errorObject);
+        });
+      } else {
+        this.toGameList();
+      }
+    },
 
-    // handleErrors: function(object, response, options) {
-    //   console.log('error');
-    // },
+    handleErrors: function(object, response, options) {
+      console.log('error');
+    },
 
     render: function() {
       this.$el.html(this.template(this.model.toJSON()));
