@@ -95,7 +95,7 @@ VP.utils = {
   },
 
   displayFieldError: function(errorObject) {
-    var $divFieldContainer = $('[field=\''+errorObject.path+'\']');
+    var $divFieldContainer = this.getFieldContainer(errorObject.path);
     this.removeFieldError($divFieldContainer);
     $divFieldContainer.addClass('error');
     $divFieldContainer.append('<span class=\'errorMessage\'>'+errorObject.message+'</span>');
@@ -111,6 +111,15 @@ VP.utils = {
   removeFieldError: function($divFieldContainer) {
     $divFieldContainer.removeClass('error');
     $divFieldContainer.find('span[class=\'errorMessage\']').last().remove();
+  },
+
+  removeFieldErrorByName: function(fieldName) {
+    var $divFieldContainer = this.getFieldContainer(fieldName);
+    this.removeFieldError($divFieldContainer);
+  },
+
+  getFieldContainer: function(fieldName) {
+    return $('[field=\'' + fieldName + '\']');
   }
 
 };
