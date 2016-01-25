@@ -12,6 +12,8 @@
 
     clubsOverviewView: null,
     clubsView: null,
+    addClubView: null,
+    updateClubView: null,
 
     menuView: null,
 
@@ -49,6 +51,9 @@
       } else if (viewid == 'game') {
         this.addGame();
         this.renderMenu('games');
+      } else if (viewid == 'club') {
+        this.addClub();
+        this.renderMenu('clubs');
       } else {
         console.log('add route ' + viewid + ' not handled');
       }
@@ -61,6 +66,9 @@
       } else if (viewid == 'game') {
         this.updateGame(modelid);
         this.renderMenu('games');
+      } else if (viewid == 'club') {
+        this.updateClub(modelid);
+        this.renderMenu('clubs');
       } else {
         console.log('update route ' + viewid + ' not handled');
       }
@@ -144,7 +152,7 @@
       $('div.content').html(this.addGameView.render().$el);
     },
     
-    updateGame: function (modelid) {
+    updateGame: function(modelid) {
       if (this.updateGameView !== null) {
         this.updateGameView.close();
         this.updateGameView = null;
@@ -153,7 +161,7 @@
       game.fetch().done(function() {
         if (this.updateGameView == null) {
           this.updateGameView = new VP.Views.AddUpdateGame({
-            model:game
+            model: game
           });
         }
         $('div.content').html(this.updateGameView.render().$el);
@@ -175,6 +183,36 @@
       } else {
         this.clubsView.collection.fetch();
       }
+    },
+
+    addClub: function () {
+      if (this.addClubView !== null) {
+        this.addClubView.close();
+        this.addClubView = null;
+      }
+      var club = new VP.Models.Club({});
+      if (this.addClubView == null) {
+        this.addClubView = new VP.Views.AddUpdateClub({
+          model: club
+        });
+      }      
+      $('div.content').html(this.addClubView.render().$el);
+    },
+
+    updateClub: function(modelid) {
+      if (this.updateClubView !== null) {
+        this.updateClubView.close();
+        this.updateClubView = null;
+      }
+      var club = new VP.Models.Club({_id:modelid});
+      club.fetch().done(function() {
+        if (this.updateClubView == null) {
+          this.updateClubView = new VP.Views.AddUpdateClub({
+            model: club
+          });
+        }
+        $('div.content').html(this.updateClubView.render().$el);
+      });
     },
 
     renderMenu: function(activeMenuItem) {
