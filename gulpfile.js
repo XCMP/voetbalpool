@@ -47,7 +47,21 @@ var paths = {
     ]
   },
   styles: 'src/css/*.css',
-  templates: 'src/hbs/*.hbs',
+  templatesWatch: 'src/hbs/**/*.hbs',
+  templates: [ '',
+    'common/menu.hbs',
+    'common/modal_window.hbs',
+    'clubs/club_delete.hbs',
+    'clubs/club_select.hbs',
+    'clubs/clubs.hbs',
+    'clubs/clubsoverview.hbs',
+    'games/add_update_game.hbs',
+    'games/game_delete.hbs',
+    'games/games.hbs',
+    'poolplayers/add_update_poolplayer.hbs',
+    'poolplayers/poolplayer_delete.hbs',
+    'poolplayers/poolplayers.hbs'
+  ],
   images: 'src/images/*.*'
 };
 
@@ -100,7 +114,7 @@ gulp.task('templates', function() {
     .pipe(shell([
       'rm -rf dist/js/templates',
       'mkdir -p dist/js/templates',
-      'handlebars src/hbs/*.hbs -f dist/js/templates/hbs-templates.js'
+      'handlebars ' + paths.templates.join(' src/hbs/') + ' -f dist/js/templates/hbs-templates.js'
     ]))
     .pipe(livereload());
 });
@@ -125,7 +139,7 @@ gulp.task('watch', ['build'], function() {
   gulp.watch(paths.scripts.app, ['scripts-app']);
   gulp.watch(['index.html'], ['base']);
   gulp.watch(paths.styles, ['styles']);
-  gulp.watch(paths.templates, ['templates']);
+  gulp.watch(paths.templatesWatch, ['templates']);
   gulp.watch(paths.images, ['images']);
 });
 
