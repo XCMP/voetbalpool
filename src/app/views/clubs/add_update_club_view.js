@@ -28,8 +28,6 @@
         header: 'Logo',
         content: '<img src="'+$('#logoBase64Url').val()+'" />'
       });
-
-      $('.logoPreview').attr('src', $('#logoBase64Url').val());
     },
 
     toClubList: function() {
