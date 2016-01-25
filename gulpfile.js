@@ -40,6 +40,7 @@ var paths = {
       'src/app/views/games/add_update_game_view.js',
 
       'src/app/views/clubs/clubsoverview_view.js',
+      'src/app/views/clubs/add_update_club_view.js',
       'src/app/views/clubs/clubs_view.js',
       'src/app/views/games/club_select_view.js',
 
@@ -51,13 +52,17 @@ var paths = {
   templates: [ '',
     'common/menu.hbs',
     'common/modal_window.hbs',
+
+    'clubs/add_update_club.hbs',
     'clubs/club_delete.hbs',
     'clubs/club_select.hbs',
     'clubs/clubs.hbs',
     'clubs/clubsoverview.hbs',
+
     'games/add_update_game.hbs',
     'games/game_delete.hbs',
     'games/games.hbs',
+
     'poolplayers/add_update_poolplayer.hbs',
     'poolplayers/poolplayer_delete.hbs',
     'poolplayers/poolplayers.hbs'

@@ -1,0 +1,29 @@
+<form class="form">
+  <fieldset>
+    <legend>Club {{#if _id}}wijzigen{{else}}toevoegen{{/if}}</legend>
+    <div class="block">
+      <label/>
+      <span class="errorMessage"></span>
+    </div>
+    <div class="block" field="name">
+      <label for="name">Naam</label>
+      <input type="text" id="name" name="name" value="{{name}}" />
+    </div>
+    <div class="block" field="logoBase64Url">
+      <label for="logoBase64Url">Logo ( base64 url )</label>
+      <input type="text" id="logoBase64Url" name="logoBase64Url" value="{{logoBase64Url}}" />
+    </div>
+    <div class="block">
+      <label></label>
+      <a href="http://picresize.com/" target="_blank" class="left">
+        <button type="button">resize</button>
+      </a>
+      <a href="https://www.base64-image.de/" target="_blank">
+        <button type="button">base64</button>
+      </a>
+      <button type="button" class="previewLogo">preview</button>
+    </div>
+  </fieldset>
+  <button type="submit" class="js_button_add">Opslaan</button>
+  <button type="button" class="js_button_back">Terug</button>
+</form>
