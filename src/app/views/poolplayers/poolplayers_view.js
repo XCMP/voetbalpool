@@ -56,7 +56,7 @@
     confirmDeletePoolPlayer: function() {
       var id = this.$selectedPoolPlayer.data('id');
       var model = this.collection.get(id);
-      this.confirmationView = _utils.showModalWindow({
+      this.confirmationView = _utils.showConfirmDialog({
         header: 'Speler verwijderen',
         content: this.deleteTemplate({model: model.toJSON()}),
         yes: _.bind(this.deletePoolPlayer, this)

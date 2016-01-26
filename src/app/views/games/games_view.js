@@ -59,7 +59,7 @@
     confirmDeleteGame: function() {
       var id = this.$selectedGame.data('id');
       var model = this.collection.get(id);
-      this.confirmationView = _utils.showModalWindow({
+      this.confirmationView = _utils.showConfirmDialog({
         header: 'Wedstrijd verwijderen',
         content: this.deleteTemplate({model: model.toJSON()}),
         yes: _.bind(this.deleteGame, this)
