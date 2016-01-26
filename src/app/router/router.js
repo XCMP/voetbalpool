@@ -15,6 +15,8 @@
     addClubView: null,
     updateClubView: null,
 
+    predictionsView: null,
+
     menuView: null,
 
     routes: {
@@ -39,6 +41,9 @@
       } else if (viewid == 'clubs') {
         this.listClubs();
         this.renderMenu('clubs');
+      } else if (viewid == 'predictions') {
+        this.listPredictions();
+        this.renderMenu('predictions');
       } else {
         console.log('list route ' + viewid + ' not handled');
       }
@@ -176,10 +181,10 @@
 
       if (this.clubsView == null) {
         var clubsCollection = new VP.Collections.Clubs();
-        this.clubView = new VP.Views.Clubs({
+        this.clubsView = new VP.Views.Clubs({
           collection: clubsCollection
         });
-        $('div.content').html(this.clubView.render().$el);
+        $('div.content').html(this.clubsView.render().$el);
       } else {
         this.clubsView.collection.fetch();
       }
@@ -213,6 +218,23 @@
         }
         $('div.content').html(this.updateClubView.render().$el);
       });
+    },
+
+    listPredictions: function () {
+      if (this.predictionsView !== null) {
+        this.predictionsView.close();
+        this.predictionsView = null;
+      }
+
+      if (this.predictionsView == null) {
+        var predictionsCollection = new VP.Collections.Predictions();
+        this.predictionsView = new VP.Views.Predictions({
+          collection: predictionsCollection
+        });
+        $('div.content').html(this.predictionsView.render().$el);
+      } else {
+        this.predictionsView.collection.fetch();
+      }
     },
 
     renderMenu: function(activeMenuItem) {

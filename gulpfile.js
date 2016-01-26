@@ -31,6 +31,7 @@ var paths = {
       'src/app/collections/poolplayers.js',
       'src/app/collections/games.js',
       'src/app/collections/clubs.js',
+      'src/app/collections/predictions.js',
 
       'src/app/views/menu.js',
       'src/app/views/modal_window.js',
@@ -38,11 +39,13 @@ var paths = {
       'src/app/views/poolplayers/add_update_poolplayer_view.js',
       'src/app/views/games/games_view.js',
       'src/app/views/games/add_update_game_view.js',
+      'src/app/views/games/club_select_view.js',
 
       'src/app/views/clubs/clubsoverview_view.js',
       'src/app/views/clubs/add_update_club_view.js',
       'src/app/views/clubs/clubs_view.js',
-      'src/app/views/games/club_select_view.js',
+
+      'src/app/views/predictions/predictions_view.js',
 
       'src/app/router/router.js'
     ]
@@ -65,7 +68,9 @@ var paths = {
 
     'poolplayers/add_update_poolplayer.hbs',
     'poolplayers/poolplayer_delete.hbs',
-    'poolplayers/poolplayers.hbs'
+    'poolplayers/poolplayers.hbs',
+
+    'predictions/predictions.hbs'
   ],
   images: 'src/images/*.*'
 };
