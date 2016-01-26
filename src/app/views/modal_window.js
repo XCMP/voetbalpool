@@ -6,23 +6,26 @@
     className: 'modal_window',
     template: Handlebars.templates['modal_window.hbs'],
     templateData: {
-      header      : null,
-      content     : null,
-      yesFunction : null,
-      noFunction  : null
+      header        : null,
+      content       : null,
+      confirmDialog : null
     },
 
     events: {
       'click .close' : 'close',
       'click .yes'   : 'yes',
-      'click .no'    : 'no'
+      'click .no'    : 'no',
+      'click .back'  : 'back'
     },
 
     initialize: function(options) {
       this.templateData.header = options.header;
       this.templateData.content = options.content;
+      this.templateData.confirmDialog = options.confirmDialog;
+
       this.yesFunction = options.yes;
       this.noFunction = options.no;
+      this.backFunction = options.back;
     },
 
     render: function() {
@@ -46,6 +49,13 @@
     no: function() {
       if (this.noFunction) {
         this.noFunction();
+      }
+      this.close();
+    },
+
+    back: function() {
+      if (this.backFunction) {
+        this.backFunction();
       }
       this.close();
     }

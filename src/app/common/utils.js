@@ -74,7 +74,17 @@ VP.utils = {
     var modalWindow = new VP.Views.ModalWindow({
         header: data.header,
         content: data.content,
-        yes: data.yes
+        back: data.back
+      }).render();
+    },
+
+  showConfirmDialog: function(data) {
+    var modalWindow = new VP.Views.ModalWindow({
+        confirmDialog: true,
+        header: data.header,
+        content: data.content,
+        yes: data.yes,
+        no: data.no
       }).render();
     },
 

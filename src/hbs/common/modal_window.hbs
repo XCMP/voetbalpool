@@ -1,9 +1,18 @@
-<div>
-  <a class="close">x</a>
-  <h3>{{data.header}}</h3>
-  <p>{{{data.content}}}</p>
-  <p>
-    <button type="button" class="yes">Ja</button>
-    <button type="button" class="no">Nee</button>
-  </p>
-</div>
+{{#with data}}
+  <div>
+    <a class="close">x</a>
+    <h3>{{header}}</h3>
+    <p>{{{content}}}</p>
+    {{#if confirmDialog}}
+      <p>
+        <button type="button" class="yes">Ja</button>
+        <button type="button" class="no">Nee</button>
+      </p>
+    {{/if}}
+    {{#unless confirmDialog}}
+      <p>
+        <button type="button" class="back">Terug</button>
+      </p>
+    {{/unless}}
+  </div>
+{{/with}}
