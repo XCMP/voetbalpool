@@ -1,1 +1,29 @@
-<h1>PREDICTIONS work in progress...</h1>
+<table class='predictions'>
+  <thead>
+    <tr>
+      <th>Datum</th>
+      <th>Wedstrijd</th>
+      <th>Uitslag</th>
+      <th>Speler</th>
+      <th>Voorspelling</th>
+      <th>Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each predictions}}
+      <tr class="prediction" data-id="{{_id}}">
+        {{#with game}}
+          <td>{{matchDay}}</td>
+          <td>{{homeTeam.name}}-{{awayTeam.name}}</td>
+          <td>{{homeTeamGoals}}-{{awayTeamGoals}}</td>
+        {{/with}}
+        <td>{{poolplayer.name}}</td>
+        <td>{{homeTeamGoals}}-{{awayTeamGoals}}</td>
+        <td>{{score}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+<button type="button" class="js_button_add">Toevoegen</button>
+<button type="button" class="js_button_update" disabled>Wijzigen</button>
+<button type="button" class="js_button_delete" disabled>Verwijderen</button>

@@ -8,7 +8,7 @@
     confirmationView: null,
 
     events: {
-      // 'click tr.Prediction': 'selectPrediction',
+      'click tr.prediction': 'selectPrediction',
       // 'click button.js_button_add': 'renderAddPrediction',
       // 'click button.js_button_update': 'renderUpdatePrediction',
       // 'click button.js_button_delete': 'confirmDeletePrediction'
@@ -21,38 +21,38 @@
     },
 
     selectPrediction: function(ev) {
-      // var $clickedPrediction = $(ev.currentTarget);
+      var $clickedPrediction = $(ev.currentTarget);
 
-      // // no Prediction selcted
-      // if (this.$selectedPrediction === null) {
-      //   this.setSelectedPrediction($clickedPrediction);
-      //   this.setButtons();
-      //   return;
-      // }
+      // no prediction selcted
+      if (this.$selectedPrediction === null) {
+        this.setSelectedPrediction($clickedPrediction);
+        this.setButtons();
+        return;
+      }
 
-      // // same Prediction already selcted
-      // if ($clickedPrediction.data('id') === this.$selectedPrediction.data('id')) {
-      //   this.removeSelectedPrediction();
-      //   this.setButtons();
-      //   return;
-      // }
+      // same prediction already selcted
+      if ($clickedPrediction.data('id') === this.$selectedPrediction.data('id')) {
+        this.removeSelectedPrediction();
+        this.setButtons();
+        return;
+      }
     
-      // // select an other Prediction
-      // this.removeSelectedPrediction();
-      // this.setSelectedPrediction($clickedPrediction);
-      // this.setButtons();
+      // select an other prediction
+      this.removeSelectedPrediction();
+      this.setSelectedPrediction($clickedPrediction);
+      this.setButtons();
     },
 
     setSelectedPrediction: function($clickedPrediction) {
-      // $clickedPrediction.addClass('selected');
-      // this.$selectedPrediction = $clickedPrediction;
+      $clickedPrediction.addClass('selected');
+      this.$selectedPrediction = $clickedPrediction;
     },
 
     removeSelectedPrediction: function() {
-      // if (this.$selectedPrediction) {
-      //   this.$selectedPrediction.removeClass('selected');
-      //   this.$selectedPrediction = null;
-      // }
+      if (this.$selectedPrediction) {
+        this.$selectedPrediction.removeClass('selected');
+        this.$selectedPrediction = null;
+      }
     },
 
     confirmDeletePrediction: function() {
@@ -83,17 +83,17 @@
 
     render: function() {
       this.$el.html(this.template({
-        Predictions: this.collection.toJSON(),
+        predictions: this.collection.toJSON(),
         activate: this.$selectedPrediction === null? 'disabled':''
       }));
       return this;
     },
 
     setButtons: function() {
-      // var self = this;
-      // $(['.js_button_update', '.js_button_delete']).each(function(i, selector) {
-      //   $(selector).prop("disabled", self.$selectedPrediction === null? true:false);
-      // });
+      var self = this;
+      $(['.js_button_update', '.js_button_delete']).each(function(i, selector) {
+        $(selector).prop("disabled", self.$selectedPrediction === null? true:false);
+      });
     },
 
     close: function() {

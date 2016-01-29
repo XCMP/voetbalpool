@@ -87,7 +87,7 @@
     idAttribute: '_id',
 
     defaults: {
-      poolPlayer: null,
+      poolplayer: null,
       game: null,
       homeTeamGoals: null,
       awayTeamGoals: null,
