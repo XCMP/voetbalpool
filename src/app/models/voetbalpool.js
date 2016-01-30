@@ -16,7 +16,6 @@
 
     parse: function(model, xhr) {
       model.age = _utils.calculateAge(model.birthday);
-      model.formattedBirthday = _utils.formatDate(model.birthday);
       return model;
     },
 
@@ -58,12 +57,6 @@
       homeTeamGoals: null,
       awayTeamGoals: null,
       notes: null
-    },
-
-    parse: function(model, xhr) {
-      model.formattedMatchDay = moment(new Date(model.matchDay)).format('ddd DD MMM YYYY HH:mm');
-      model.formattedMatchDayEdit = moment(new Date(model.matchDay)).format('DD-MM-YYYY HH:mm');
-      return model;
     },
 
     getGame: function() {
