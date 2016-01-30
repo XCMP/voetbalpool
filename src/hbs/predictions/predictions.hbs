@@ -13,7 +13,7 @@
     {{#each predictions}}
       <tr class="prediction" data-id="{{_id}}">
         {{#with game}}
-          <td>{{matchDay}}</td>
+          <td>{{formatDate matchDay format='ddd DD-MM-YY HH:mm'}}</td>
           <td>{{homeTeam.name}}-{{awayTeam.name}}</td>
           <td>{{homeTeamGoals}}-{{awayTeamGoals}}</td>
         {{/with}}

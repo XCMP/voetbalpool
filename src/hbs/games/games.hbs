@@ -11,7 +11,7 @@
   <tbody>
     {{#each games}}
       <tr class="game" data-id="{{_id}}">
-        <td class="right">{{formattedMatchDay}}</td>
+        <td class="right">{{formatDate matchDay format='ddd DD MMM YYYY HH:mm'}}</td>
         {{#with homeTeam}}
           <td>
             <img class="small" alt="{{name}}" src="{{logoBase64Url}}" />
