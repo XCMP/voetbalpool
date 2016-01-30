@@ -1,23 +1,6 @@
 VP.utils = {
 
   /**
-   * input  MM/DD/YYYY
-   * output DD-MM-YYYY
-  */
-  formatDate: function(dateString) {
-    if (dateString == undefined || dateString.length == 0) {
-      return null;
-    }
-
-    var parts = dateString.split('/');
-    if (parts.length == 3) { 
-      return this.pad(parts[1], 2) + '-' + this.pad(parts[0],2) + '-' + this.pad(parts[2], 4);
-    } else {
-      return '00-00-0000'; // invalid date
-    }
-  },
-
-  /**
    * input  DD-MM-YYYY
    * output MM/DD/YYYY
   */
