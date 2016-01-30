@@ -27,7 +27,10 @@ var paths = {
       'src/app/common/validation.js',
       'src/app/common/helpers.js',
 
-      'src/app/models/voetbalpool.js',
+      'src/app/models/poolplayer.js',
+      'src/app/models/club.js',
+      'src/app/models/game.js',
+      'src/app/models/prediction.js',
 
       'src/app/collections/poolplayers.js',
       'src/app/collections/games.js',
