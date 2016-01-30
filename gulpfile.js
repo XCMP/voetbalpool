@@ -25,6 +25,7 @@ var paths = {
 
       'src/app/common/utils.js',
       'src/app/common/validation.js',
+      'src/app/common/helpers.js',
 
       'src/app/models/voetbalpool.js',
 
