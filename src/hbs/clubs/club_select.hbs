@@ -1,7 +1,7 @@
 <select name="{{name}}" class="club_select">
   <option value="" selected disabled>kies een club</option>
   {{#each clubs}}
-    <option value="{{_id}}" {{#if selected}}selected{{/if}}>{{this.name}}</option>
+    <option value="{{_id}}" {{#if selected}}selected{{/if}}>{{name}}</option>
   {{/each}}
 </select>
 <img class="logo small {{#unless selected}}hide {{/unless}}padding-left-s {{name}}" src="{{selected.logoBase64Url}}"/>
