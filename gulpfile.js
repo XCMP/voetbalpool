@@ -31,11 +31,13 @@ var paths = {
       'src/app/models/club.js',
       'src/app/models/game.js',
       'src/app/models/prediction.js',
+      'src/app/models/month.js',
 
       'src/app/collections/poolplayers.js',
       'src/app/collections/games.js',
       'src/app/collections/clubs.js',
       'src/app/collections/predictions.js',
+      'src/app/collections/months.js',
 
       'src/app/views/menu.js',
       'src/app/views/modal_window.js',
@@ -50,6 +52,7 @@ var paths = {
       'src/app/views/clubs/clubs_view.js',
 
       'src/app/views/predictions/predictions_view.js',
+      'src/app/views/predictions/month_select_view.js',
 
       'src/app/router/router.js'
     ]
@@ -74,7 +77,8 @@ var paths = {
     'poolplayers/poolplayer_delete.hbs',
     'poolplayers/poolplayers.hbs',
 
-    'predictions/predictions.hbs'
+    'predictions/predictions.hbs',
+    'predictions/month_select.hbs'
   ],
   images: 'src/images/*.*'
 };

@@ -86,7 +86,22 @@
         predictions: this.collection.toJSON(),
         activate: this.$selectedPrediction === null? 'disabled':''
       }));
+      this.setMonthSelectOptions('months');
       return this;
+    },
+
+    setMonthSelectOptions: function(field) {
+      var monthsField = this.getMonthSelectView(field);
+      this.$('span.' + field).html(monthsField);
+    },
+
+    getMonthSelectView: function(field) {
+      var months = new VP.Collections.Months({});
+      var view = new VP.Views.MonthSelect({
+        name: field,
+        collection: months
+      });
+      return view.$el;
     },
 
     setButtons: function() {
