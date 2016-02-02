@@ -17,6 +17,14 @@ VP.utils = {
     }
   },
 
+  MonthTextArray: ['Jan', 'Feb', 'Maa', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'], 
+  getMonthYearText: function(yyyymm) {
+    var yearMonthArray = yyyymm.split('-');
+    var year = yearMonthArray[0];
+    var monthIndex = parseInt(yearMonthArray[1], 10) - 1;
+    return this.MonthTextArray[monthIndex] + ' ' + year;
+  },
+
   /**
    * input  DD-MM-YYYY HH:MM
    * output MM/DD/YYYY HH:MM
