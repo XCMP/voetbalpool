@@ -1,0 +1,11 @@
+{{#with model}}
+  Weet je zeker dat je deze voorspelling wilt verwijderen?
+  <div class="center">
+    <div class="padding-bottom-s">
+      <strong>{{poolplayer.name}}</strong> ({{homeTeamGoals}}-{{awayTeamGoals}})
+    </div>
+    <img class="small" src="{{game.homeTeam.logoBase64Url}}" /> {{game.homeTeam.name}}
+      -
+    <img class="small" src="{{game.awayTeam.logoBase64Url}}" /> {{game.awayTeam.name}}
+  </div>
+{{/with}}

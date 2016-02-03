@@ -76,7 +76,8 @@ var paths = {
     'poolplayers/poolplayer_delete.hbs',
     'poolplayers/poolplayers.hbs',
 
-    'predictions/predictions.hbs'
+    'predictions/predictions.hbs',
+    'predictions/prediction_delete.hbs'
   ],
   images: 'src/images/*.*'
 };

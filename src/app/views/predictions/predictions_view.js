@@ -3,16 +3,17 @@
   VP.Views.Predictions = Backbone.View.extend({
 
     template: Handlebars.templates['predictions.hbs'],
+    deleteTemplate: Handlebars.templates['prediction_delete.hbs'],
 
     $selectedPrediction: null,
     confirmationView: null,
 
     events: {
       'click tr.prediction': 'selectPrediction',
-      'change .month_select': 'yearMonthSelected'
+      'change .month_select': 'yearMonthSelected',
       // 'click button.js_button_add': 'renderAddPrediction',
       // 'click button.js_button_update': 'renderUpdatePrediction',
-      // 'click button.js_button_delete': 'confirmDeletePrediction'
+      'click button.js_button_delete': 'confirmDeletePrediction'
     },
 
     initialize: function() {
@@ -66,20 +67,20 @@
     },
 
     confirmDeletePrediction: function() {
-      // var id = this.$selectedPrediction.data('id');
-      // var model = this.collection.get(id);
-      // this.confirmationView = _utils.showConfirmDialog({
-      //   header: 'Wedstrijd verwijderen',
-      //   content: this.deleteTemplate({model: model.toJSON()}),
-      //   yes: _.bind(this.deletePrediction, this)
-      // });
+      var id = this.$selectedPrediction.data('id');
+      var model = this.collection.get(id);
+      this.confirmationView = _utils.showConfirmDialog({
+        header: 'Voorspelling verwijderen',
+        content: this.deleteTemplate({model: model.toJSON()}),
+        yes: _.bind(this.deletePrediction, this)
+      });
     },
 
     deletePrediction: function() {
-      // var id = this.$selectedPrediction.data('id');
-      // var model = this.collection.get(id);
-      // model.destroy();
-      // this.collection.remove(model);
+      var id = this.$selectedPrediction.data('id');
+      var model = this.collection.get(id);
+      model.destroy();
+      this.collection.remove(model);
     },
 
     renderAddPrediction: function() {
