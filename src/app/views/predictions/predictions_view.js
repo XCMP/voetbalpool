@@ -9,6 +9,7 @@
 
     events: {
       'click tr.prediction': 'selectPrediction',
+      'change .month_select': 'yearMonthSelected'
       // 'click button.js_button_add': 'renderAddPrediction',
       // 'click button.js_button_update': 'renderUpdatePrediction',
       // 'click button.js_button_delete': 'confirmDeletePrediction'
@@ -17,6 +18,15 @@
     initialize: function() {
       this.collection.on('sync', this.render, this);
       this.collection.on('remove', this.render, this);
+      this.months = new VP.Collections.Months({});
+      this.months.fetch();
+      this.collection.fetch();
+    },
+
+    yearMonthSelected: function(ev) {
+      var selectedYearMonth = ev.currentTarget.value
+      this.months.setPeriod(selectedYearMonth);
+      this.collection.setPeriod(selectedYearMonth);
       this.collection.fetch();
     },
 
@@ -83,25 +93,11 @@
 
     render: function() {
       this.$el.html(this.template({
+        months: this.months.toJSON(),
         predictions: this.collection.toJSON(),
         activate: this.$selectedPrediction === null? 'disabled':''
       }));
-      this.setMonthSelectOptions('months');
       return this;
-    },
-
-    setMonthSelectOptions: function(field) {
-      var monthsField = this.getMonthSelectView(field);
-      this.$('span.' + field).html(monthsField);
-    },
-
-    getMonthSelectView: function(field) {
-      var months = new VP.Collections.Months({});
-      var view = new VP.Views.MonthSelect({
-        name: field,
-        collection: months
-      });
-      return view.$el;
     },
 
     setButtons: function() {

@@ -11,7 +11,12 @@
   </thead>
   <tbody>
     <div class="padding-bottom-s">
-      Maand <span class="months"></span>
+      Maand
+      <select name="months" class="month_select">
+        {{#each months}}
+          <option value="{{yyyymm}}" {{#if selected}}selected{{/if}}>{{text}}</option>
+        {{/each}}
+      </select>
     </div>
     {{#each predictions}}
       <tr class="prediction" data-id="{{_id}}">
