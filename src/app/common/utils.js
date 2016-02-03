@@ -42,6 +42,22 @@ VP.utils = {
     }
   },
 
+  getCurrentPeriod: function() {
+    var period = {};
+    var currentDate = new Date();
+    period.year = currentDate.getFullYear();
+    period.month = this.pad(currentDate.getMonth() + 1, 2);
+    return period;
+  },
+
+  getPeriod: function(periodString) {
+    var period = {};
+    var periodArray = periodString.split('-');
+    period.year = periodArray[0];
+    period.month = periodArray[1];
+    return period;
+  },
+
   pad: function(n, width, z) {
     z = z || '0';
     n = n + '';
