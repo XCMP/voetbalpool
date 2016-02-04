@@ -11,7 +11,7 @@
     events: {
       'click tr.prediction': 'selectPrediction',
       'change .month_select': 'yearMonthSelected',
-      // 'click button.js_button_add': 'renderAddPrediction',
+      'click button.js_button_add': 'renderAddPrediction',
       // 'click button.js_button_update': 'renderUpdatePrediction',
       'click button.js_button_delete': 'confirmDeletePrediction'
     },
@@ -84,12 +84,12 @@
     },
 
     renderAddPrediction: function() {
-      // VP.router.navigate('add/Prediction',  {trigger: true});
+      VP.router.navigate('add/prediction',  {trigger: true});
     },
 
     renderUpdatePrediction: function() {
       // var id = this.$selectedPrediction.data('id');
-      // VP.router.navigate('update/Prediction/'+id,  {trigger: true});
+      // VP.router.navigate('update/prediction/'+id,  {trigger: true});
     },
 
     render: function() {
