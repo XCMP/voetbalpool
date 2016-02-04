@@ -1,0 +1,21 @@
+<form class="form">
+  <fieldset>
+    <legend>Voorspelling {{#if model._id}}wijzigen{{else}}toevoegen{{/if}}</legend>
+    <div class="block" field="poolplayer">
+      <label for="poolplayer">Speler</label>
+      <span class="poolplayer"></span>
+    </div>
+    <div class="block" field="game">
+      <label for="game">Wedstrijd</label>
+      <span class="game"></span>
+    </div>
+    <div class="block" field="homeTeamGoals|awayTeamGoals">
+      <label>Voorspelling</label>
+      <input type="text" size="2" length="2" name="homeTeamGoals" class="center" value="{{model.homeTeamGoals}}" />
+      -
+      <input type="text" size="2" length="2" name="awayTeamGoals" class="center" value="{{model.awayTeamGoals}}" />
+    </div>
+  </fieldset>
+  <button type="submit" class="js_button_add">Opslaan</button>
+  <button type="button" class="js_button_back">Terug</button>
+</form>

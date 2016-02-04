@@ -16,6 +16,7 @@
     updateClubView: null,
 
     predictionsView: null,
+    addPredictionView: null,
 
     menuView: null,
 
@@ -59,6 +60,9 @@
       } else if (viewid == 'club') {
         this.addClub();
         this.renderMenu('clubs');
+      } else if (viewid == 'prediction') {
+        this.addPrediction();
+        this.renderMenu('predictions');
       } else {
         console.log('add route ' + viewid + ' not handled');
       }
@@ -235,6 +239,20 @@
       } else {
         this.predictionsView.collection.fetch();
       }
+    },
+
+    addPrediction: function () {
+      if (this.addPredictionView !== null) {
+        this.addPredictionView.close();
+        this.addPredictionView = null;
+      }
+      var prediction = new VP.Models.Prediction({});
+      if (this.addPredictionView == null) {
+        this.addPredictionView = new VP.Views.AddUpdatePrediction({
+          model: prediction
+        });
+      }      
+      $('div.content').html(this.addPredictionView.render().$el);
     },
 
     renderMenu: function(activeMenuItem) {
