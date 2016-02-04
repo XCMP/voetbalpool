@@ -12,7 +12,7 @@
       'click tr.prediction': 'selectPrediction',
       'change .month_select': 'yearMonthSelected',
       'click button.js_button_add': 'renderAddPrediction',
-      // 'click button.js_button_update': 'renderUpdatePrediction',
+      'click button.js_button_update': 'renderUpdatePrediction',
       'click button.js_button_delete': 'confirmDeletePrediction'
     },
 
@@ -88,8 +88,8 @@
     },
 
     renderUpdatePrediction: function() {
-      // var id = this.$selectedPrediction.data('id');
-      // VP.router.navigate('update/prediction/'+id,  {trigger: true});
+      var id = this.$selectedPrediction.data('id');
+      VP.router.navigate('update/prediction/'+id,  {trigger: true});
     },
 
     render: function() {
