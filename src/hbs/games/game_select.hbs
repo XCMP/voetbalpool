@@ -1,0 +1,8 @@
+<select name="{{name}}" class="game_select">
+  <option value="" selected disabled>kies een wedstrijd</option>
+  {{#each games}}
+    <option value="{{_id}}" {{#if selected}}selected{{/if}}>
+      {{homeTeam.name}}-{{awayTeam.name}} [{{formatDate matchDay format='DD-MM-YYYY'}}]
+    </option>
+  {{/each}}
+</select>
