@@ -47,8 +47,6 @@
 
     render: function() {
       this.$el.html(this.template({
-        poolplayers: this.poolplayers.toJSON(),
-        games: this.games.toJSON(),
         model: this.model.toJSON()
       }));
       this.setPoolPlayerSelectOptions('poolplayer');
@@ -57,10 +55,7 @@
     },
 
     setPoolPlayerSelectOptions: function(field) {
-      var poolPlayerModel = this.model.get(field);
-      if (poolPlayerModel) {
-        var poolPlayerId = poolPlayerModel._id;
-      }
+      var poolPlayerId = this.model.get(field);
       var poolPlayerSelect = this.getPoolPlayerSelectView(field, poolPlayerId);
       this.$('span.' + field).html(poolPlayerSelect);
     },
@@ -76,10 +71,7 @@
     },
 
     setGameSelectOptions: function(field) {
-      var gameModel = this.model.get(field);
-      if (gameModel) {
-        var gameId = gameModel._id;
-      }
+      var gameId = this.model.get(field);
       var gameSelect = this.getGameSelectView(field, gameId);
       this.$('span.' + field).html(gameSelect);
     },
