@@ -1,10 +1,6 @@
 <form class="form">
   <fieldset>
     <legend>Wedstrijd {{#if _id}}wijzigen{{else}}toevoegen{{/if}}</legend>
-    <div class="block">
-      <label/>
-      <span class="errorMessage"></span>
-    </div>
     <div class="block" field="matchDay">
       <label for="matchDay">Speeldatum</label>
       <input type="text" id="matchDay" name="matchDay" placeholder="dd-mm-jjjj hh:mm" value="{{formatDate matchDay format='DD-MM-YYYY HH:mm'}}" />
