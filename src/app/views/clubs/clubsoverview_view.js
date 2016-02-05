@@ -8,8 +8,13 @@
     },
 
     initialize: function() {
-      this.collection.on('sync', this.render, this);
+      this.collection.on('sync', this.randomizeOrderAndRender, this);
       this.collection.fetch();
+    },
+
+    randomizeOrderAndRender: function() {
+      this.collection.reset(this.collection.shuffle(), {silent:true});
+      this.render();
     },
 
     render: function() {
