@@ -1,11 +1,6 @@
 button {
-    outline: none;
-    border: none;
-    position: relative;
-}
-
-button {
-  position: relative;
+  outline: none;
+  border: none;
   background-color: lightblue;
   font-family: Impact;
   font-size: medium;
@@ -17,6 +12,7 @@ button {
 
 button:hover:enabled {
   color: white;
+  cursor: pointer;
 }
 
 button:active {
