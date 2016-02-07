@@ -5,6 +5,7 @@ table {
 th {
   background-color: lightgrey;
   text-align:left;
+  cursor: default;
 }
 
 th, td {
