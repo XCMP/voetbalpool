@@ -12,20 +12,7 @@
       homeTeamGoals: null,
       awayTeamGoals: null,
       notes: null
-    },
-
-    getGame: function() {
-      return this.get('homeTeam').name + ' - ' + this.get('awayTeam').name;
-    },
-
-    getMatchDay: function() {
-      return this.get('matchDay');
-    },
-
-    getFormattedMatchDay: function() {
-      return this.get('formattedMatchDay');
-    },
-
+    }
 
   });
 
