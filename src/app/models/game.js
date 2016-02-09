@@ -1,4 +1,4 @@
-(function(_utils) {
+(function() {
 
   VP.Models.Game = Backbone.Model.extend({
 
@@ -21,4 +21,4 @@
 
   });
 
-})(VP.utils);
+})();
