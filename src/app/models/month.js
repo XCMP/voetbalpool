@@ -9,8 +9,7 @@
     parse: function(model, xhr) {
       model.text = _utils.getMonthYearText(model.yyyymm);
       return model;
-    },
-
+    }
 
   });
 
