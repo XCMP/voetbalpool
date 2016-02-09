@@ -12,6 +12,11 @@
       homeTeamGoals: null,
       awayTeamGoals: null,
       notes: null
+    },
+
+    parse: function(model, xhr) {
+      model.played = (model.homeTeamGoals !== null && model.awayTeamGoals !== null);
+      return model;
     }
 
   });

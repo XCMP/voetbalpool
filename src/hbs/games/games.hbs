@@ -24,7 +24,9 @@
             {{name}}
           </td>
         {{/with}}
-        <td>{{homeTeamGoals}} - {{awayTeamGoals}}</td>
+        {{#if played}}
+          <td>{{homeTeamGoals}} - {{awayTeamGoals}}</td>
+        {{/if}}
         <td>{{notes}}</td>
       </tr>
     {{/each}}
