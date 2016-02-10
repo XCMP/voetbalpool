@@ -50,6 +50,14 @@ VP.utils = {
     return period;
   },
 
+  getCurrentPeriodAsString: function() {
+    var period = {};
+    var currentDate = new Date();
+    period.year = currentDate.getFullYear();
+    period.month = this.pad(currentDate.getMonth() + 1, 2);
+    return period.year+'-'+period.month;
+  },
+
   getPeriod: function(periodString) {
     var period = {};
     var periodArray = periodString.split('-');
