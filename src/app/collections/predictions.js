@@ -17,6 +17,10 @@
       return new Date(model.get('game').matchDay).getTime() * -1;
     },
 
+    setInitPeriod: function() {
+      this.period = _utils.getCurrentPeriod();
+    },
+
     setPeriod: function(periodString) {
       this.period = _utils.getPeriod(periodString);
     }
