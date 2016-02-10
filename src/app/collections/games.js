@@ -5,11 +5,17 @@
     model: VP.Models.Game,
 
     url: function() {
-      return 'http://localhost:3001/vp/games/' + this.period.year + '/' + this.period.month;
+      if (this.period) {
+        return 'http://localhost:3001/vp/games/' + this.period.year + '/' + this.period.month;
+      } else {
+        return 'http://localhost:3001/vp/games';
+      }
     },
 
-    initialize: function() {
-      this.period = _utils.getCurrentPeriod();
+    initialize: function(options) {
+      if (!options) {
+        this.period = _utils.getCurrentPeriod();
+      }
     },
 
     setPeriod: function(periodString) {
