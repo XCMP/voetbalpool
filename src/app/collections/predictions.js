@@ -12,6 +12,11 @@
       this.period = _utils.getCurrentPeriod();
     },
 
+    comparator: function(model) {
+      // sort by matchday descending
+      return new Date(model.get('game').matchDay).getTime() * -1;
+    },
+
     setPeriod: function(periodString) {
       this.period = _utils.getPeriod(periodString);
     }
