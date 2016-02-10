@@ -77,7 +77,7 @@
     },
 
     getGameSelectView: function(name, selected) {
-      var games = new VP.Collections.Games({});
+      var games = new VP.Collections.Games({all: true});
       var view = new VP.Views.GameSelect({
         name: name,
         collection: games,
