@@ -17,9 +17,10 @@
     },
 
     initialize: function() {
+      this.initMonths();
+
       this.collection.on('sync', this.render, this);
       this.collection.on('remove', this.render, this);
-      this.initMonths();
       this.collection.fetch();
     },
 
