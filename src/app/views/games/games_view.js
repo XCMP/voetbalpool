@@ -19,9 +19,18 @@
     initialize: function() {
       this.collection.on('sync', this.render, this);
       this.collection.on('remove', this.render, this);
-      this.months = new VP.Collections.Months({});
-      this.months.fetch();
+      this.initMonths();
       this.collection.fetch();
+    },
+
+    initMonths: function() {
+      this.months = new VP.Collections.Months({});
+      var self = this;
+      this.months.fetch().done(
+        function(){
+          self.months.setPeriod(_utils.getCurrentPeriodAsString());
+        }
+      );
     },
 
     yearMonthSelected: function(ev) {
