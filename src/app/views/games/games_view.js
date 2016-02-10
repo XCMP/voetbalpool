@@ -10,6 +10,7 @@
 
     events: {
       'click tr.game': 'selectGame',
+      'change .month_select': 'yearMonthSelected',
       'click button.js_button_add': 'renderAddGame',
       'click button.js_button_update': 'renderUpdateGame',
       'click button.js_button_delete': 'confirmDeleteGame'
@@ -18,6 +19,15 @@
     initialize: function() {
       this.collection.on('sync', this.render, this);
       this.collection.on('remove', this.render, this);
+      this.months = new VP.Collections.Months({});
+      this.months.fetch();
+      this.collection.fetch();
+    },
+
+    yearMonthSelected: function(ev) {
+      var selectedYearMonth = ev.currentTarget.value
+      this.months.setPeriod(selectedYearMonth);
+      this.collection.setPeriod(selectedYearMonth);
       this.collection.fetch();
     },
 
@@ -84,6 +94,7 @@
 
     render: function() {
       this.$el.html(this.template({
+        months: this.months.toJSON(),
         games: this.collection.toJSON(),
         activate: this.$selectedGame === null? 'disabled':''
       }));

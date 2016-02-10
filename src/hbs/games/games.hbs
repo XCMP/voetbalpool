@@ -9,6 +9,14 @@
     </tr>
   </thead>
   <tbody>
+    <div class="padding-bottom-s">
+      Maand
+      <select name="months" class="month_select">
+        {{#each months}}
+          <option value="{{yyyymm}}" {{#if selected}}selected{{/if}}>{{text}}</option>
+        {{/each}}
+      </select>
+    </div>
     {{#each games}}
       <tr class="game" data-id="{{_id}}">
         <td class="right">{{formatDate matchDay format='ddd DD MMM YYYY HH:mm'}}</td>
