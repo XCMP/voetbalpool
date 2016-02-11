@@ -23,9 +23,14 @@
 
     routes: {
       ''                       : 'index',
+
+      // specific routes
+      'add/prediction?gameId=:gameId': 'handleRouteAddPredictionForGame',
+
+      // other routes
       'list/:viewid'           : 'handleRouteList',
       'add/:viewid'            : 'handleRouteAdd',
-      'update/:viewid/:modelid': 'handleRouteUpdate'
+      'update/:viewid/:modelid': 'handleRouteUpdate',
     },
 
     index: function() {
@@ -67,6 +72,11 @@
       } else {
         console.log('add route ' + viewid + ' not handled');
       }
+    },
+
+    handleRouteAddPredictionForGame: function (gameId) {
+      this.addPrediction(gameId);
+      this.renderMenu('predictions');
     },
 
     handleRouteUpdate: function (viewid, modelid) {
@@ -245,12 +255,15 @@
       }
     },
 
-    addPrediction: function () {
+    addPrediction: function (gameId) {
       if (this.addPredictionView !== null) {
         this.addPredictionView.close();
         this.addPredictionView = null;
       }
       var prediction = new VP.Models.Prediction({});
+      if (gameId) {
+        prediction.set('game', {_id: gameId});
+      }
       if (this.addPredictionView == null) {
         this.addPredictionView = new VP.Views.AddUpdatePrediction({
           model: prediction

@@ -100,7 +100,7 @@
     },
 
     renderAddPrediction: function() {
-      VP.router.navigate('add/prediction',  {trigger: true});
+      VP.router.navigate('add/prediction?gameId=' + this.$selectedGame.data('id'),  {trigger: true});
     },
 
     renderUpdateGame: function() {
