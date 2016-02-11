@@ -6,7 +6,8 @@
 
     url: 'http://localhost:3001/vp/prediction/months',
 
-    setPeriod: function(periodString) {
+    setPeriod: function() {
+      var periodString = _utils.getPeriodAsString(VP.Data.selectedYearMonth);
       _.each(this.models, function(model) {
         model.set('selected', model.get('yyyymm') === periodString);
       });

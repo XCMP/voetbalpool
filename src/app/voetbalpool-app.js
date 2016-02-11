@@ -4,6 +4,8 @@ var VP = {
   Collections: {},
   Views: {},
 
+  Data: {},
+
   Events: {
     // constant for events
 
@@ -15,6 +17,7 @@ var VP = {
 
 $(document).ready(function() {
 
+  VP.Data.selectedYearMonth = VP.utils.getCurrentPeriod();
   VP.router = new VP.Router();
   Backbone.history.start();
 

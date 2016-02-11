@@ -9,7 +9,7 @@
     },
 
     initialize: function() {
-      this.period = _utils.getCurrentPeriod();
+      this.period = VP.Data.selectedYearMonth;
     },
 
     comparator: function(model) {
@@ -18,11 +18,11 @@
     },
 
     setInitPeriod: function() {
-      this.period = _utils.getCurrentPeriod();
+      this.period = VP.Data.selectedYearMonth;
     },
 
-    setPeriod: function(periodString) {
-      this.period = _utils.getPeriod(periodString);
+    setPeriod: function() {
+      this.period = VP.Data.selectedYearMonth;
     }
 
   });

@@ -66,6 +66,10 @@ VP.utils = {
     return period;
   },
 
+  getPeriodAsString: function(period) {
+    return period.year + '-' + period.month;
+  },
+
   pad: function(n, width, z) {
     z = z || '0';
     n = n + '';

@@ -14,12 +14,12 @@
 
     initialize: function(options) {
       if (!options) {
-        this.period = _utils.getCurrentPeriod();
+        this.period = VP.Data.selectedYearMonth;
       }
     },
 
     setPeriod: function(periodString) {
-      this.period = _utils.getPeriod(periodString);
+      this.period = VP.Data.selectedYearMonth;
     }
 
   });

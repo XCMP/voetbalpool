@@ -30,15 +30,16 @@
       var self = this;
       this.months.fetch().done(
         function(){
-          self.months.setPeriod(_utils.getCurrentPeriodAsString());
+          self.months.setPeriod(VP.Data.selectedYearMonth);
         }
       );
     },
 
     yearMonthSelected: function(ev) {
       var selectedYearMonth = ev.currentTarget.value
-      this.months.setPeriod(selectedYearMonth);
-      this.collection.setPeriod(selectedYearMonth);
+      VP.Data.selectedYearMonth = _utils.getPeriod(selectedYearMonth);
+      this.months.setPeriod();
+      this.collection.setPeriod();
       this.collection.fetch();
     },
 

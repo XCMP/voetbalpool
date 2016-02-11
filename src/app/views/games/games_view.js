@@ -13,7 +13,8 @@
       'change .month_select': 'yearMonthSelected',
       'click button.js_button_add': 'renderAddGame',
       'click button.js_button_update': 'renderUpdateGame',
-      'click button.js_button_delete': 'confirmDeleteGame'
+      'click button.js_button_delete': 'confirmDeleteGame',
+      'click button.js_button_prediction': 'renderAddPrediction'
     },
 
     initialize: function() {
@@ -29,15 +30,16 @@
       var self = this;
       this.months.fetch().done(
         function(){
-          self.months.setPeriod(_utils.getCurrentPeriodAsString());
+          self.months.setPeriod(VP.Data.selectedYearMonth);
         }
       );
     },
 
     yearMonthSelected: function(ev) {
       var selectedYearMonth = ev.currentTarget.value
-      this.months.setPeriod(selectedYearMonth);
-      this.collection.setPeriod(selectedYearMonth);
+      VP.Data.selectedYearMonth = _utils.getPeriod(selectedYearMonth);
+      this.months.setPeriod();
+      this.collection.setPeriod();
       this.collection.fetch();
     },
 
@@ -97,6 +99,10 @@
       VP.router.navigate('add/game',  {trigger: true});
     },
 
+    renderAddPrediction: function() {
+      VP.router.navigate('add/prediction',  {trigger: true});
+    },
+
     renderUpdateGame: function() {
       var id = this.$selectedGame.data('id');
       VP.router.navigate('update/game/'+id,  {trigger: true});
@@ -113,7 +119,7 @@
 
     setButtons: function() {
       var self = this;
-      $(['.js_button_update', '.js_button_delete']).each(function(i, selector) {
+      $(['.js_button_update', '.js_button_delete', '.js_button_prediction']).each(function(i, selector) {
         $(selector).prop("disabled", self.$selectedGame === null? true:false);
       });
     },
