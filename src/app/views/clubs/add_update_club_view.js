@@ -38,9 +38,16 @@
     handleResult: function(object, response, options) {
       _utils.removeFieldErrors();
       if (response.error) {
-        _.each(response.response.errors, function(errorObject) {
-          _utils.displayFieldError(errorObject);
-        });
+        if (response.response.code === 11000) {
+            _utils.displayFieldError({
+              path: 'general',
+              message: 'Deze club bestaat al'
+            });
+        } else {
+          _.each(response.response.errors, function(errorObject) {
+            _utils.displayFieldError(errorObject);
+          });
+        }
       } else {
         this.toClubList();
       }
