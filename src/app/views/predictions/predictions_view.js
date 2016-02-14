@@ -105,12 +105,25 @@
     },
 
     render: function() {
+      var predictions = this.addGameIterationInfoPredictions(this.collection);
       this.$el.html(this.template({
         months: this.months.toJSON(),
-        predictions: this.collection.toJSON(),
+        predictions: predictions.toJSON(),
         activate: this.$selectedPrediction === null? 'disabled':''
       }));
       return this;
+    },
+
+    addGameIterationInfoPredictions: function(predictions) {
+      var previousGameId = null;
+      _.each(predictions.models, function(prediction, j) {
+        var gameId = prediction.get('game')._id;
+        prediction.get('game').first = gameId !== previousGameId;
+        if (gameId !== previousGameId) {
+          previousGameId = gameId;
+        }
+      });
+      return predictions;
     },
 
     setButtons: function() {

@@ -21,9 +21,13 @@
     {{#each predictions}}
       <tr class="prediction" data-id="{{_id}}">
         {{#with game}}
-          <td>{{formatDate matchDay format='ddd DD-MM-YY HH:mm'}}</td>
-          <td>{{homeTeam.name}}-{{awayTeam.name}}</td>
-          <td>{{homeTeamGoals}}-{{awayTeamGoals}}</td>
+          {{#if first}}
+            <td>{{formatDate matchDay format='ddd DD-MM-YY HH:mm'}}</td>
+            <td>{{homeTeam.name}}-{{awayTeam.name}}</td>
+            <td>{{homeTeamGoals}}-{{awayTeamGoals}}</td>
+          {{else}}
+            <td colspan="3"></td>
+          {{/if}}
         {{/with}}
         <td>{{poolplayer.name}}</td>
         <td>{{homeTeamGoals}}-{{awayTeamGoals}}</td>
