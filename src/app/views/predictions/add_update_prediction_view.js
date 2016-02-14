@@ -53,9 +53,7 @@
     },
 
     render: function() {
-      this.$el.html(this.template({
-        model: this.model.toJSON()
-      }));
+      this.$el.html(this.template(this.model.toJSON()));
       this.setPoolPlayerSelectOptions('poolplayer');
       this.setGameSelectOptions('game');
       return this;

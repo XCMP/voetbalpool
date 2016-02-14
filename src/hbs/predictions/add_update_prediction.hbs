@@ -1,6 +1,6 @@
 <form class="form">
   <fieldset>
-    <legend>Voorspelling {{#if model._id}}wijzigen{{else}}toevoegen{{/if}}</legend>
+    <legend>Voorspelling {{#if _id}}wijzigen{{else}}toevoegen{{/if}}</legend>
     <div class="block" field="general">
       <label for="general"</label>
     </div>
@@ -14,9 +14,9 @@
     </div>
     <div class="block" field="homeTeamGoals|awayTeamGoals">
       <label>Voorspelling</label>
-      <input type="text" size="2" length="2" name="homeTeamGoals" class="center" value="{{model.homeTeamGoals}}" />
+      <input type="text" size="2" length="2" name="homeTeamGoals" class="center" value="{{homeTeamGoals}}" />
       -
-      <input type="text" size="2" length="2" name="awayTeamGoals" class="center" value="{{model.awayTeamGoals}}" />
+      <input type="text" size="2" length="2" name="awayTeamGoals" class="center" value="{{awayTeamGoals}}" />
     </div>
   </fieldset>
   <button type="submit" class="js_button_add">Opslaan</button>
