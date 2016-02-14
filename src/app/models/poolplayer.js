@@ -17,12 +17,8 @@
     parse: function(model, xhr) {
       model.age = _utils.calculateAge(model.birthday);
       return model;
-    },
-
-    getName: function() {
-      return this.get('name');
     }
-
+    
   });
 
 })(VP.utils);
