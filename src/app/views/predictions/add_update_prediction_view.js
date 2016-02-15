@@ -53,6 +53,7 @@
     },
 
     render: function() {
+      // TODO add readonly true when game matchday is in the passed
       this.$el.html(this.template(this.model.toJSON()));
       this.setPoolPlayerSelectOptions('poolplayer');
       this.setGameSelectOptions('game');
