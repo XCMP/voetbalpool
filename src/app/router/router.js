@@ -2,6 +2,8 @@
 
   VP.Router = Backbone.Router.extend({
 
+    scoreView: null,
+
     poolplayersView: null,
     addPoolplayerView: null,
     updatePoolplayerView: null,
@@ -28,6 +30,7 @@
       'add/prediction?gameId=:gameId': 'handleRouteAddPredictionForGame',
 
       // other routes
+      'show/score'             : 'handleRouteShowScore',
       'list/:viewid'           : 'handleRouteList',
       'add/:viewid'            : 'handleRouteAdd',
       'update/:viewid/:modelid': 'handleRouteUpdate',
@@ -36,6 +39,11 @@
     index: function() {
       this.renderMenu();
       this.renderClubsOverview();
+    },
+
+    handleRouteShowScore: function() {
+      this.showScore();
+      this.renderMenu('score');
     },
 
     handleRouteList: function (viewid) {
@@ -94,6 +102,18 @@
         this.renderMenu('predictions');
       } else {
         console.log('update route ' + viewid + ' not handled');
+      }
+    },
+
+    showScore: function () {
+      if (this.scoreView !== null) {
+        this.scoreView.close();
+        this.scoreView = null;
+      }
+
+      if (this.scoreView == null) {
+        this.scoreView = new VP.Views.Score();
+        $('div.content').html(this.scoreView.render().$el);
       }
     },
 

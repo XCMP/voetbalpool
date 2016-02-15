@@ -18,7 +18,8 @@ var paths = {
       'node_modules/underscore/underscore.js',
       'node_modules/backbone/backbone.js',
       'node_modules/handlebars/dist/handlebars.runtime.js',
-      'node_modules/moment/moment.js'
+      'node_modules/moment/moment.js',
+      'node_modules/chart.js/Chart.js'
     ],
     app: [
       'src/app/voetbalpool-app.js',
@@ -41,20 +42,24 @@ var paths = {
 
       'src/app/views/menu.js',
       'src/app/views/modal_window.js',
+
+      'src/app/views/score/score_view.js',
+
       'src/app/views/poolplayers/poolplayers_view.js',
       'src/app/views/poolplayers/add_update_poolplayer_view.js',
       'src/app/views/poolplayers/poolplayer_select_view.js',
+
       'src/app/views/games/games_view.js',
       'src/app/views/games/add_update_game_view.js',
       'src/app/views/games/game_select_view.js',
+
+      'src/app/views/predictions/predictions_view.js',
+      'src/app/views/predictions/add_update_prediction_view.js',
 
       'src/app/views/clubs/clubsoverview_view.js',
       'src/app/views/clubs/add_update_club_view.js',
       'src/app/views/clubs/clubs_view.js',
       'src/app/views/clubs/club_select_view.js',
-
-      'src/app/views/predictions/predictions_view.js',
-      'src/app/views/predictions/add_update_prediction_view.js',
 
       'src/app/router/router.js'
     ]
@@ -65,11 +70,7 @@ var paths = {
     'common/menu.hbs',
     'common/modal_window.hbs',
 
-    'clubs/add_update_club.hbs',
-    'clubs/club_delete.hbs',
-    'clubs/club_select.hbs',
-    'clubs/clubs.hbs',
-    'clubs/clubsoverview.hbs',
+    'score/score.hbs',
 
     'games/add_update_game.hbs',
     'games/game_delete.hbs',
@@ -83,7 +84,13 @@ var paths = {
 
     'predictions/add_update_prediction.hbs',
     'predictions/predictions.hbs',
-    'predictions/prediction_delete.hbs'
+    'predictions/prediction_delete.hbs',
+
+    'clubs/add_update_club.hbs',
+    'clubs/club_delete.hbs',
+    'clubs/club_select.hbs',
+    'clubs/clubs.hbs',
+    'clubs/clubsoverview.hbs'
   ],
   images: 'src/images/*.*'
 };

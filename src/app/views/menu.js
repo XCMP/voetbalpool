@@ -6,30 +6,35 @@
     template: Handlebars.templates['menu.hbs'],
 
     events: {
-      'click li.poolplayers' : 'showPoolPlayers',
+      'click li.score'       : 'showScore',
       'click li.games'       : 'showGames',
-      'click li.clubs'       : 'showClubs',
-      'click li.predictions' : 'showPredictions'
+      'click li.predictions' : 'showPredictions',
+      'click li.poolplayers' : 'showPoolPlayers',
+      'click li.clubs'       : 'showClubs'
     },
 
     initialize: function() {
       this.render();
     },
 
-    showPoolPlayers: function(ev) {
-      VP.router.navigate('list/poolplayers',  {trigger: true});
+    showScore: function(ev) {
+      VP.router.navigate('show/score',  {trigger: true});
     },
 
     showGames: function(ev) {
       VP.router.navigate('list/games',  {trigger: true});
     },
 
-    showClubs: function(ev) {
-      VP.router.navigate('list/clubs',  {trigger: true});
-    },
-
     showPredictions: function(ev) {
       VP.router.navigate('list/predictions',  {trigger: true});
+    },
+
+    showPoolPlayers: function(ev) {
+      VP.router.navigate('list/poolplayers',  {trigger: true});
+    },
+
+    showClubs: function(ev) {
+      VP.router.navigate('list/clubs',  {trigger: true});
     },
 
     setMenuItemActive: function(menuItemClass) {
