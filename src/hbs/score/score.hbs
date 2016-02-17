@@ -1,1 +1,9 @@
-SCORE
+<div class="padding-bottom-s">
+  Maand
+  <select name="months" class="month_select">
+    {{#each months}}
+      <option value="{{yyyymm}}" {{#if selected}}selected{{/if}}>{{text}}</option>
+    {{/each}}
+  </select>
+</div>
+<canvas id="scoreChart"></canvas>
