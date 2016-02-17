@@ -19,7 +19,7 @@ var paths = {
       'node_modules/backbone/backbone.js',
       'node_modules/handlebars/dist/handlebars.runtime.js',
       'node_modules/moment/moment.js',
-      'node_modules/chart.js/Chart.js'
+      'node_modules/chart.js/Chart.min.js'
     ],
     app: [
       'src/app/voetbalpool-app.js',

@@ -13,14 +13,20 @@
   "author": "XCMP",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.13.3",
+    "body-parser": "^1.14.2",
+    "backbone": "^1.2.3",
+    "handlebars": "^4.0.3",
     "chart.js": "^1.0.2",
+    "jquery": "^1.11.3",
+    "mongoose": "^4.3.4",
+    "path": "^0.12.7",
+    "underscore": "^1.8.3",
+    "underscore.string": "^3.2.2",
     "moment": "^2.11.1"
   },
   "devDependencies": {
-    "backbone": "^1.2.3",
-    "body-parser": "^1.14.2",
     "del": "^2.0.2",
-    "express": "^4.13.3",
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",
     "gulp-handlebars": "^4.0.0",
@@ -28,13 +34,7 @@
     "gulp-shell": "^0.5.0",
     "gulp-uglify": "^1.4.2",
     "gulp-war": "^0.1.2",
-    "gulp-zip": "^3.0.2",
-    "handlebars": "^4.0.3",
-    "jquery": "^1.11.3",
-    "mongoose": "^4.3.4",
-    "path": "^0.12.7",
-    "underscore": "^1.8.3",
-    "underscore.string": "^3.2.2"
+    "gulp-zip": "^3.0.2"
   },
   "homepage": "https://github.com/XCMP/voetbalpool#readme"
 }
