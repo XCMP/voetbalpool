@@ -150,6 +150,31 @@ VP.utils = {
   getFieldContainer: function(fieldName) {
     return $('[field*=\'' + fieldName + '\']');
     // return $('[field=\'' + fieldName + '\']');
+  },
+
+  lineColorClasses: [
+    {
+      color: 'rgba(0, 153, 204, 1)',
+      fill: 'rgba(0, 153, 204, 0.2)'
+    },
+    {
+      color: 'rgba(51, 51, 204, 1)',
+      fill: 'rgba(51, 51, 204, 0.2)'
+    },
+    {
+      color: 'rgba(102, 51, 204, 1)',
+      fill: 'rgba(102, 51, 204, 0.2)'
+    },
+    {
+      color: 'rgba(153, 51, 204, 1)',
+      fill: 'rgba(153, 51, 204, 0.2)'
+    }
+  ],
+  getColor: function(index) {
+    return this.lineColorClasses[index].color;
+  },
+  getFillColor: function(index) {
+    return this.lineColorClasses[index].fill;
   }
 
 };
