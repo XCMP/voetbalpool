@@ -34,6 +34,7 @@ var paths = {
       'src/app/models/prediction.js',
       'src/app/models/month.js',
 
+      'src/app/collections/score.js',
       'src/app/collections/poolplayers.js',
       'src/app/collections/games.js',
       'src/app/collections/clubs.js',
@@ -71,6 +72,7 @@ var paths = {
     'common/modal_window.hbs',
 
     'score/score.hbs',
+    'score/score_legend.hbs',
 
     'games/add_update_game.hbs',
     'games/game_delete.hbs',
