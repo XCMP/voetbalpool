@@ -41,8 +41,8 @@ var paths = {
       'src/app/collections/predictions.js',
       'src/app/collections/months.js',
 
-      'src/app/views/menu.js',
-      'src/app/views/modal_window.js',
+      'src/app/views/common/menu.js',
+      'src/app/views/common/modal_window.js',
 
       'src/app/views/score/score_view.js',
 
