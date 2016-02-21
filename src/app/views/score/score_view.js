@@ -3,6 +3,9 @@
   VP.Views.Score = Backbone.View.extend({
 
     template: Handlebars.templates['score.hbs'],
+    templateLegend: Handlebars.templates['score_legend.hbs'],
+
+    data: { labels: [], datasets: [] },
 
     events: {
       'change .month_select': 'yearMonthSelected'
@@ -10,6 +13,7 @@
 
     initialize: function() {
       this.initMonths();
+      this.getChartData();
     },
 
     initMonths: function() {
@@ -18,7 +22,6 @@
       this.months.fetch().done(
         function(){
           self.months.setPeriod(VP.Data.selectedYearMonth);
-          self.render(); // TODO should be somewhere else
         }
       );
     },
@@ -27,48 +30,76 @@
       var selectedYearMonth = ev.currentTarget.value
       VP.Data.selectedYearMonth = _utils.getPeriod(selectedYearMonth);
       this.months.setPeriod();
+      this.getChartData();
     },
 
     render: function() {
       this.$el.html(this.template({
         months: this.months.toJSON(),
       }));
-      var chart = this.getChart();
-      console.log(chart);
+      this.setChart();
       return this;
     },
 
-    getChart: function() {
-      var data = {
-          labels: ["AJA-HEE", "ROD-AJA", "AJA-FEY", "CAM-AJA", "AJA-PSV", "GRA-AJA", "AJA-BUI"],
-          datasets: [
-              {
-                  label: "Owen",
-                  fillColor: "rgba(220,220,220,0.2)",
-                  strokeColor: "rgba(220,220,220,1)",
-                  pointColor: "rgba(220,220,220,1)",
-                  pointStrokeColor: "#fff",
-                  pointHighlightFill: "#fff",
-                  pointHighlightStroke: "rgba(220,220,220,1)",
-                  data: [10, 10, 12, 19, 19, 29, 36]
-              },
-              {
-                  label: "Marco",
-                  fillColor: "rgba(151,187,205,0.2)",
-                  strokeColor: "rgba(151,187,205,1)",
-                  pointColor: "rgba(151,187,205,1)",
-                  pointStrokeColor: "#fff",
-                  pointHighlightFill: "#fff",
-                  pointHighlightStroke: "rgba(151,187,205,1)",
-                  data: [5, 10, 20, 23, 30, 32, 37]
-              }
-          ]
-      };
-      if ($('#scoreChart').length > 0) {
+    getChartData: function() {
+      this.data = { labels: [], datasets: [] };
+      var self = this;
+      var predictions = new VP.Collections.Predictions();
+      predictions.fetch().done(function(predictions, e) {
+        _.map(predictions, function(prediction, i) {
+          if (prediction.game.homeTeamGoals !== null && prediction.game.awayTeamGoals !== null) {
+            self.addData(prediction);
+          }
+        });
+        self.render();
+      });
+    },
+
+    addData: function(prediction) {
+      this.addGame(prediction.game);
+      this.addScores(prediction);
+    },
+
+    addGame: function(game) {
+      var gameLabel = game.homeTeam.name+'-'+game.awayTeam.name;
+      if (!_.contains(this.data.labels, gameLabel)) {
+        this.data.labels.push(gameLabel);
+      }
+    },
+
+    addScores: function(prediction) {
+      var name = prediction.poolplayer.name
+      var poolplayerData = _.findWhere(this.data.datasets, {label: name});
+      if (poolplayerData) {
+        var lastScore = poolplayerData.data[poolplayerData.data.length-1];
+        poolplayerData.data.push(lastScore + (prediction.score?prediction.score:0));
+      } else {
+        this.data.datasets.push({
+          label: name,
+          fillColor: _utils.getFillColor(this.data.datasets.length),
+          strokeColor: _utils.getColor(this.data.datasets.length),
+          pointColor: _utils.getColor(this.data.datasets.length),
+          pointStrokeColor: "#fff",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: _utils.getColor(this.data.datasets.length),
+          data: [prediction.score]
+        });
+      }
+    },
+
+    setChart: function() {
+      if ($('#scoreChart').length > 0 && this.data.datasets.length > 0) {
         var ctx = $('#scoreChart').get(0).getContext("2d");
-        var scoreChart = new Chart(ctx).Line(data, { responsive: true });
+        var scoreChart = new Chart(ctx).Line(this.data, { responsive: true});
+        this.$el.find('.legend').html(this.getLegend());
       }
       return scoreChart;
+    },
+
+    getLegend: function() {
+      return this.templateLegend({
+        datasets: this.data.datasets
+      });
     },
 
     close: function() {
