@@ -1,9 +1,12 @@
-<div class="padding-bottom-s">
-  Maand
-  <select name="months" class="month_select">
-    {{#each months}}
-      <option value="{{yyyymm}}" {{#if selected}}selected{{/if}}>{{text}}</option>
-    {{/each}}
-  </select>
+<div class="score-header">
+  <div class="score-month">
+    Maand
+    <select name="months" class="month_select">
+      {{#each months}}
+        <option value="{{yyyymm}}" {{#if selected}}selected{{/if}}>{{text}}</option>
+      {{/each}}
+    </select>
+  </div>
+  <div class="legend"></div>
 </div>
-<canvas id="scoreChart"></canvas>
+<canvas id="scoreChart" class="padding-bottom-s"></canvas>
