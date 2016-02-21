@@ -1,0 +1,22 @@
+.score-header {
+  padding-bottom: .5em;
+}
+
+.score-month {
+  width: 20%;
+  display: inline-block;
+}
+
+.legend {
+  width: 80%;
+  display: inline-block;
+  float: right;
+}
+
+.legend-label {
+  width: 1em;
+  height: 2em;
+  display: inline-block;
+  padding-right: 2em;
+  vertical-align: middle;
+}
