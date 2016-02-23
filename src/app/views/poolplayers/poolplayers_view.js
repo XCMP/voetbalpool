@@ -84,8 +84,7 @@
 
     render: function() {
       this.$el.html(this.template({
-        poolplayers: this.collection.toJSON(),
-        activate: this.$selectedPoolPlayer === null? 'disabled':''
+        poolplayers: this.collection.toJSON()
       }));
       return this;
     },

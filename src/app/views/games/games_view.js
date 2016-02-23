@@ -111,8 +111,7 @@
     render: function() {
       this.$el.html(this.template({
         months: this.months.toJSON(),
-        games: this.collection.toJSON(),
-        activate: this.$selectedGame === null? 'disabled':''
+        games: this.collection.toJSON()
       }));
       return this;
     },

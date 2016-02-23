@@ -84,8 +84,7 @@
 
     render: function() {
       this.$el.html(this.template({
-        clubs: this.collection.toJSON(),
-        activate: this.$selectedClub === null? 'disabled':''
+        clubs: this.collection.toJSON()
       }));
       return this;
     },
