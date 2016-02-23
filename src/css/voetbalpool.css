@@ -60,3 +60,9 @@ img.small {
 .title {
   margin-top: 0px;
 }
+
+.sub-text {
+  font-size: small;
+  display: block;
+  font-style: italic;
+}
