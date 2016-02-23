@@ -28,7 +28,13 @@ tr.selected td:first-child {
   border-left: 3px solid black;
 }
 
-
 tbody tr:hover td:first-child {
   border-left: 3px solid black;
+}
+
+.table {
+  display: inline-block;
+  overflow: scroll;
+  overflow-x: hidden;
+  height: 90%;
 }

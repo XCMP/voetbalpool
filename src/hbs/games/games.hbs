@@ -1,46 +1,50 @@
-<table>
-  <thead>
-    <tr>
-      <th>Datum</th>
-      <th>Thuis</th>
-      <th>Uit</th>
-      <th>Uitslag</th>
-      <th>Notities</th>
-    </tr>
-  </thead>
-  <tbody>
-    <div class="padding-bottom-s">
-      Maand
-      <select name="months" class="month_select">
-        {{#each months}}
-          <option value="{{yyyymm}}" {{#if selected}}selected{{/if}}>{{text}}</option>
-        {{/each}}
-      </select>
-    </div>
-    {{#each games}}
-      <tr class="game" data-id="{{_id}}">
-        <td class="right">{{formatDate matchDay format='ddd DD MMM YYYY HH:mm'}}</td>
-        {{#with homeTeam}}
-          <td>
-            <img class="small" alt="{{name}}" src="{{logoBase64Url}}" />
-            {{name}}
-          </td>
-        {{/with}}
-        {{#with awayTeam}}
-          <td>
-            <img class="small" alt="{{name}}" src="{{logoBase64Url}}" />
-            {{name}}
-          </td>
-        {{/with}}
-        {{#if played}}
-          <td>{{homeTeamGoals}} - {{awayTeamGoals}}</td>
-        {{/if}}
-        <td>{{notes}}</td>
-      </tr>
+<div class="padding-bottom-s">
+  Maand
+  <select name="months" class="month_select">
+    {{#each months}}
+      <option value="{{yyyymm}}" {{#if selected}}selected{{/if}}>{{text}}</option>
     {{/each}}
-  </tbody>
-</table>
-<button type="button" class="js_button_add">Toevoegen</button>
-<button type="button" class="js_button_update" disabled>Wijzigen</button>
-<button type="button" class="js_button_delete" disabled>Verwijderen</button>
-<button type="button" class="js_button_prediction" disabled>Voorspelling</button>
+  </select>
+</div>
+<div class="table">
+  <table>
+    <thead>
+      <tr>
+        <th>Datum</th>
+        <th>Thuis</th>
+        <th>Uit</th>
+        <th>Uitslag</th>
+        <th>Notities</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each games}}
+        <tr class="game" data-id="{{_id}}">
+          <td class="right">{{formatDate matchDay format='ddd DD MMM YYYY HH:mm'}}</td>
+          {{#with homeTeam}}
+            <td>
+              <img class="small" alt="{{name}}" src="{{logoBase64Url}}" />
+              {{name}}
+            </td>
+          {{/with}}
+          {{#with awayTeam}}
+            <td>
+              <img class="small" alt="{{name}}" src="{{logoBase64Url}}" />
+              {{name}}
+            </td>
+          {{/with}}
+          {{#if played}}
+            <td>{{homeTeamGoals}} - {{awayTeamGoals}}</td>
+          {{/if}}
+          <td>{{notes}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+<div>
+  <button type="button" class="js_button_add">Toevoegen</button>
+  <button type="button" class="js_button_update" disabled>Wijzigen</button>
+  <button type="button" class="js_button_delete" disabled>Verwijderen</button>
+  <button type="button" class="js_button_prediction" disabled>Voorspelling</button>
+</div>

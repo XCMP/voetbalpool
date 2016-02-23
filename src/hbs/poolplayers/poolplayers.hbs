@@ -1,21 +1,25 @@
-<table>
-  <thead>
-    <tr>
-      <th>Naam</th>
-      <th>Leeftijd</th>
-      <th>Notities</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each poolplayers}}
-      <tr class="poolplayer" data-id="{{_id}}">
-        <td>{{name}}</td>
-        <td class="right">{{age}}</td>
-        <td>{{notes}}</td>
+<div class="table">
+  <table>
+    <thead>
+      <tr>
+        <th>Naam</th>
+        <th>Leeftijd</th>
+        <th>Notities</th>
       </tr>
-    {{/each}}
-  </tbody>
-</table>
-<button type="button" class="js_button_add">Toevoegen</button>
-<button type="button" class="js_button_update" disabled>Wijzigen</button>
-<button type="button" class="js_button_delete" disabled>Verwijderen</button>
+    </thead>
+    <tbody>
+      {{#each poolplayers}}
+        <tr class="poolplayer" data-id="{{_id}}">
+          <td>{{name}}</td>
+          <td class="right">{{age}}</td>
+          <td>{{notes}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+<div>
+  <button type="button" class="js_button_add">Toevoegen</button>
+  <button type="button" class="js_button_update" disabled>Wijzigen</button>
+  <button type="button" class="js_button_delete" disabled>Verwijderen</button>
+</div>
