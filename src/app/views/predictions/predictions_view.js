@@ -108,8 +108,7 @@
       var predictions = this.addGameIterationInfoPredictions(this.collection);
       this.$el.html(this.template({
         months: this.months.toJSON(),
-        predictions: predictions.toJSON(),
-        activate: this.$selectedPrediction === null? 'disabled':''
+        predictions: predictions.toJSON()
       }));
       return this;
     },
@@ -127,10 +126,19 @@
     },
 
     setButtons: function() {
-      var self = this;
+      var readOnly = this.predictionReadOnly( this.$selectedPrediction? this.$selectedPrediction.attr('data-id') : null);
       $(['.js_button_update', '.js_button_delete']).each(function(i, selector) {
-        $(selector).prop("disabled", self.$selectedPrediction === null? true:false);
+        $(selector).prop("disabled", readOnly ? true:false);
       });
+    },
+
+    predictionReadOnly: function(predictionId) {
+      if (predictionId) {
+        var matchDayTime = new Date(this.collection.get(predictionId).get('game').matchDay).getTime();
+        return matchDayTime < Date.now();
+      } else {
+        return true;
+      }
     },
 
     close: function() {
