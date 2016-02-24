@@ -1,4 +1,4 @@
-(function(_events, _utils) {
+(function (_events, _utils) {
 
   VP.Views.PoolPlayerSelect = Backbone.View.extend({
 
@@ -8,14 +8,14 @@
     events: {
     },
 
-    initialize: function(options) {
+    initialize: function (options) {
       this.name = options.name;
       this.selected = options.selected;
       this.collection.on('sync', this.render, this);
       this.collection.fetch();
     },
 
-    render: function() {
+    render: function () {
       var poolPlayer = this.getSelectedPoolPlayer();
       this.$el.html(this.template({
         name: this.name,
@@ -25,7 +25,7 @@
       return this;
     },
 
-    getSelectedPoolPlayer: function() {
+    getSelectedPoolPlayer: function () {
       if (this.selected) {
         var poolPlayer = this.collection.get(this.selected);
         poolPlayer.set('selected', true);
@@ -33,7 +33,7 @@
       }
     },
 
-    close: function() {
+    close: function () {
       this.unbind();
       this.remove();
       this.collection.unbind();

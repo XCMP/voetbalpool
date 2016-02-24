@@ -1,4 +1,4 @@
-(function(_events, _utils) {
+(function (_events, _utils) {
 
   VP.Views.Games = Backbone.View.extend({
 
@@ -17,7 +17,7 @@
       'click button.js_button_prediction': 'renderAddPrediction'
     },
 
-    initialize: function() {
+    initialize: function () {
       this.initMonths();
 
       this.collection.on('sync', this.render, this);
@@ -25,17 +25,17 @@
       this.collection.fetch();
     },
 
-    initMonths: function() {
+    initMonths: function () {
       this.months = new VP.Collections.Months({});
       var self = this;
       this.months.fetch().done(
-        function(){
+        function (){
           self.months.setPeriod(VP.Data.selectedYearMonth);
         }
       );
     },
 
-    yearMonthSelected: function(ev) {
+    yearMonthSelected: function (ev) {
       var selectedYearMonth = ev.currentTarget.value
       VP.Data.selectedYearMonth = _utils.getPeriod(selectedYearMonth);
       this.months.setPeriod();
@@ -43,7 +43,7 @@
       this.collection.fetch();
     },
 
-    selectGame: function(ev) {
+    selectGame: function (ev) {
       var $clickedGame = $(ev.currentTarget);
 
       // no game selcted
@@ -66,19 +66,19 @@
       this.setButtons();
     },
 
-    setSelectedGame: function($clickedGame) {
+    setSelectedGame: function ($clickedGame) {
       $clickedGame.addClass('selected');
       this.$selectedGame = $clickedGame;
     },
 
-    removeSelectedGame: function() {
+    removeSelectedGame: function () {
       if (this.$selectedGame) {
         this.$selectedGame.removeClass('selected');
         this.$selectedGame = null;
       }
     },
 
-    confirmDeleteGame: function() {
+    confirmDeleteGame: function () {
       var id = this.$selectedGame.data('id');
       var model = this.collection.get(id);
       this.confirmationView = _utils.showConfirmDialog({
@@ -88,27 +88,27 @@
       });
     },
 
-    deleteGame: function() {
+    deleteGame: function () {
       var id = this.$selectedGame.data('id');
       var model = this.collection.get(id);
       model.destroy();
       this.collection.remove(model);
     },
 
-    renderAddGame: function() {
+    renderAddGame: function () {
       VP.router.navigate('add/game',  {trigger: true});
     },
 
-    renderAddPrediction: function() {
+    renderAddPrediction: function () {
       VP.router.navigate('add/prediction?gameId=' + this.$selectedGame.data('id'),  {trigger: true});
     },
 
-    renderUpdateGame: function() {
+    renderUpdateGame: function () {
       var id = this.$selectedGame.data('id');
       VP.router.navigate('update/game/'+id,  {trigger: true});
     },
 
-    render: function() {
+    render: function () {
       this.$el.html(this.template({
         months: this.months.toJSON(),
         games: this.collection.toJSON()
@@ -116,14 +116,14 @@
       return this;
     },
 
-    setButtons: function() {
+    setButtons: function () {
       var self = this;
-      $(['.js_button_update', '.js_button_delete', '.js_button_prediction']).each(function(i, selector) {
+      $(['.js_button_update', '.js_button_delete', '.js_button_prediction']).each(function (i, selector) {
         $(selector).prop("disabled", self.$selectedGame === null? true:false);
       });
     },
 
-    close: function() {
+    close: function () {
       this.unbind();
       this.remove();
       this.collection.unbind();

@@ -1,4 +1,4 @@
-(function(_events, _utils) {
+(function (_events, _utils) {
 
   VP.Views.ClubSelect = Backbone.View.extend({
 
@@ -12,14 +12,14 @@
       'change': 'setLogo'
     },
 
-    initialize: function(options) {
+    initialize: function (options) {
       this.name = options.name;
       this.selected = options.selected;
       this.collection.on('sync', this.render, this);
       this.collection.fetch();
     },
 
-    render: function() {
+    render: function () {
       var club = this.getSelectedClub();
       this.$el.html(this.template({
         name: this.name,
@@ -31,7 +31,7 @@
       return this;
     },
 
-    getSelectedClub: function() {
+    getSelectedClub: function () {
       if (this.selected) {
         var club = this.collection.get(this.selected);
         club.set('selected', true);
@@ -39,7 +39,7 @@
       }
     },
 
-    setLogo: function(ev) {
+    setLogo: function (ev) {
       var $el = $(ev.target);
       _utils.removeFieldErrorByName($el.attr('name'));
       var club = this.collection.get(ev.target.value);
@@ -47,7 +47,7 @@
       this.$logoImage.removeClass('hide');
     },
 
-    close: function() {
+    close: function () {
       this.unbind();
       this.remove();
       this.collection.unbind();

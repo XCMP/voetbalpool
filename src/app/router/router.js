@@ -1,4 +1,4 @@
-(function(_events) {
+(function (_events) {
 
   VP.Router = Backbone.Router.extend({
 
@@ -36,12 +36,12 @@
       'update/:viewid/:modelid': 'handleRouteUpdate',
     },
 
-    index: function() {
+    index: function () {
       this.renderMenu();
       this.renderClubsOverview();
     },
 
-    handleRouteShowScore: function() {
+    handleRouteShowScore: function () {
       this.showScore();
       this.renderMenu('score');
     },
@@ -154,7 +154,7 @@
         this.updatePoolplayerView = null;
       }
       var poolplayer = new VP.Models.PoolPlayer({_id:modelid});
-      poolplayer.fetch().done(function() {
+      poolplayer.fetch().done(function () {
         if (this.updatePoolplayerView == null) {
           this.updatePoolplayerView = new VP.Views.AddUpdatePoolPlayer({
             model:poolplayer
@@ -195,13 +195,13 @@
       $('div.content').html(this.addGameView.render().$el);
     },
     
-    updateGame: function(modelid) {
+    updateGame: function (modelid) {
       if (this.updateGameView !== null) {
         this.updateGameView.close();
         this.updateGameView = null;
       }
       var game = new VP.Models.Game({_id:modelid});
-      game.fetch().done(function() {
+      game.fetch().done(function () {
         if (this.updateGameView == null) {
           this.updateGameView = new VP.Views.AddUpdateGame({
             model: game
@@ -242,13 +242,13 @@
       $('div.content').html(this.addClubView.render().$el);
     },
 
-    updateClub: function(modelid) {
+    updateClub: function (modelid) {
       if (this.updateClubView !== null) {
         this.updateClubView.close();
         this.updateClubView = null;
       }
       var club = new VP.Models.Club({_id:modelid});
-      club.fetch().done(function() {
+      club.fetch().done(function () {
         if (this.updateClubView == null) {
           this.updateClubView = new VP.Views.AddUpdateClub({
             model: club
@@ -292,13 +292,13 @@
       $('div.content').html(this.addPredictionView.render().$el);
     },
 
-    updatePrediction: function(modelid) {
+    updatePrediction: function (modelid) {
       if (this.updatePredictionView !== null) {
         this.updatePredictionView.close();
         this.updatePredictionView = null;
       }
       var prediction = new VP.Models.Prediction({_id:modelid});
-      prediction.fetch().done(function() {
+      prediction.fetch().done(function () {
         if (this.updatePredictionView == null) {
           this.updatePredictionView = new VP.Views.AddUpdatePrediction({
             model: prediction
@@ -308,14 +308,14 @@
       });
     },
 
-    renderMenu: function(activeMenuItem) {
+    renderMenu: function (activeMenuItem) {
       if (this.menuView === null) {
         this.menuView = new VP.Views.Menu({});
       }
       this.menuView.setMenuItemActive(activeMenuItem);
     },
 
-    renderClubsOverview: function() {
+    renderClubsOverview: function () {
       if (this.clubsOverviewView !== null) {
         this.clubsOverviewView.close();
         this.clubsOverviewView = null;

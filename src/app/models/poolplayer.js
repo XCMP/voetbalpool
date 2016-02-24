@@ -1,4 +1,4 @@
-(function(_utils) {
+(function (_utils) {
 
   VP.Models.PoolPlayer = Backbone.Model.extend({
 
@@ -11,10 +11,10 @@
       birthday: null
     },
 
-    initialize: function() {
+    initialize: function () {
     },
 
-    parse: function(model, xhr) {
+    parse: function (model, xhr) {
       model.age = _utils.calculateAge(model.birthday);
       return model;
     }

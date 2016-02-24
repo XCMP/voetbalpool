@@ -1,4 +1,4 @@
-(function(_events, _utils) {
+(function (_events, _utils) {
 
   VP.Views.ClubsOverview = Backbone.View.extend({
 
@@ -7,24 +7,24 @@
     events: {
     },
 
-    initialize: function() {
+    initialize: function () {
       this.collection.on('sync', this.randomizeOrderAndRender, this);
       this.collection.fetch();
     },
 
-    randomizeOrderAndRender: function() {
+    randomizeOrderAndRender: function () {
       this.collection.reset(this.collection.shuffle(), {silent:true});
       this.render();
     },
 
-    render: function() {
+    render: function () {
       this.$el.html(this.template({
         clubs: this.collection.toJSON()
       }));
       return this;
     },
 
-    close: function() {
+    close: function () {
       this.unbind();
       this.remove();
       this.collection.unbind();

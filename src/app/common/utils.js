@@ -4,7 +4,7 @@ VP.utils = {
    * input  DD-MM-YYYY
    * output MM/DD/YYYY
   */
-  ddmmyyyyToDate: function(dateString) {
+  ddmmyyyyToDate: function (dateString) {
     if (dateString == undefined || dateString.length == 0) {
       return null;
     }
@@ -18,7 +18,7 @@ VP.utils = {
   },
 
   MonthTextArray: ['Jan', 'Feb', 'Maa', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'], 
-  getMonthYearText: function(yyyymm) {
+  getMonthYearText: function (yyyymm) {
     var yearMonthArray = yyyymm.split('-');
     var year = yearMonthArray[0];
     var monthIndex = parseInt(yearMonthArray[1], 10) - 1;
@@ -29,7 +29,7 @@ VP.utils = {
    * input  DD-MM-YYYY HH:MM
    * output MM/DD/YYYY HH:MM
   */
-  ddmmyyyyhhmmToDateTime: function(dateString) {
+  ddmmyyyyhhmmToDateTime: function (dateString) {
     if (dateString == undefined || dateString.length == 0) {
       return null;
     }
@@ -42,7 +42,7 @@ VP.utils = {
     }
   },
 
-  getCurrentPeriod: function() {
+  getCurrentPeriod: function () {
     var period = {};
     var currentDate = new Date();
     period.year = currentDate.getFullYear();
@@ -50,7 +50,7 @@ VP.utils = {
     return period;
   },
 
-  getCurrentPeriodAsString: function() {
+  getCurrentPeriodAsString: function () {
     var period = {};
     var currentDate = new Date();
     period.year = currentDate.getFullYear();
@@ -58,7 +58,7 @@ VP.utils = {
     return period.year+'-'+period.month;
   },
 
-  getPeriod: function(periodString) {
+  getPeriod: function (periodString) {
     var period = {};
     var periodArray = periodString.split('-');
     period.year = periodArray[0];
@@ -66,11 +66,11 @@ VP.utils = {
     return period;
   },
 
-  getPeriodAsString: function(period) {
+  getPeriodAsString: function (period) {
     return period.year + '-' + period.month;
   },
 
-  pad: function(n, width, z) {
+  pad: function (n, width, z) {
     z = z || '0';
     n = n + '';
     return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
@@ -79,7 +79,7 @@ VP.utils = {
   /**
    * input example: 09/21/1974
    */
-  calculateAge: function(jsonDate) {
+  calculateAge: function (jsonDate) {
     if (jsonDate) {
       var ageDifMs = Date.now() - new Date(jsonDate);
       var ageDate = new Date(ageDifMs);
@@ -89,7 +89,7 @@ VP.utils = {
     }
   },
   
-  showModalWindow: function(data) {
+  showModalWindow: function (data) {
     var modalWindow = new VP.Views.ModalWindow({
         header: data.header,
         content: data.content,
@@ -97,7 +97,7 @@ VP.utils = {
       }).render();
     },
 
-  showConfirmDialog: function(data) {
+  showConfirmDialog: function (data) {
     var modalWindow = new VP.Views.ModalWindow({
         confirmDialog: true,
         header: data.header,
@@ -107,10 +107,10 @@ VP.utils = {
       }).render();
     },
 
-  formDataToJSON: function($form) {
+  formDataToJSON: function ($form) {
     var o = {};
     var a = $form.serializeArray();
-    $.each(a, function() {
+    $.each(a, function () {
         if (o[this.name] !== undefined) {
             if (!o[this.name].push) {
                 o[this.name] = [o[this.name]];
@@ -123,31 +123,31 @@ VP.utils = {
     return o;
   },
 
-  displayFieldError: function(errorObject) {
+  displayFieldError: function (errorObject) {
     var $divFieldContainer = this.getFieldContainer(errorObject.path);
     this.removeFieldError($divFieldContainer);
     $divFieldContainer.addClass('error');
     $divFieldContainer.append('<span class=\'errorMessage\'>'+errorObject.message+'</span>');
   },
 
-  removeFieldErrors: function() {
+  removeFieldErrors: function () {
     var _this = this;
-    $('div.error').each(function(i, el) {
+    $('div.error').each(function (i, el) {
       _this.removeFieldError($(el));
     })
   },
 
-  removeFieldError: function($divFieldContainer) {
+  removeFieldError: function ($divFieldContainer) {
     $divFieldContainer.removeClass('error');
     $divFieldContainer.find('span[class=\'errorMessage\']').last().remove();
   },
 
-  removeFieldErrorByName: function(fieldName) {
+  removeFieldErrorByName: function (fieldName) {
     var $divFieldContainer = this.getFieldContainer(fieldName);
     this.removeFieldError($divFieldContainer);
   },
 
-  getFieldContainer: function(fieldName) {
+  getFieldContainer: function (fieldName) {
     return $('[field*=\'' + fieldName + '\']');
   },
 
@@ -169,10 +169,10 @@ VP.utils = {
       fill: 'rgba(153, 51, 204, 0.2)'
     }
   ],
-  getColor: function(index) {
+  getColor: function (index) {
     return this.lineColorClasses[index].color;
   },
-  getFillColor: function(index) {
+  getFillColor: function (index) {
     return this.lineColorClasses[index].fill;
   }
 

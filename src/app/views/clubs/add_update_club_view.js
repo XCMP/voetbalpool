@@ -1,4 +1,4 @@
-(function(_utils) {
+(function (_utils) {
 
   VP.Views.AddUpdateClub = Backbone.View.extend({
 
@@ -9,11 +9,11 @@
       'click button.js_button_back': 'toClubList'
     },
 
-    initialize: function() {
+    initialize: function () {
       _.bindAll(this, "handleErrors", "handleResult");
     },
 
-    saveAddClub: function(ev) {
+    saveAddClub: function (ev) {
       ev.preventDefault();
       var formData = _utils.formDataToJSON($(ev.currentTarget));
       var options = {
@@ -23,7 +23,7 @@
       var result = this.model.save(formData, options);
     },
 
-    showImage: function() {
+    showImage: function () {
       this.confirmationView = _utils.showModalWindow({
         header: 'Logo',
         content: '<img src="'+$('#logoBase64Url').val()+'" />',
@@ -31,11 +31,11 @@
       });
     },
 
-    toClubList: function() {
+    toClubList: function () {
       VP.router.navigate('list/clubs', {trigger: true});
     },
 
-    handleResult: function(object, response, options) {
+    handleResult: function (object, response, options) {
       _utils.removeFieldErrors();
       if (response.error) {
         if (response.response.code === 11000) {
@@ -44,7 +44,7 @@
               message: 'Deze club bestaat al'
             });
         } else {
-          _.each(response.response.errors, function(errorObject) {
+          _.each(response.response.errors, function (errorObject) {
             _utils.displayFieldError(errorObject);
           });
         }
@@ -53,16 +53,16 @@
       }
     },
 
-    handleErrors: function(object, response, options) {
+    handleErrors: function (object, response, options) {
       console.log('error');
     },
 
-    render: function() {
+    render: function () {
       this.$el.html(this.template(this.model.toJSON()));
       return this;
     },
 
-    close: function() {
+    close: function () {
       this.unbind();
       this.remove();
       this.model.unbind();

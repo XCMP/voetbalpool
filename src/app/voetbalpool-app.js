@@ -15,7 +15,7 @@ var VP = {
 
 };
 
-$(document).ready(function() {
+$(document).ready(function () {
 
   VP.Data.selectedYearMonth = VP.utils.getCurrentPeriod();
   VP.router = new VP.Router();

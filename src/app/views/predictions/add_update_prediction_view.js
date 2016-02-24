@@ -1,4 +1,4 @@
-(function(_utils) {
+(function (_utils) {
 
   VP.Views.AddUpdatePrediction = Backbone.View.extend({
 
@@ -8,7 +8,7 @@
       'click button.js_button_back': 'toPredictionList'
     },
 
-    initialize: function() {
+    initialize: function () {
       this.poolplayers = new VP.Collections.PoolPlayers();
       this.poolplayers.fetch();
       this.games = new VP.Collections.Games({});
@@ -16,7 +16,7 @@
       _.bindAll(this, "handleErrors", "handleResult");
     },
 
-    saveAddPrediction: function(ev) {
+    saveAddPrediction: function (ev) {
       ev.preventDefault();
       var formData = _utils.formDataToJSON($(ev.currentTarget));
       var options = {
@@ -26,11 +26,11 @@
       var result = this.model.save(formData, options);
     },
 
-    toPredictionList: function() {
+    toPredictionList: function () {
       VP.router.navigate('list/predictions', {trigger: true});
     },
 
-    handleResult: function(object, response, options) {
+    handleResult: function (object, response, options) {
       _utils.removeFieldErrors();
       if (response.error) {
         if (response.response.code === 11000) {
@@ -39,7 +39,7 @@
               message: 'Deze speler heeft al een voorspelling voor deze wedstrijd'
             });
         } else {
-          _.each(response.response.errors, function(errorObject) {
+          _.each(response.response.errors, function (errorObject) {
             _utils.displayFieldError(errorObject);
           });
         }
@@ -48,11 +48,11 @@
       }
     },
 
-    handleErrors: function(object, response, options) {
+    handleErrors: function (object, response, options) {
       console.log('error');
     },
 
-    render: function() {
+    render: function () {
       // TODO add readonly true when game matchday is in the passed
       this.$el.html(this.template(this.model.toJSON()));
       this.setPoolPlayerSelectOptions('poolplayer');
@@ -60,13 +60,13 @@
       return this;
     },
 
-    setPoolPlayerSelectOptions: function(field) {
+    setPoolPlayerSelectOptions: function (field) {
       var poolPlayerId = this.model.get(field);
       var poolPlayerSelect = this.getPoolPlayerSelectView(field, poolPlayerId);
       this.$('span.' + field).html(poolPlayerSelect);
     },
 
-    getPoolPlayerSelectView: function(name, selected) {
+    getPoolPlayerSelectView: function (name, selected) {
       var poolPlayers = new VP.Collections.PoolPlayers({});
       var view = new VP.Views.PoolPlayerSelect({
         name: name,
@@ -76,13 +76,13 @@
       return view.$el;
     },
 
-    setGameSelectOptions: function(field) {
+    setGameSelectOptions: function (field) {
       var gameId = this.model.get(field);
       var gameSelect = this.getGameSelectView(field, gameId);
       this.$('span.' + field).html(gameSelect);
     },
 
-    getGameSelectView: function(name, selected) {
+    getGameSelectView: function (name, selected) {
       var games = new VP.Collections.Games({all: true});
       var view = new VP.Views.GameSelect({
         name: name,
@@ -92,7 +92,7 @@
       return view.$el;
     },
 
-    close: function() {
+    close: function () {
       this.unbind();
       this.remove();
       this.model.unbind();

@@ -1,4 +1,4 @@
-(function(_utils) {
+(function (_utils) {
 
   VP.Models.Prediction = Backbone.Model.extend({
 
