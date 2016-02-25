@@ -41,21 +41,21 @@
 
     yes: function () {
       if (this.yesFunction) {
-        this.yesfunction ();
+        this.yesFunction ();
       }
       this.close();
     },
 
     no: function () {
       if (this.noFunction) {
-        this.nofunction ();
+        this.noFunction ();
       }
       this.close();
     },
 
     back: function () {
       if (this.backFunction) {
-        this.backfunction ();
+        this.backFunction ();
       }
       this.close();
     }
