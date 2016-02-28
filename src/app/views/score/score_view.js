@@ -89,9 +89,11 @@
 
     setChart: function () {
       if ($('#scoreChart').length > 0 && this.data.datasets.length > 0) {
-        var ctx = $('#scoreChart').get(0).getContext("2d");
+        var ctx = $('#scoreChart').get(0).getContext('2d');
         var scoreChart = new Chart(ctx).Line(this.data, { responsive: true});
         this.$el.find('.legend').html(this.getLegend());
+      } else {
+        this.$el.find('.message').html('<p class="no-score-title">Nog geen resultaten beschikbaar.</p>');
       }
       return scoreChart;
     },
