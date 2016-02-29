@@ -12,7 +12,8 @@
       'click tr.poolplayer': 'selectPoolPlayer',
       'click button.js_button_add': 'renderAddPoolPlayer',
       'click button.js_button_update': 'renderUpdatePoolPlayer',
-      'click button.js_button_delete': 'confirmDeletePoolPlayer'
+      'click button.js_button_delete': 'confirmDeletePoolPlayer',
+      'click button.js_button_prediction': 'renderAddPrediction'
     },
 
     initialize: function () {
@@ -46,6 +47,10 @@
 
     renderAddPoolPlayer: function () {
       VP.router.navigate('add/poolplayer',  {trigger: true});
+    },
+
+    renderAddPrediction: function () {
+      VP.router.navigate('add/prediction?type=poolplayer&id=' + this.$selectedPoolPlayer.data('id'),  {trigger: true});
     },
 
     renderUpdatePoolPlayer: function () {
@@ -91,7 +96,7 @@
 
     setButtons: function () {
       var self = this;
-      $(['.js_button_update', '.js_button_delete']).each(function (i, selector) {
+      $(['.js_button_update', '.js_button_delete', '.js_button_prediction']).each(function (i, selector) {
         $(selector).prop("disabled", self.$selectedPoolPlayer === null? true:false);
       });
     },

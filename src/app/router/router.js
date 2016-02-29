@@ -27,7 +27,7 @@
       ''                       : 'index',
 
       // specific routes
-      'add/prediction?gameId=:gameId': 'handleRouteAddPredictionForGame',
+      'add/prediction?type=:type&id=:id': 'handleRouteAddPredictionForType',
 
       // other routes
       'show/score'             : 'handleRouteShowScore',
@@ -82,8 +82,8 @@
       }
     },
 
-    handleRouteAddPredictionForGame: function (gameId) {
-      this.addPrediction(gameId);
+    handleRouteAddPredictionForType: function (type, id) {
+      this.addPrediction(type, id);
       this.renderMenu('predictions');
     },
 
@@ -275,15 +275,13 @@
       }
     },
 
-    addPrediction: function (gameId) {
+    addPrediction: function (type, id) {
       if (this.addPredictionView !== null) {
         this.addPredictionView.close();
         this.addPredictionView = null;
       }
       var prediction = new VP.Models.Prediction({});
-      if (gameId) {
-        prediction.set('game', {_id: gameId});
-      }
+      prediction.set(type, {_id: id});
       if (this.addPredictionView == null) {
         this.addPredictionView = new VP.Views.AddUpdatePrediction({
           model: prediction
