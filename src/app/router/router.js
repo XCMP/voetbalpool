@@ -27,7 +27,7 @@
       ''                       : 'index',
 
       // specific routes
-      'add/prediction?type=:type&id=:id': 'handleRouteAddPredictionForType',
+      'add/prediction?type=:type&id=:id&returnTo=:returnTo': 'handleRouteAddPredictionForType',
 
       // other routes
       'show/score'             : 'handleRouteShowScore',
@@ -82,8 +82,8 @@
       }
     },
 
-    handleRouteAddPredictionForType: function (type, id) {
-      this.addPrediction(type, id);
+    handleRouteAddPredictionForType: function (type, id, returnTo) {
+      this.addPrediction(type, id, returnTo);
       this.renderMenu('predictions');
     },
 
@@ -275,7 +275,7 @@
       }
     },
 
-    addPrediction: function (type, id) {
+    addPrediction: function (type, id, returnTo) {
       if (this.addPredictionView !== null) {
         this.addPredictionView.close();
         this.addPredictionView = null;
@@ -284,7 +284,8 @@
       prediction.set(type, {_id: id});
       if (this.addPredictionView == null) {
         this.addPredictionView = new VP.Views.AddUpdatePrediction({
-          model: prediction
+          model: prediction,
+          returnTo: returnTo
         });
       }      
       $('div.content').html(this.addPredictionView.render().$el);

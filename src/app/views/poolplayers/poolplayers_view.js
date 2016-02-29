@@ -50,7 +50,7 @@
     },
 
     renderAddPrediction: function () {
-      VP.router.navigate('add/prediction?type=poolplayer&id=' + this.$selectedPoolPlayer.data('id'),  {trigger: true});
+      VP.router.navigate('add/prediction?type=poolplayer&id=' + this.$selectedPoolPlayer.data('id') + '&returnTo=poolplayers',  {trigger: true});
     },
 
     renderUpdatePoolPlayer: function () {

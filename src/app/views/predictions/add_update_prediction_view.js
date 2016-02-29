@@ -5,10 +5,11 @@
     template: Handlebars.templates['add_update_prediction.hbs'],
     events: {
       'submit form': 'saveAddPrediction',
-      'click button.js_button_back': 'toPredictionList'
+      'click button.js_button_back': 'returnTo'
     },
 
-    initialize: function () {
+    initialize: function (options) {
+      this.returnTo = options.returnTo;
       this.poolplayers = new VP.Collections.PoolPlayers();
       this.poolplayers.fetch();
       this.games = new VP.Collections.Games({});
@@ -26,8 +27,8 @@
       var result = this.model.save(formData, options);
     },
 
-    toPredictionList: function () {
-      VP.router.navigate('list/predictions', {trigger: true});
+    returnTo: function () {
+      VP.router.navigate('list/'+(this.returnTo? this.returnTo:'predictions'), {trigger: true});
     },
 
     handleResult: function (object, response, options) {
@@ -53,7 +54,6 @@
     },
 
     render: function () {
-      // TODO add readonly true when game matchday is in the passed
       this.$el.html(this.template(this.model.toJSON()));
       this.setPoolPlayerSelectOptions('poolplayer');
       this.setGameSelectOptions('game');
