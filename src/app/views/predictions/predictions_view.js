@@ -126,13 +126,13 @@
     },
 
     setButtons: function () {
-      var readOnly = this.predictionReadOnly( this.$selectedPrediction? this.$selectedPrediction.attr('data-id') : null);
+      var disabledButtons = this.buttonsDisabled( this.$selectedPrediction? this.$selectedPrediction.attr('data-id') : null);
       $(['.js_button_update', '.js_button_delete']).each(function (i, selector) {
-        $(selector).prop("disabled", readOnly ? true:false);
+        $(selector).prop("disabled", disabledButtons);
       });
     },
 
-    predictionReadOnly: function (predictionId) {
+    buttonsDisabled: function (predictionId) {
       if (predictionId) {
         var matchDayTime = new Date(this.collection.get(predictionId).get('game').matchDay).getTime();
         return matchDayTime < Date.now();
