@@ -33,9 +33,11 @@
               {{name}}
             </td>
           {{/with}}
-          {{#if played}}
-            <td>{{homeTeamGoals}} - {{awayTeamGoals}}</td>
-          {{/if}}
+          <td>
+            {{#if played}}
+              {{homeTeamGoals}} - {{awayTeamGoals}}
+            {{/if}}
+          </td>
           <td>{{notes}}</td>
         </tr>
       {{/each}}
