@@ -117,10 +117,22 @@
     },
 
     setButtons: function () {
-      var self = this;
-      $(['.js_button_update', '.js_button_delete', '.js_button_prediction']).each(function (i, selector) {
-        $(selector).prop("disabled", self.$selectedGame === null? true:false);
+      var disablePredictionButton = this.predictionDisabled( this.$selectedGame? this.$selectedGame.attr('data-id') : null);
+      $('.js_button_prediction').prop("disabled", disablePredictionButton);
+
+      var disableButtons = this.$selectedGame? false : true;
+      $(['.js_button_update', '.js_button_delete']).each(function (i, selector) {
+        $(selector).prop("disabled", disableButtons);
       });
+    },
+
+    predictionDisabled: function (gameId) {
+      if (gameId) {
+        var matchDayTime = new Date(this.collection.get(gameId).get('matchDay')).getTime();
+        return matchDayTime < Date.now();
+      } else {
+        return true;
+      }
     },
 
     close: function () {
