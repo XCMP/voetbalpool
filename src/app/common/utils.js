@@ -123,7 +123,39 @@ VP.utils = {
     return o;
   },
 
+  handleErrors: function(response) {
+    if (response.response.code === 11000) {
+      this.displayFieldError({
+        path: 'general',
+        message: this.getDuplicateErrorMessage(response.response.errmsg)
+      });
+    } else {
+      _.each(response.response.errors, function (errorObject) {
+        this.displayFieldError(errorObject);
+      }, this);
+    }
+  },
+
+  duplicateErrosMessages: {
+    'clubs': 'Deze club bestaat al.',
+    'games': 'Deze wedstrijd bestaat al.',
+    'poolplayers': 'Deze speler bestaat al.',
+    'predictions': 'Deze speler heeft al een voorspelling voor deze wedstrijd.'
+  },
+
+  getDuplicateErrorMessage: function(errmsg) {
+    var start = errmsg.indexOf('.') + 1;
+    var end = errmsg.indexOf(' ', start);
+    var key = errmsg.substring(start, end);
+    return this.duplicateErrosMessages[key];
+  },
+
   displayFieldError: function (errorObject) {
+    // check for casting error
+    if (errorObject.name === 'CastError' && errorObject.kind === 'Date') {
+      errorObject.message = 'Geen geldige datum opgegeven.';
+    }
+
     var $divFieldContainer = this.getFieldContainer(errorObject.path);
     this.removeFieldError($divFieldContainer);
     $divFieldContainer.addClass('error');
