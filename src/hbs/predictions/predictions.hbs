@@ -24,7 +24,15 @@
           {{#with game}}
             {{#if first}}
               <td>{{formatDate matchDay format='ddd DD-MM-YY HH:mm'}}</td>
-              <td>{{homeTeam.name}}-{{awayTeam.name}}</td>
+              <td>
+                {{#with homeTeam}}
+                  <img class="small" alt="{{name}}" src="{{logoBase64Url}}" /> {{name}}
+                {{/with}}
+                -
+                {{#with awayTeam}}
+                  <img class="small" alt="{{name}}" src="{{logoBase64Url}}" /> {{name}}
+                {{/with}}
+              </td>
               <td>{{homeTeamGoals}}-{{awayTeamGoals}}</td>
             {{else}}
               <td colspan="3"></td>
