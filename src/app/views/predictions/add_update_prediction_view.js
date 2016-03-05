@@ -26,7 +26,7 @@
       var result = this.model.save(formData, options);
     },
 
-    returnTo: function () {
+    toPredictionList: function () {
       VP.router.navigate('list/'+(this.returnTo? this.returnTo:'predictions'), {trigger: true});
     },
 
