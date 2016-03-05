@@ -14,7 +14,7 @@
 
     comparator: function (model) {
       // sort by matchday descending
-      return new Date(model.get('game').matchDay).getTime() * -1;
+      return new Date(model.get('game').matchDay).getTime();
     },
 
     setInitPeriod: function () {
