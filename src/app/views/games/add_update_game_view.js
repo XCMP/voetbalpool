@@ -9,7 +9,7 @@
     },
 
     initialize: function () {
-      _.bindAll(this, "handleErrors", "handleResult");
+      _.bindAll(this, 'handleResult');
     },
 
     saveAddGame: function (ev) {
@@ -17,8 +17,7 @@
       var formData = _utils.formDataToJSON($(ev.currentTarget));
       formData.matchDay = _utils.ddmmyyyyhhmmToDateTime(formData.matchDay);
       var options = {
-        success: this.handleResult,
-        error: this.handleErrors,
+        success: this.handleResult
       };
       var result = this.model.save(formData, options);
     },
@@ -30,23 +29,10 @@
     handleResult: function (object, response, options) {
       _utils.removeFieldErrors();
       if (response.error) {
-        if (response.response.code === 11000) {
-            _utils.displayFieldError({
-              path: 'general',
-              message: 'Deze wedstrijd bestaat al'
-            });
-        } else {
-          _.each(response.response.errors, function (errorObject) {
-            _utils.displayFieldError(errorObject);
-          });
-        }
+        _utils.handleErrors(response);
       } else {
         this.toGameList();
       }
-    },
-
-    handleErrors: function (object, response, options) {
-      console.log('error');
     },
 
     render: function () {

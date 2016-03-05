@@ -14,15 +14,14 @@
       this.poolplayers.fetch();
       this.games = new VP.Collections.Games({});
       this.games.fetch();
-      _.bindAll(this, "handleErrors", "handleResult");
+      _.bindAll(this, 'handleResult');
     },
 
     saveAddPrediction: function (ev) {
       ev.preventDefault();
       var formData = _utils.formDataToJSON($(ev.currentTarget));
       var options = {
-        success: this.handleResult,
-        error: this.handleErrors,
+        success: this.handleResult
       };
       var result = this.model.save(formData, options);
     },
@@ -34,23 +33,10 @@
     handleResult: function (object, response, options) {
       _utils.removeFieldErrors();
       if (response.error) {
-        if (response.response.code === 11000) {
-            _utils.displayFieldError({
-              path: 'general',
-              message: 'Deze speler heeft al een voorspelling voor deze wedstrijd'
-            });
-        } else {
-          _.each(response.response.errors, function (errorObject) {
-            _utils.displayFieldError(errorObject);
-          });
-        }
+        _utils.handleErrors(response);
       } else {
         this.toPredictionList();
       }
-    },
-
-    handleErrors: function (object, response, options) {
-      console.log('error');
     },
 
     render: function () {
