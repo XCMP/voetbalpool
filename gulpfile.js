@@ -73,6 +73,7 @@ var paths = {
 
     'score/score.hbs',
     'score/score_legend.hbs',
+    'score/no_results.hbs',
 
     'games/add_update_game.hbs',
     'games/game_delete.hbs',

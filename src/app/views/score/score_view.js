@@ -4,6 +4,7 @@
 
     template: Handlebars.templates['score.hbs'],
     templateLegend: Handlebars.templates['score_legend.hbs'],
+    templateNoResults: Handlebars.templates['no_results.hbs'],
 
     data: { labels: [], datasets: [] },
 
@@ -93,7 +94,7 @@
         var scoreChart = new Chart(ctx).Line(this.data, { responsive: true});
         this.$el.find('.legend').html(this.getLegend());
       } else {
-        this.$el.find('.message').html('<p class="no-score-title">Nog geen resultaten beschikbaar.</p>');
+        this.$el.find('.message').html(this.templateNoResults());
       }
       return scoreChart;
     },
