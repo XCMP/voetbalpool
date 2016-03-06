@@ -7,11 +7,8 @@
 
     defaults: {
       name: null,
-      notes: null,
-      birthday: null
-    },
-
-    initialize: function () {
+      birthday: null,
+      notes: null
     },
 
     parse: function (model, xhr) {
