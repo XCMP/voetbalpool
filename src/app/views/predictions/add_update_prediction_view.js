@@ -35,7 +35,7 @@
       if (response.error) {
         _utils.handleErrors(response);
       } else {
-        this.returnTo();
+        VP.router.navigate('list/'+(this.returnTo? this.returnTo:'predictions'), {trigger: true});
       }
     },
 
