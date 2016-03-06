@@ -131,6 +131,10 @@ VP.utils = {
       });
     } else {
       _.each(response.response.errors, function (errorObject) {
+        // check for casting error
+        if (errorObject.name === 'CastError' && errorObject.kind === 'Date') {
+          errorObject.message = 'Geen geldige datum opgegeven.';
+        }
         this.displayFieldError(errorObject);
       }, this);
     }
@@ -151,11 +155,6 @@ VP.utils = {
   },
 
   displayFieldError: function (errorObject) {
-    // check for casting error
-    if (errorObject.name === 'CastError' && errorObject.kind === 'Date') {
-      errorObject.message = 'Geen geldige datum opgegeven.';
-    }
-
     var $divFieldContainer = this.getFieldContainer(errorObject.path);
     this.removeFieldError($divFieldContainer);
     $divFieldContainer.addClass('error');
