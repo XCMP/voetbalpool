@@ -2,26 +2,8 @@
 
   VP.Router = Backbone.Router.extend({
 
-    scoreView: null,
-
-    poolplayersView: null,
-    addPoolplayerView: null,
-    updatePoolplayerView: null,
-
-    gamesView: null,
-    addGameView: null,
-    updateGameView: null,
-
-    clubsOverviewView: null,
-    clubsView: null,
-    addClubView: null,
-    updateClubView: null,
-
-    predictionsView: null,
-    addPredictionView: null,
-    updatePredictionView: null,
-
     menuView: null,
+    currentView: null,
 
     routes: {
       ''                       : 'index',
@@ -36,17 +18,31 @@
       'update/:viewid/:modelid': 'handleRouteUpdate',
     },
 
+    initialize: function() {
+      this.menuView = new VP.Views.Menu();
+    },
+
     index: function () {
-      this.renderMenu();
       this.renderClubsOverview();
     },
 
+    handleRouteAddPredictionForType: function (type, id, returnTo) {
+      this.clearPreviousView();
+
+      this.addPrediction(type, id, returnTo);
+      this.renderMenu('predictions');
+    },
+
     handleRouteShowScore: function () {
+      this.clearPreviousView();
+
       this.showScore();
       this.renderMenu('score');
     },
 
     handleRouteList: function (viewid) {
+      this.clearPreviousView();
+
       if (viewid == 'poolplayers') {
         this.listPoolPlayers();
         this.renderMenu('poolplayers');
@@ -65,6 +61,8 @@
     },
 
     handleRouteAdd: function (viewid) {
+      this.clearPreviousView();
+
       if (viewid == 'poolplayer') {
         this.addPoolPlayer();
         this.renderMenu('poolplayers');
@@ -82,12 +80,9 @@
       }
     },
 
-    handleRouteAddPredictionForType: function (type, id, returnTo) {
-      this.addPrediction(type, id, returnTo);
-      this.renderMenu('predictions');
-    },
-
     handleRouteUpdate: function (viewid, modelid) {
+      this.clearPreviousView();
+
       if (viewid == 'poolplayer') {
         this.updatePoolPlayer(modelid);
         this.renderMenu('poolplayers');
@@ -106,227 +101,132 @@
     },
 
     showScore: function () {
-      if (this.scoreView !== null) {
-        this.scoreView.close();
-        this.scoreView = null;
-      }
-
-      if (this.scoreView == null) {
-        this.scoreView = new VP.Views.Score();
-        $('div.content').html(this.scoreView.render().$el);
-      }
+      this.currentView = new VP.Views.Score();
+      $('div.content').html(this.currentView.render().$el);
     },
 
     listPoolPlayers: function () {
-      if (this.poolplayersView !== null) {
-        this.poolplayersView.close();
-        this.poolplayersView = null;
-      }
-
-      if (this.poolplayersView == null) {
-        var poolPlayersCollection = new VP.Collections.PoolPlayers();
-        this.poolplayersView = new VP.Views.PoolPlayers({
-          collection: poolPlayersCollection
-        });
-        $('div.content').html(this.poolplayersView.render().$el);
-      } else {
-        this.poolplayersView.collection.fetch();
-      }
+      var poolPlayersCollection = new VP.Collections.PoolPlayers();
+      this.currentView = new VP.Views.PoolPlayers({
+        collection: poolPlayersCollection
+      });
+      $('div.content').html(this.currentView.render().$el);
     },
 
     addPoolPlayer: function () {
-      if (this.addPoolplayerView !== null) {
-        this.addPoolplayerView.close();
-        this.addPoolplayerView = null;
-      }
       var poolPlayer = new VP.Models.PoolPlayer({});
-      if (this.addPoolplayerView == null) {
-        this.addPoolplayerView = new VP.Views.AddUpdatePoolPlayer({
-          model: poolPlayer
-        });
-      }
-      $('div.content').html(this.addPoolplayerView.render().$el);
+      this.currentView = new VP.Views.AddUpdatePoolPlayer({
+        model: poolPlayer
+      });
+      $('div.content').html(this.currentView.render().$el);
     },
 
     updatePoolPlayer: function (modelid) {
-      if (this.updatePoolplayerView !== null) {
-        this.updatePoolplayerView.close();
-        this.updatePoolplayerView = null;
-      }
       var poolplayer = new VP.Models.PoolPlayer({_id:modelid});
       poolplayer.fetch().done(function () {
-        if (this.updatePoolplayerView == null) {
-          this.updatePoolplayerView = new VP.Views.AddUpdatePoolPlayer({
-            model:poolplayer
-          });
-        }
-      $('div.content').html(this.updatePoolplayerView.render().$el);
+        this.currentView = new VP.Views.AddUpdatePoolPlayer({
+          model:poolplayer
+        });
+      $('div.content').html(this.currentView.render().$el);
       });
     },
 
     listGames: function () {
-      if (this.gamesView !== null) {
-        this.gamesView.close();
-        this.gamesView = null;
-      }
-
-      if (this.gamesView == null) {
-        var gamesCollection = new VP.Collections.Games();
-        this.gamesView = new VP.Views.Games({
-          collection: gamesCollection
-        });
-        $('div.content').html(this.gamesView.render().$el);
-      } else {
-        this.gamesView.collection.fetch();
-      }
+      var gamesCollection = new VP.Collections.Games();
+      this.currentView = new VP.Views.Games({
+        collection: gamesCollection
+      });
+      $('div.content').html(this.currentView.render().$el);
     },
 
     addGame: function () {
-      if (this.addGameView !== null) {
-        this.addGameView.close();
-        this.addGameView = null;
-      }
       var game = new VP.Models.Game({});
-      if (this.addGameView == null) {
-        this.addGameView = new VP.Views.AddUpdateGame({
-          model: game
-        });
-      }      
-      $('div.content').html(this.addGameView.render().$el);
+      this.currentView = new VP.Views.AddUpdateGame({
+        model: game
+      });
+      $('div.content').html(this.currentView.render().$el);
     },
     
     updateGame: function (modelid) {
-      if (this.updateGameView !== null) {
-        this.updateGameView.close();
-        this.updateGameView = null;
-      }
       var game = new VP.Models.Game({_id:modelid});
       game.fetch().done(function () {
-        if (this.updateGameView == null) {
-          this.updateGameView = new VP.Views.AddUpdateGame({
-            model: game
-          });
-        }
-        $('div.content').html(this.updateGameView.render().$el);
+        this.currentView = new VP.Views.AddUpdateGame({
+          model: game
+        });
+        $('div.content').html(this.currentView.render().$el);
       });
     },
 
     listClubs: function () {
-      if (this.clubsView !== null) {
-        this.clubsView.close();
-        this.clubsView = null;
-      }
-
-      if (this.clubsView == null) {
-        var clubsCollection = new VP.Collections.Clubs();
-        this.clubsView = new VP.Views.Clubs({
-          collection: clubsCollection
-        });
-        $('div.content').html(this.clubsView.render().$el);
-      } else {
-        this.clubsView.collection.fetch();
-      }
+      var clubsCollection = new VP.Collections.Clubs();
+      this.currentView = new VP.Views.Clubs({
+        collection: clubsCollection
+      });
+      $('div.content').html(this.currentView.render().$el);
     },
 
     addClub: function () {
-      if (this.addClubView !== null) {
-        this.addClubView.close();
-        this.addClubView = null;
-      }
       var club = new VP.Models.Club({});
-      if (this.addClubView == null) {
-        this.addClubView = new VP.Views.AddUpdateClub({
-          model: club
-        });
-      }      
-      $('div.content').html(this.addClubView.render().$el);
+      this.currentView = new VP.Views.AddUpdateClub({
+        model: club
+      });
+      $('div.content').html(this.currentView.render().$el);
     },
 
     updateClub: function (modelid) {
-      if (this.updateClubView !== null) {
-        this.updateClubView.close();
-        this.updateClubView = null;
-      }
       var club = new VP.Models.Club({_id:modelid});
       club.fetch().done(function () {
-        if (this.updateClubView == null) {
-          this.updateClubView = new VP.Views.AddUpdateClub({
-            model: club
-          });
-        }
-        $('div.content').html(this.updateClubView.render().$el);
+        this.currentView = new VP.Views.AddUpdateClub({
+          model: club
+        });
+        $('div.content').html(this.currentView.render().$el);
       });
     },
 
     listPredictions: function () {
-      if (this.predictionsView !== null) {
-        this.predictionsView.close();
-        this.predictionsView = null;
-      }
-
-      if (this.predictionsView == null) {
-        var predictionsCollection = new VP.Collections.Predictions();
-        this.predictionsView = new VP.Views.Predictions({
-          collection: predictionsCollection
-        });
-        $('div.content').html(this.predictionsView.render().$el);
-      } else {
-        this.predictionsView.collection.fetch();
-      }
+      var predictionsCollection = new VP.Collections.Predictions();
+      this.currentView = new VP.Views.Predictions({
+        collection: predictionsCollection
+      });
+      $('div.content').html(this.currentView.render().$el);
     },
 
     addPrediction: function (type, id, returnTo) {
-      if (this.addPredictionView !== null) {
-        this.addPredictionView.close();
-        this.addPredictionView = null;
-      }
       var prediction = new VP.Models.Prediction({});
       prediction.set(type, {_id: id});
-      if (this.addPredictionView == null) {
-        this.addPredictionView = new VP.Views.AddUpdatePrediction({
-          model: prediction,
-          returnTo: returnTo
-        });
-      }      
-      $('div.content').html(this.addPredictionView.render().$el);
+      this.currentView = new VP.Views.AddUpdatePrediction({
+        model: prediction,
+        returnTo: returnTo
+      });
+      $('div.content').html(this.currentView.render().$el);
     },
 
     updatePrediction: function (modelid) {
-      if (this.updatePredictionView !== null) {
-        this.updatePredictionView.close();
-        this.updatePredictionView = null;
-      }
       var prediction = new VP.Models.Prediction({_id:modelid});
       prediction.fetch().done(function () {
-        if (this.updatePredictionView == null) {
-          this.updatePredictionView = new VP.Views.AddUpdatePrediction({
-            model: prediction
-          });
-        }
-        $('div.content').html(this.updatePredictionView.render().$el);
+        this.currentView = new VP.Views.AddUpdatePrediction({
+          model: prediction
+        });
+        $('div.content').html(this.currentView.render().$el);
       });
     },
 
     renderMenu: function (activeMenuItem) {
-      if (this.menuView === null) {
-        this.menuView = new VP.Views.Menu({});
-      }
       this.menuView.setMenuItemActive(activeMenuItem);
     },
 
     renderClubsOverview: function () {
-      if (this.clubsOverviewView !== null) {
-        this.clubsOverviewView.close();
-        this.clubsOverviewView = null;
-      }
-      if (this.clubsOverviewView == null) {
-        var clubsCollection = new VP.Collections.Clubs();
-        this.clubsOverviewView = new VP.Views.ClubsOverview({
-          collection: clubsCollection
-        });
-        $('div.content').html(this.clubsOverviewView.render().$el);
-      } else {
-        this.clubsOverviewView.collection.fetch();
+      var clubsCollection = new VP.Collections.Clubs();
+      this.currentView = new VP.Views.ClubsOverview({
+        collection: clubsCollection
+      });
+      $('div.content').html(this.currentView.render().$el);
+    },
+
+    clearPreviousView: function() {
+      if (this.currentView !== null) {
+        this.currentView.close();
+        this.currentView = null;
       }
     }
 
