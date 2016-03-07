@@ -14,6 +14,7 @@
       this.poolplayers.fetch();
       this.games = new VP.Collections.Games({});
       this.games.fetch();
+      this.render();
       _.bindAll(this, 'handleResult');
     },
 
@@ -76,12 +77,6 @@
         selected: selected
       });
       return view.$el;
-    },
-
-    close: function () {
-      this.unbind();
-      this.remove();
-      this.model.unbind();
     }
 
   });

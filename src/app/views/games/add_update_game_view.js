@@ -10,6 +10,7 @@
 
     initialize: function () {
       _.bindAll(this, 'handleResult');
+      this.render();
     },
 
     saveAddGame: function (ev) {
@@ -59,12 +60,6 @@
         selected: selected
       });
       return view.$el;
-    },
-
-    close: function () {
-      this.unbind();
-      this.remove();
-      this.model.unbind();
     }
 
   });

@@ -11,6 +11,7 @@
 
     initialize: function () {
       _.bindAll(this, 'handleResult');
+      this.render();
     },
 
     saveAddClub: function (ev) {
@@ -46,12 +47,6 @@
     render: function () {
       this.$el.html(this.template(this.model.toJSON()));
       return this;
-    },
-
-    close: function () {
-      this.unbind();
-      this.remove();
-      this.model.unbind();
     }
 
   });
