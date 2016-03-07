@@ -11,7 +11,7 @@
     initialize: function (options) {
       this.name = options.name;
       this.selected = options.selected;
-      this.collection.on('sync', this.render, this);
+      this.listenTo(this.collection, 'sync', this.render);
       this.collection.fetch();
     },
 
@@ -31,12 +31,6 @@
         game.set('selected', true);
         return game;
       }
-    },
-
-    close: function () {
-      this.unbind();
-      this.remove();
-      this.collection.unbind();
     }
 
   });

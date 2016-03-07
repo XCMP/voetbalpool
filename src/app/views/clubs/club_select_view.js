@@ -15,7 +15,7 @@
     initialize: function (options) {
       this.name = options.name;
       this.selected = options.selected;
-      this.collection.on('sync', this.render, this);
+      this.listenTo(this.collection, 'sync', this.render);
       this.collection.fetch();
     },
 
@@ -45,12 +45,6 @@
       var club = this.collection.get(ev.target.value);
       this.$logoImage.attr('src', club.getLogoUrl());
       this.$logoImage.removeClass('hide');
-    },
-
-    close: function () {
-      this.unbind();
-      this.remove();
-      this.collection.unbind();
     }
 
   });
