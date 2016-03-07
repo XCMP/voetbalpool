@@ -102,7 +102,7 @@
 
     showScore: function () {
       this.currentView = new VP.Views.Score();
-      $('div.content').html(this.currentView.render().$el);
+      $('div.content').html(this.currentView.$el);
     },
 
     listPoolPlayers: function () {
@@ -110,7 +110,7 @@
       this.currentView = new VP.Views.PoolPlayers({
         collection: poolPlayersCollection
       });
-      $('div.content').html(this.currentView.render().$el);
+      $('div.content').html(this.currentView.$el);
     },
 
     addPoolPlayer: function () {
@@ -118,7 +118,7 @@
       this.currentView = new VP.Views.AddUpdatePoolPlayer({
         model: poolPlayer
       });
-      $('div.content').html(this.currentView.render().$el);
+      $('div.content').html(this.currentView.$el);
     },
 
     updatePoolPlayer: function (modelid) {
@@ -127,7 +127,7 @@
         this.currentView = new VP.Views.AddUpdatePoolPlayer({
           model:poolplayer
         });
-      $('div.content').html(this.currentView.render().$el);
+      $('div.content').html(this.currentView.$el);
       });
     },
 
@@ -136,7 +136,7 @@
       this.currentView = new VP.Views.Games({
         collection: gamesCollection
       });
-      $('div.content').html(this.currentView.render().$el);
+      $('div.content').html(this.currentView.$el);
     },
 
     addGame: function () {
@@ -144,7 +144,7 @@
       this.currentView = new VP.Views.AddUpdateGame({
         model: game
       });
-      $('div.content').html(this.currentView.render().$el);
+      $('div.content').html(this.currentView.$el);
     },
     
     updateGame: function (modelid) {
@@ -153,7 +153,7 @@
         this.currentView = new VP.Views.AddUpdateGame({
           model: game
         });
-        $('div.content').html(this.currentView.render().$el);
+        $('div.content').html(this.currentView.$el);
       });
     },
 
@@ -162,7 +162,7 @@
       this.currentView = new VP.Views.Clubs({
         collection: clubsCollection
       });
-      $('div.content').html(this.currentView.render().$el);
+      $('div.content').html(this.currentView.$el);
     },
 
     addClub: function () {
@@ -170,7 +170,7 @@
       this.currentView = new VP.Views.AddUpdateClub({
         model: club
       });
-      $('div.content').html(this.currentView.render().$el);
+      $('div.content').html(this.currentView.$el);
     },
 
     updateClub: function (modelid) {
@@ -179,7 +179,7 @@
         this.currentView = new VP.Views.AddUpdateClub({
           model: club
         });
-        $('div.content').html(this.currentView.render().$el);
+        $('div.content').html(this.currentView.$el);
       });
     },
 
@@ -188,7 +188,7 @@
       this.currentView = new VP.Views.Predictions({
         collection: predictionsCollection
       });
-      $('div.content').html(this.currentView.render().$el);
+      $('div.content').html(this.currentView.$el);
     },
 
     addPrediction: function (type, id, returnTo) {
@@ -198,7 +198,7 @@
         model: prediction,
         returnTo: returnTo
       });
-      $('div.content').html(this.currentView.render().$el);
+      $('div.content').html(this.currentView.$el);
     },
 
     updatePrediction: function (modelid) {
@@ -207,7 +207,7 @@
         this.currentView = new VP.Views.AddUpdatePrediction({
           model: prediction
         });
-        $('div.content').html(this.currentView.render().$el);
+        $('div.content').html(this.currentView.$el);
       });
     },
 
@@ -220,12 +220,12 @@
       this.currentView = new VP.Views.ClubsOverview({
         collection: clubsCollection
       });
-      $('div.content').html(this.currentView.render().$el);
+      $('div.content').html(this.currentView.$el);
     },
 
     clearPreviousView: function() {
       if (this.currentView !== null) {
-        this.currentView.close();
+        this.currentView.remove();
         this.currentView = null;
       }
     }
