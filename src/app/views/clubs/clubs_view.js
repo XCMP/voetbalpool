@@ -16,8 +16,8 @@
     },
 
     initialize: function () {
-      this.collection.on('sync', this.render, this);
-      this.collection.on('remove', this.render, this);
+      this.listenTo(this.collection, 'sync', this.render);
+      this.listenTo(this.collection, 'remove', this.render);
       this.collection.fetch();
     },
 
@@ -94,12 +94,6 @@
       $(['.js_button_update', '.js_button_delete']).each(function (i, selector) {
         $(selector).prop("disabled", self.$selectedClub === null? true:false);
       });
-    },
-
-    close: function () {
-      this.unbind();
-      this.remove();
-      this.collection.unbind();
     }
 
   });

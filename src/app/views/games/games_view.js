@@ -20,8 +20,8 @@
     initialize: function () {
       this.initMonths();
 
-      this.collection.on('sync', this.render, this);
-      this.collection.on('remove', this.render, this);
+      this.listenTo(this.collection, 'sync', this.render);
+      this.listenTo(this.collection, 'remove', this.render);
       this.collection.fetch();
     },
 
@@ -109,6 +109,7 @@
     },
 
     render: function () {
+      console.log('render list');
       this.$el.html(this.template({
         months: this.months.toJSON(),
         games: this.collection.toJSON()
@@ -133,12 +134,6 @@
       } else {
         return true;
       }
-    },
-
-    close: function () {
-      this.unbind();
-      this.remove();
-      this.collection.unbind();
     }
 
   });
