@@ -19,8 +19,8 @@
     initialize: function () {
       this.initMonths();
 
-      this.collection.on('sync', this.render, this);
-      this.collection.on('remove', this.render, this);
+      this.listenTo(this.collection, 'sync', this.render);
+      this.listenTo(this.collection, 'remove', this.render);
       this.collection.setInitPeriod();
       this.collection.fetch();
     },
@@ -139,12 +139,6 @@
       } else {
         return true;
       }
-    },
-
-    close: function () {
-      this.unbind();
-      this.remove();
-      this.collection.unbind();
     }
 
   });

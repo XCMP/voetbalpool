@@ -103,11 +103,6 @@
       return this.templateLegend({
         datasets: this.data.datasets
       });
-    },
-
-    close: function () {
-      this.unbind();
-      this.remove();
     }
 
   });
