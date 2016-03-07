@@ -109,7 +109,6 @@
     },
 
     render: function () {
-      console.log('render list');
       this.$el.html(this.template({
         months: this.months.toJSON(),
         games: this.collection.toJSON()
