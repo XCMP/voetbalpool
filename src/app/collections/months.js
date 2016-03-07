@@ -4,7 +4,7 @@
 
     model: VP.Models.Month,
 
-    url: 'http://localhost:3001/vp/prediction/months',
+    url: 'http://localhost:3001/vp/months',
 
     setPeriod: function () {
       var periodString = _utils.getPeriodAsString(VP.Data.selectedYearMonth);
