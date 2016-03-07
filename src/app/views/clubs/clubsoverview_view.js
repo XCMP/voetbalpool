@@ -4,11 +4,8 @@
 
     template: Handlebars.templates['clubsoverview.hbs'],
 
-    events: {
-    },
-
     initialize: function () {
-      this.collection.on('sync', this.randomizeOrderAndRender, this);
+      this.listenTo(this.collection, 'sync', this.randomizeOrderAndRender);
       this.collection.fetch();
     },
 
@@ -22,12 +19,6 @@
         clubs: this.collection.toJSON()
       }));
       return this;
-    },
-
-    close: function () {
-      this.unbind();
-      this.remove();
-      this.collection.unbind();
     }
 
   });
