@@ -1,4 +1,4 @@
-(function (_utils) {
+(function(_utils) {
 
   VP.Models.Club = Backbone.Model.extend({
 
@@ -10,7 +10,7 @@
       logoBase64Url: null
     },
 
-    getLogoUrl: function () {
+    getLogoUrl: function() {
       return this.get('logoBase64Url');
     }
 

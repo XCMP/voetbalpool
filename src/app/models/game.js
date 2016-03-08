@@ -1,4 +1,4 @@
-(function () {
+(function() {
 
   VP.Models.Game = Backbone.Model.extend({
 
@@ -14,7 +14,7 @@
       notes: null
     },
 
-    parse: function (model, xhr) {
+    parse: function(model, xhr) {
       model.played = (model.homeTeamGoals !== null && model.awayTeamGoals !== null);
       return model;
     }

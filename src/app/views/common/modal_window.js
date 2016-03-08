@@ -1,4 +1,4 @@
-(function (_events) {
+(function(_events) {
 
   VP.Views.ModalWindow = Backbone.View.extend({
 
@@ -18,7 +18,7 @@
       'click .back'  : 'back'
     },
 
-    initialize: function (options) {
+    initialize: function(options) {
       this.templateData.header = options.header;
       this.templateData.content = options.content;
       this.templateData.confirmDialog = options.confirmDialog;
@@ -28,34 +28,34 @@
       this.backFunction = options.back;
     },
 
-    render: function () {
+    render: function() {
       $('body').append(this.$el.html(this.template({
         data: this.templateData
       })));
       return this;
     },
 
-    close: function () {
+    close: function() {
       this.remove();
     },
 
-    yes: function () {
+    yes: function() {
       if (this.yesFunction) {
-        this.yesFunction ();
+        this.yesFunction();
       }
       this.close();
     },
 
-    no: function () {
+    no: function() {
       if (this.noFunction) {
-        this.noFunction ();
+        this.noFunction();
       }
       this.close();
     },
 
-    back: function () {
+    back: function() {
       if (this.backFunction) {
-        this.backFunction ();
+        this.backFunction();
       }
       this.close();
     }

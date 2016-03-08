@@ -1,20 +1,20 @@
-(function (_events, _utils) {
+(function(_events, _utils) {
 
   VP.Views.ClubsOverview = Backbone.View.extend({
 
     template: Handlebars.templates['clubsoverview.hbs'],
 
-    initialize: function () {
+    initialize: function() {
       this.listenTo(this.collection, 'sync', this.randomizeOrderAndRender);
       this.collection.fetch();
     },
 
-    randomizeOrderAndRender: function () {
+    randomizeOrderAndRender: function() {
       this.collection.reset(this.collection.shuffle(), {silent:true});
       this.render();
     },
 
-    render: function () {
+    render: function() {
       this.$el.html(this.template({
         clubs: this.collection.toJSON()
       }));

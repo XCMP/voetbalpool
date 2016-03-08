@@ -1,4 +1,4 @@
-(function (_utils) {
+(function(_utils) {
 
   VP.Views.AddUpdatePrediction = Backbone.View.extend({
 
@@ -8,7 +8,7 @@
       'click button.js_button_back': 'returnTo'
     },
 
-    initialize: function (options) {
+    initialize: function(options) {
       this.returnTo = options.returnTo;
       this.poolplayers = new VP.Collections.PoolPlayers();
       this.poolplayers.fetch();
@@ -18,7 +18,7 @@
       _.bindAll(this, 'handleResult');
     },
 
-    saveAddPrediction: function (ev) {
+    saveAddPrediction: function(ev) {
       ev.preventDefault();
       var formData = _utils.formDataToJSON($(ev.currentTarget));
       var options = {
@@ -27,11 +27,11 @@
       var result = this.model.save(formData, options);
     },
 
-    returnTo: function () {
+    returnTo: function() {
       VP.router.navigate('list/'+(this.returnTo? this.returnTo:'predictions'), {trigger: true});
     },
 
-    handleResult: function (object, response, options) {
+    handleResult: function(object, response, options) {
       _utils.removeFieldErrors();
       if (response.error) {
         _utils.handleErrors(response);
@@ -40,20 +40,20 @@
       }
     },
 
-    render: function () {
+    render: function() {
       this.$el.html(this.template(this.model.toJSON()));
       this.setPoolPlayerSelectOptions('poolplayer');
       this.setGameSelectOptions('game');
       return this;
     },
 
-    setPoolPlayerSelectOptions: function (field) {
+    setPoolPlayerSelectOptions: function(field) {
       var poolPlayerId = this.model.get(field);
       var poolPlayerSelect = this.getPoolPlayerSelectView(field, poolPlayerId);
       this.$('span.' + field).html(poolPlayerSelect);
     },
 
-    getPoolPlayerSelectView: function (name, selected) {
+    getPoolPlayerSelectView: function(name, selected) {
       var poolPlayers = new VP.Collections.PoolPlayers({});
       var view = new VP.Views.PoolPlayerSelect({
         name: name,
@@ -63,13 +63,13 @@
       return view.$el;
     },
 
-    setGameSelectOptions: function (field) {
+    setGameSelectOptions: function(field) {
       var gameId = this.model.get(field);
       var gameSelect = this.getGameSelectView(field, gameId);
       this.$('span.' + field).html(gameSelect);
     },
 
-    getGameSelectView: function (name, selected) {
+    getGameSelectView: function(name, selected) {
       var games = new VP.Collections.Games({all: true});
       var view = new VP.Views.GameSelect({
         name: name,

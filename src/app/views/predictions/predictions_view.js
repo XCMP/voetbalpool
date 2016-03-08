@@ -1,4 +1,4 @@
-(function (_events, _utils) {
+(function(_events, _utils) {
 
   VP.Views.Predictions = Backbone.View.extend({
 
@@ -16,7 +16,7 @@
       'click button.js_button_delete': 'confirmDeletePrediction'
     },
 
-    initialize: function () {
+    initialize: function() {
       this.initMonths();
 
       this.listenTo(this.collection, 'sync', this.render);
@@ -25,17 +25,17 @@
       this.collection.fetch();
     },
 
-    initMonths: function () {
+    initMonths: function() {
       this.months = new VP.Collections.Months({});
       var self = this;
       this.months.fetch().done(
-        function (){
+        function(){
           self.months.setPeriod(VP.Data.selectedYearMonth);
         }
       );
     },
 
-    yearMonthSelected: function (ev) {
+    yearMonthSelected: function(ev) {
       var selectedYearMonth = ev.currentTarget.value
       VP.Data.selectedYearMonth = _utils.getPeriod(selectedYearMonth);
       this.months.setPeriod();
@@ -43,7 +43,7 @@
       this.collection.fetch();
     },
 
-    selectPrediction: function (ev) {
+    selectPrediction: function(ev) {
       var $clickedPrediction = $(ev.currentTarget);
 
       // no prediction selcted
@@ -66,19 +66,19 @@
       this.setButtons();
     },
 
-    setSelectedPrediction: function ($clickedPrediction) {
+    setSelectedPrediction: function($clickedPrediction) {
       $clickedPrediction.addClass('selected');
       this.$selectedPrediction = $clickedPrediction;
     },
 
-    removeSelectedPrediction: function () {
+    removeSelectedPrediction: function() {
       if (this.$selectedPrediction) {
         this.$selectedPrediction.removeClass('selected');
         this.$selectedPrediction = null;
       }
     },
 
-    confirmDeletePrediction: function () {
+    confirmDeletePrediction: function() {
       var id = this.$selectedPrediction.data('id');
       var model = this.collection.get(id);
       this.confirmationView = _utils.showConfirmDialog({
@@ -88,23 +88,23 @@
       });
     },
 
-    deletePrediction: function () {
+    deletePrediction: function() {
       var id = this.$selectedPrediction.data('id');
       var model = this.collection.get(id);
       model.destroy();
       this.collection.remove(model);
     },
 
-    renderAddPrediction: function () {
+    renderAddPrediction: function() {
       VP.router.navigate('add/prediction',  {trigger: true});
     },
 
-    renderUpdatePrediction: function () {
+    renderUpdatePrediction: function() {
       var id = this.$selectedPrediction.data('id');
       VP.router.navigate('update/prediction/'+id,  {trigger: true});
     },
 
-    render: function () {
+    render: function() {
       var predictions = this.addGameIterationInfoPredictions(this.collection);
       this.$el.html(this.template({
         months: this.months.toJSON(),
@@ -113,9 +113,9 @@
       return this;
     },
 
-    addGameIterationInfoPredictions: function (predictions) {
+    addGameIterationInfoPredictions: function(predictions) {
       var previousGameId = null;
-      _.each(predictions.models, function (prediction, j) {
+      _.each(predictions.models, function(prediction, j) {
         var gameId = prediction.get('game')._id;
         prediction.get('game').first = gameId !== previousGameId;
         if (gameId !== previousGameId) {
@@ -125,14 +125,14 @@
       return predictions;
     },
 
-    setButtons: function () {
+    setButtons: function() {
       var disabledButtons = this.buttonsDisabled( this.$selectedPrediction? this.$selectedPrediction.attr('data-id') : null);
-      $(['.js_button_update', '.js_button_delete']).each(function (i, selector) {
+      $(['.js_button_update', '.js_button_delete']).each(function(i, selector) {
         $(selector).prop("disabled", disabledButtons);
       });
     },
 
-    buttonsDisabled: function (predictionId) {
+    buttonsDisabled: function(predictionId) {
       if (predictionId) {
         var matchDayTime = new Date(this.collection.get(predictionId).get('game').matchDay).getTime();
         return matchDayTime < Date.now();

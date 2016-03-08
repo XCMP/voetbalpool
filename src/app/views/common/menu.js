@@ -1,4 +1,4 @@
-(function (_events) {
+(function(_events) {
 
   VP.Views.Menu = Backbone.View.extend({
 
@@ -13,42 +13,42 @@
       'click li.clubs'       : 'showClubs'
     },
 
-    initialize: function () {
+    initialize: function() {
       this.render();
     },
 
-    showScore: function (ev) {
+    showScore: function(ev) {
       VP.router.navigate('show/score',  {trigger: true});
     },
 
-    showGames: function (ev) {
+    showGames: function(ev) {
       VP.router.navigate('list/games',  {trigger: true});
     },
 
-    showPredictions: function (ev) {
+    showPredictions: function(ev) {
       VP.router.navigate('list/predictions',  {trigger: true});
     },
 
-    showPoolPlayers: function (ev) {
+    showPoolPlayers: function(ev) {
       VP.router.navigate('list/poolplayers',  {trigger: true});
     },
 
-    showClubs: function (ev) {
+    showClubs: function(ev) {
       VP.router.navigate('list/clubs',  {trigger: true});
     },
 
-    setMenuItemActive: function (menuItemClass) {
+    setMenuItemActive: function(menuItemClass) {
       this.removeMenuItemActive();
       this.$el.find('li.'+menuItemClass).addClass('active');
     },
 
-    removeMenuItemActive: function () {
-      $('li').each(function (i, el) {
+    removeMenuItemActive: function() {
+      $('li').each(function(i, el) {
         $(el).removeClass('active');
       });
     },
 
-    render: function () {
+    render: function() {
       this.$el.html(this.template({
       }));
       return this;

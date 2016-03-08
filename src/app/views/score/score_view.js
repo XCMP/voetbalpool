@@ -1,4 +1,4 @@
-(function (_events, _utils) {
+(function(_events, _utils) {
 
   VP.Views.Score = Backbone.View.extend({
 
@@ -12,29 +12,29 @@
       'change .month_select': 'yearMonthSelected'
     },
 
-    initialize: function () {
+    initialize: function() {
       this.initMonths();
       this.getChartData();
     },
 
-    initMonths: function () {
+    initMonths: function() {
       this.months = new VP.Collections.Months({});
       var self = this;
       this.months.fetch().done(
-        function (){
+        function(){
           self.months.setPeriod(VP.Data.selectedYearMonth);
         }
       );
     },
 
-    yearMonthSelected: function (ev) {
+    yearMonthSelected: function(ev) {
       var selectedYearMonth = ev.currentTarget.value
       VP.Data.selectedYearMonth = _utils.getPeriod(selectedYearMonth);
       this.months.setPeriod();
       this.getChartData();
     },
 
-    render: function () {
+    render: function() {
       this.$el.html(this.template({
         months: this.months.toJSON(),
       }));
@@ -42,12 +42,12 @@
       return this;
     },
 
-    getChartData: function () {
+    getChartData: function() {
       this.data = { labels: [], datasets: [] };
       var self = this;
       var predictions = new VP.Collections.Predictions();
-      predictions.fetch().done(function (predictions, e) {
-        _.map(predictions, function (prediction, i) {
+      predictions.fetch().done(function(predictions, e) {
+        _.map(predictions, function(prediction, i) {
           if (prediction.game.homeTeamGoals !== null && prediction.game.awayTeamGoals !== null) {
             self.addData(prediction);
           }
@@ -56,19 +56,19 @@
       });
     },
 
-    addData: function (prediction) {
+    addData: function(prediction) {
       this.addGame(prediction.game);
       this.addScores(prediction);
     },
 
-    addGame: function (game) {
+    addGame: function(game) {
       var gameLabel = game.homeTeam.name+'-'+game.awayTeam.name;
       if (!_.contains(this.data.labels, gameLabel)) {
         this.data.labels.push(gameLabel);
       }
     },
 
-    addScores: function (prediction) {
+    addScores: function(prediction) {
       var name = prediction.poolplayer.name
       var poolplayerData = _.findWhere(this.data.datasets, {label: name});
       if (poolplayerData) {
@@ -88,7 +88,7 @@
       }
     },
 
-    setChart: function () {
+    setChart: function() {
       if ($('#scoreChart').length > 0 && this.data.datasets.length > 0) {
         var ctx = $('#scoreChart').get(0).getContext('2d');
         var scoreChart = new Chart(ctx).Line(this.data, { responsive: true});
@@ -99,7 +99,7 @@
       return scoreChart;
     },
 
-    getLegend: function () {
+    getLegend: function() {
       return this.templateLegend({
         datasets: this.data.datasets
       });

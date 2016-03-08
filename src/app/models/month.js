@@ -1,4 +1,4 @@
-(function (_utils) {
+(function(_utils) {
 
   VP.Models.Month = Backbone.Model.extend({
 
@@ -6,7 +6,7 @@
       yyyymm: null
     },
 
-    parse: function (model, xhr) {
+    parse: function(model, xhr) {
       model.text = _utils.getMonthYearText(model.yyyymm);
       return model;
     }

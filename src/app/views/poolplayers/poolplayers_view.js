@@ -1,4 +1,4 @@
-(function (_events, _utils) {
+(function(_events, _utils) {
 
   VP.Views.PoolPlayers = Backbone.View.extend({
 
@@ -16,13 +16,13 @@
       'click button.js_button_prediction': 'renderAddPrediction'
     },
 
-    initialize: function () {
+    initialize: function() {
       this.listenTo(this.collection, 'sync', this.render);
       this.listenTo(this.collection, 'remove', this.render);
       this.collection.fetch();
     },
 
-    selectPoolPlayer: function (ev) {
+    selectPoolPlayer: function(ev) {
       var $clickedPoolPlayer = $(ev.currentTarget);
 
       // no pool player selcted
@@ -45,20 +45,20 @@
       this.setButtons();
     },
 
-    renderAddPoolPlayer: function () {
+    renderAddPoolPlayer: function() {
       VP.router.navigate('add/poolplayer',  {trigger: true});
     },
 
-    renderAddPrediction: function () {
+    renderAddPrediction: function() {
       VP.router.navigate('add/prediction?type=poolplayer&id=' + this.$selectedPoolPlayer.data('id') + '&returnTo=poolplayers',  {trigger: true});
     },
 
-    renderUpdatePoolPlayer: function () {
+    renderUpdatePoolPlayer: function() {
       var id = this.$selectedPoolPlayer.data('id');
       VP.router.navigate('update/poolplayer/'+id,  {trigger: true});
     },
 
-    confirmDeletePoolPlayer: function () {
+    confirmDeletePoolPlayer: function() {
       var id = this.$selectedPoolPlayer.data('id');
       var model = this.collection.get(id);
       this.confirmationView = _utils.showConfirmDialog({
@@ -68,35 +68,35 @@
       });
     },
 
-    deletePoolPlayer: function () {
+    deletePoolPlayer: function() {
       var id = this.$selectedPoolPlayer.data('id');
       var model = this.collection.get(id);
       model.destroy();
       this.collection.remove(model);
     },
 
-    removeSelectedPoolPlayer: function () {
+    removeSelectedPoolPlayer: function() {
       if (this.$selectedPoolPlayer) {
         this.$selectedPoolPlayer.removeClass('selected');
         this.$selectedPoolPlayer = null;
       }
     },
 
-    setSelectedPoolPlayer: function ($clickedPoolPlayer) {
+    setSelectedPoolPlayer: function($clickedPoolPlayer) {
       $clickedPoolPlayer.addClass('selected');
       this.$selectedPoolPlayer = $clickedPoolPlayer;
     },
 
-    render: function () {
+    render: function() {
       this.$el.html(this.template({
         poolplayers: this.collection.toJSON()
       }));
       return this;
     },
 
-    setButtons: function () {
+    setButtons: function() {
       var self = this;
-      $(['.js_button_update', '.js_button_delete', '.js_button_prediction']).each(function (i, selector) {
+      $(['.js_button_update', '.js_button_delete', '.js_button_prediction']).each(function(i, selector) {
         $(selector).prop("disabled", self.$selectedPoolPlayer === null? true:false);
       });
     }

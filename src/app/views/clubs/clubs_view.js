@@ -1,4 +1,4 @@
-(function (_events, _utils) {
+(function(_events, _utils) {
 
   VP.Views.Clubs = Backbone.View.extend({
 
@@ -15,13 +15,13 @@
       'click button.js_button_delete': 'confirmDeleteClub'
     },
 
-    initialize: function () {
+    initialize: function() {
       this.listenTo(this.collection, 'sync', this.render);
       this.listenTo(this.collection, 'remove', this.render);
       this.collection.fetch();
     },
 
-    selectClub: function (ev) {
+    selectClub: function(ev) {
       var $clickedClub = $(ev.currentTarget);
 
       // no Club selcted
@@ -44,19 +44,19 @@
       this.setButtons();
     },
 
-    setSelectedClub: function ($clickedClub) {
+    setSelectedClub: function($clickedClub) {
       $clickedClub.addClass('selected');
       this.$selectedClub = $clickedClub;
     },
 
-    removeSelectedClub: function () {
+    removeSelectedClub: function() {
       if (this.$selectedClub) {
         this.$selectedClub.removeClass('selected');
         this.$selectedClub = null;
       }
     },
 
-    confirmDeleteClub: function () {
+    confirmDeleteClub: function() {
       var id = this.$selectedClub.data('id');
       var model = this.collection.get(id);
       this.confirmationView = _utils.showConfirmDialog({
@@ -66,32 +66,32 @@
       });
     },
 
-    deleteClub: function () {
+    deleteClub: function() {
       var id = this.$selectedClub.data('id');
       var model = this.collection.get(id);
       model.destroy();
       this.collection.remove(model);
     },
 
-    renderAddClub: function () {
+    renderAddClub: function() {
       VP.router.navigate('add/club',  {trigger: true});
     },
 
-    renderUpdateClub: function () {
+    renderUpdateClub: function() {
       var id = this.$selectedClub.data('id');
       VP.router.navigate('update/club/'+id,  {trigger: true});
     },
 
-    render: function () {
+    render: function() {
       this.$el.html(this.template({
         clubs: this.collection.toJSON()
       }));
       return this;
     },
 
-    setButtons: function () {
+    setButtons: function() {
       var self = this;
-      $(['.js_button_update', '.js_button_delete']).each(function (i, selector) {
+      $(['.js_button_update', '.js_button_delete']).each(function(i, selector) {
         $(selector).prop("disabled", self.$selectedClub === null? true:false);
       });
     }
