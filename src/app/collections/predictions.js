@@ -1,4 +1,4 @@
-(function (_utils) {
+(function() {
 
   VP.Collections.Predictions = Backbone.Collection.extend({
 
@@ -13,7 +13,7 @@
     },
 
     comparator: function (model) {
-      // sort by matchday descending
+      // sort by matchday ascending
       return new Date(model.get('game').matchDay).getTime();
     },
 
@@ -27,4 +27,4 @@
 
   });
 
-})(VP.utils);
+})();
