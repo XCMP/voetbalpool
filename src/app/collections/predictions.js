@@ -4,24 +4,24 @@
 
     model: VP.Models.Prediction,
 
-    url: function () {
+    url: function() {
       return 'http://localhost:3001/vp/predictions/' + this.period.year + '/' + this.period.month;
     },
 
-    initialize: function () {
+    initialize: function() {
       this.period = VP.Data.selectedYearMonth;
     },
 
-    comparator: function (model) {
+    comparator: function(model) {
       // sort by matchday ascending
       return new Date(model.get('game').matchDay).getTime();
     },
 
-    setInitPeriod: function () {
+    setInitPeriod: function() {
       this.period = VP.Data.selectedYearMonth;
     },
 
-    setPeriod: function () {
+    setPeriod: function() {
       this.period = VP.Data.selectedYearMonth;
     }
 

@@ -1,4 +1,4 @@
-(function (_utils) {
+(function(_utils) {
 
   VP.Collections.Months = Backbone.Collection.extend({
 
@@ -6,9 +6,9 @@
 
     url: 'http://localhost:3001/vp/months',
 
-    setPeriod: function () {
+    setPeriod: function() {
       var periodString = _utils.getPeriodAsString(VP.Data.selectedYearMonth);
-      _.each(this.models, function (model) {
+      _.each(this.models, function(model) {
         model.set('selected', model.get('yyyymm') === periodString);
       });
     }

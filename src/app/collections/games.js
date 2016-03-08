@@ -1,10 +1,10 @@
-(function (_utils) {
+(function() {
 
   VP.Collections.Games = Backbone.Collection.extend({
 
     model: VP.Models.Game,
 
-    url: function () {
+    url: function() {
       if (this.period) {
         return 'http://localhost:3001/vp/games/' + this.period.year + '/' + this.period.month;
       } else {
@@ -12,16 +12,16 @@
       }
     },
 
-    initialize: function (options) {
+    initialize: function(options) {
       if (!options) {
         this.period = VP.Data.selectedYearMonth;
       }
     },
 
-    setPeriod: function (periodString) {
+    setPeriod: function(periodString) {
       this.period = VP.Data.selectedYearMonth;
     }
 
   });
 
-})(VP.utils);
+})();
