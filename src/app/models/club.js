@@ -1,4 +1,4 @@
-(function(_utils) {
+(function() {
 
   VP.Models.Club = Backbone.Model.extend({
 
@@ -16,4 +16,4 @@
 
   });
 
-})(VP.utils);
+})();
