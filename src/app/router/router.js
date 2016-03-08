@@ -1,4 +1,4 @@
-(function(_events) {
+(function() {
 
   VP.Router = Backbone.Router.extend({
 
@@ -232,4 +232,4 @@
 
   });
 
-})(VP.Events);
+})();
