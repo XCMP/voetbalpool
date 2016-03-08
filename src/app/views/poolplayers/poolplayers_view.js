@@ -1,4 +1,4 @@
-(function(_events, _utils) {
+(function(_utils) {
 
   VP.Views.PoolPlayers = Backbone.View.extend({
 
@@ -103,4 +103,4 @@
 
   });
 
-})(VP.Events, VP.utils);
+})(VP.utils);

@@ -1,4 +1,4 @@
-(function(_events, _utils) {
+(function(_utils) {
 
   VP.Views.Games = Backbone.View.extend({
 
@@ -137,4 +137,4 @@
 
   });
 
-})(VP.Events, VP.utils);
+})(VP.utils);

@@ -1,4 +1,4 @@
-(function(_events) {
+(function() {
 
   VP.Views.ModalWindow = Backbone.View.extend({
 
@@ -62,4 +62,4 @@
 
   });
 
-})(VP.Events);
+})();

@@ -1,4 +1,4 @@
-(function(_events) {
+(function() {
 
   VP.Views.Menu = Backbone.View.extend({
 
@@ -56,4 +56,4 @@
 
   });
 
-})(VP.Events);
+})();

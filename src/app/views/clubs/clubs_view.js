@@ -1,4 +1,4 @@
-(function(_events, _utils) {
+(function(_utils) {
 
   VP.Views.Clubs = Backbone.View.extend({
 
@@ -98,4 +98,4 @@
 
   });
 
-})(VP.Events, VP.utils);
+})(VP.utils);
