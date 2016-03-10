@@ -1,6 +1,8 @@
 (function(express, path) {
 
-  var PORT = 3000;
+  var PORT = process.env.OPENSHIFT_NODEJS_PORT || 3000
+  var IP = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1'
+
   var server = express();
   var router = express.Router();
 
@@ -12,7 +14,8 @@
 
   server.use('/',router);
 
-  server.listen(PORT);
-  console.log('Voetbalpool frontend server running on PORT %s', PORT);
+  server.listen(PORT, IP);
+
+  console.log('Voetbalpool frontend server running on %s:%s', IP, PORT);
 
 })(require('express'), require('path'));
