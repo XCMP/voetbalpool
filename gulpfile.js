@@ -24,8 +24,8 @@ var paths = {
     app: [
       'src/app/voetbalpool-app.js',
 
+      'src/app/common/config.js',
       'src/app/common/utils.js',
-      'src/app/common/validation.js',
       'src/app/common/helpers.js',
 
       'src/app/models/poolplayer.js',
