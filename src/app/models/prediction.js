@@ -2,7 +2,7 @@
 
   VP.Models.Prediction = Backbone.Model.extend({
 
-    urlRoot: 'http://localhost:3001/vp/prediction',
+    urlRoot: 'http://localhost:3001/vp/predictions',
     idAttribute: '_id',
 
     defaults: {

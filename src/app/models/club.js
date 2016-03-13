@@ -2,7 +2,7 @@
 
   VP.Models.Club = Backbone.Model.extend({
 
-    urlRoot: 'http://localhost:3001/vp/club',
+    urlRoot: 'http://localhost:3001/vp/clubs',
     idAttribute: '_id',
 
     defaults: {

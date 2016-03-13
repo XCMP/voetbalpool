@@ -2,7 +2,7 @@
 
   VP.Models.Game = Backbone.Model.extend({
 
-    urlRoot: 'http://localhost:3001/vp/game',
+    urlRoot: 'http://localhost:3001/vp/games',
     idAttribute: '_id',
 
     defaults: {

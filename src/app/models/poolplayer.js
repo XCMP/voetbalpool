@@ -2,7 +2,7 @@
 
   VP.Models.PoolPlayer = Backbone.Model.extend({
 
-    urlRoot: 'http://localhost:3001/vp/poolplayer',
+    urlRoot: 'http://localhost:3001/vp/poolplayers',
     idAttribute: '_id',
 
     defaults: {
