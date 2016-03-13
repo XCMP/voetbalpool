@@ -1,9 +1,10 @@
 (function() {
 
-  VP.Models.Game = Backbone.Model.extend({
+  VP.Models.Game = VP.Models.Base.extend({
 
-    urlRoot: 'http://localhost:3001/vp/games',
-    idAttribute: '_id',
+    url: function() {
+      return this.urlRoot + '/vp/games';
+    },
 
     defaults: {
       matchDay: null,

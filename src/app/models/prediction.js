@@ -1,9 +1,10 @@
 (function() {
 
-  VP.Models.Prediction = Backbone.Model.extend({
+  VP.Models.Prediction = VP.Models.Base.extend({
 
-    urlRoot: 'http://localhost:3001/vp/predictions',
-    idAttribute: '_id',
+    url: function() {
+      return this.urlRoot + '/vp/predictions';
+    },
 
     defaults: {
       poolplayer: null,
