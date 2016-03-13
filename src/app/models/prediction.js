@@ -1,8 +1,8 @@
-(function() {
+(function(_config) {
 
   VP.Models.Prediction = Backbone.Model.extend({
 
-    urlRoot: 'http://localhost:3001/vp/predictions',
+    urlRoot: _config.BACKEND_HOSTNAME_PORT + '/vp/predictions',
     idAttribute: '_id',
 
     defaults: {
@@ -15,4 +15,4 @@
 
   });
 
-})();
+})(VP.Config);

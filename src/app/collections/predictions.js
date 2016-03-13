@@ -1,11 +1,11 @@
-(function() {
+(function(_config) {
 
   VP.Collections.Predictions = Backbone.Collection.extend({
 
     model: VP.Models.Prediction,
 
     url: function() {
-      return 'http://localhost:3001/vp/predictions/' + this.period.year + '/' + this.period.month;
+      return _config.BACKEND_HOSTNAME_PORT + '/vp/predictions/' + this.period.year + '/' + this.period.month;
     },
 
     initialize: function() {
@@ -27,4 +27,4 @@
 
   });
 
-})();
+})(VP.Config);

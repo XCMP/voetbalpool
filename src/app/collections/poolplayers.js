@@ -1,11 +1,11 @@
-(function() {
+(function(_config) {
 
   VP.Collections.PoolPlayers = Backbone.Collection.extend({
 
     model: VP.Models.PoolPlayer,
 
-    url: 'http://localhost:3001/vp/poolplayers'
+    url: _config.BACKEND_HOSTNAME_PORT + '/vp/poolplayers'
 
   });
 
-})();
+})(VP.Config);

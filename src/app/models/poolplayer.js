@@ -1,8 +1,8 @@
-(function(_utils) {
+(function(_utils, _config) {
 
   VP.Models.PoolPlayer = Backbone.Model.extend({
 
-    urlRoot: 'http://localhost:3001/vp/poolplayers',
+    urlRoot: _config.BACKEND_HOSTNAME_PORT + '/vp/poolplayers',
     idAttribute: '_id',
 
     defaults: {
@@ -18,4 +18,4 @@
     
   });
 
-})(VP.utils);
+})(VP.utils, VP.Config);

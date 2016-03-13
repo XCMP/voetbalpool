@@ -1,8 +1,8 @@
-(function() {
+(function(_config) {
 
   VP.Models.Game = Backbone.Model.extend({
 
-    urlRoot: 'http://localhost:3001/vp/games',
+    urlRoot: _config.BACKEND_HOSTNAME_PORT + '/vp/games',
     idAttribute: '_id',
 
     defaults: {
@@ -21,4 +21,4 @@
 
   });
 
-})();
+})(VP.Config);

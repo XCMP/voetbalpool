@@ -1,15 +1,15 @@
-(function() {
+(function(_config) {
 
   VP.Collections.Games = Backbone.Collection.extend({
 
     model: VP.Models.Game,
 
     url: function() {
+      var url = _config.BACKEND_HOSTNAME_PORT + '/vp/games';
       if (this.period) {
-        return 'http://localhost:3001/vp/games/' + this.period.year + '/' + this.period.month;
-      } else {
-        return 'http://localhost:3001/vp/games';
+        return url + '/' + this.period.year + '/' + this.period.month;
       }
+      return url;
     },
 
     initialize: function(options) {
@@ -24,4 +24,4 @@
 
   });
 
-})();
+})(VP.Config);

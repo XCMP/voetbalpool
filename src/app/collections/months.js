@@ -1,10 +1,10 @@
-(function(_utils) {
+(function(_utils, _config) {
 
   VP.Collections.Months = Backbone.Collection.extend({
 
     model: VP.Models.Month,
 
-    url: 'http://localhost:3001/vp/months',
+    url: _config.BACKEND_HOSTNAME_PORT + '/vp/months',
 
     setPeriod: function() {
       var periodString = _utils.getPeriodAsString(VP.Data.selectedYearMonth);
@@ -15,4 +15,4 @@
 
   });
 
-})(VP.utils);
+})(VP.utils, VP.Config);
