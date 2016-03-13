@@ -1,10 +1,9 @@
 (function(_utils) {
 
-  VP.Models.PoolPlayer = VP.Models.Base.extend({
+  VP.Models.PoolPlayer = Backbone.Model.extend({
 
-    url: function() {
-      return this.urlRoot + '/vp/poolplayers';
-    },
+    urlRoot: 'http://localhost:3001/vp/poolplayers',
+    idAttribute: '_id',
 
     defaults: {
       name: null,

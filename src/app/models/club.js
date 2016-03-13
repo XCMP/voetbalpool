@@ -1,11 +1,10 @@
 (function() {
 
-  VP.Models.Club = VP.Models.Base.extend({
+  VP.Models.Club = Backbone.Model.extend({
 
-    url: function() {
-      return this.urlRoot + '/vp/clubs';
-    },
-  
+    urlRoot: 'http://localhost:3001/vp/clubs',
+    idAttribute: '_id',
+
     defaults: {
       name: null,
       logoBase64Url: null
