@@ -1,4 +1,4 @@
 VP.Config = {
-    BACKEND_HOSTNAME_PORT: 'http://localhost:3001'
+  BACKEND_HOSTNAME_PORT: 'http://localhost:3001'
 },
 
