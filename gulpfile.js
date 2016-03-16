@@ -1,18 +1,34 @@
 
 // USED MODULES
 var gulp       = require('gulp'),
+    gulpif     = require('gulp-if'),
     concat     = require('gulp-concat'),
+    replace    = require('gulp-replace'),
     uglify     = require('gulp-uglify'),
+    minifiycss = require('gulp-clean-css'),
     handlebars = require('gulp-handlebars'),
     livereload = require('gulp-livereload'),
     shell      = require('gulp-shell'),
-    war        = require('gulp-war'),
     zip        = require('gulp-zip'),
     del        = require('del');
+
+// ENVIRONMENTS
+var environments = {
+  production: {
+    backend_endpoint: 'http://voetbalpoolbackend-xcmp.rhcloud.com'
+  },
+  development: {
+    backend_endpoint: 'http://localhost:3001'
+  },
+  selected: null
+}
 
 // CONSTANTS
 var paths = {
   scripts: {
+    config: [
+      'src/config/config.js'
+    ],
     libs: [
       'node_modules/jquery/dist/jquery.min.js',
       'node_modules/underscore/underscore.js',
@@ -98,13 +114,24 @@ var paths = {
   images: 'src/images/*.*'
 };
 
+// CHECK BUILDING ENVIRONMENT and set environment [production or development]
+var production = false;
+process.argv.forEach(function (param, index, array) {
+  if (param === '--env') {
+    production = array[index + 1] === 'production';
+  }
+});
+environments.selected = production ? environments.production : environments.development;
+
 // TASKS
 gulp.task('clean', function() {
   del(['dist']);
 });
 
-gulp.task('clean-war', function() {
-  del(['war']);
+gulp.task('config', function() {
+  return gulp.src(['src/config/config.js'])
+    .pipe(replace('${BACKEND_ENDPOINT}', environments.selected.backend_endpoint))
+    .pipe(gulp.dest('src/app/common'));
 });
 
 gulp.task('base', function() {
@@ -122,7 +149,7 @@ gulp.task('scripts-libs', function() {
 
 gulp.task('scripts-app', function() {
   return gulp.src(paths.scripts.app)
-    //.pipe(uglify())
+    .pipe(gulpif(production,  uglify()))
     .pipe(concat('voetbalpool-app.min.js'))
     .pipe(gulp.dest('dist/js'))
     .pipe(livereload());
@@ -131,6 +158,7 @@ gulp.task('scripts-app', function() {
 gulp.task('styles', function() {
   return gulp.src(paths.styles)
     .pipe(concat('voetbalpool-app.css'))
+    .pipe(gulpif(production,minifiycss()))
     .pipe(gulp.dest('dist/css'))
     .pipe(livereload());
 });
@@ -152,24 +180,17 @@ gulp.task('templates', function() {
     .pipe(livereload());
 });
 
-gulp.task('war', ['build', 'clean-war'], function () {
-    gulp.src(['dist/**/*.*'])
-        .pipe(war({
-            welcome: 'index.html',
-            displayName: 'voetbalpool',
-        }))
-        .pipe(zip('voetbalpool.war'))
-        .pipe(gulp.dest("war"));
- });
-
-gulp.task('build', ['clean', 'base', 'scripts-libs', 'scripts-app', 'styles', 'images', 'templates'], function() {
-  console.log('Build done.')
+gulp.task('build', ['clean', 'config', 'base', 'scripts-libs', 'scripts-app', 'styles', 'images', 'templates'], function() {
+  var env = (production?'production':'development');
+  console.log('Build for ' + env + ' done.')
+  console.log('configuration: ', environments.selected);
 });
 
 gulp.task('watch', ['build'], function() {
   livereload.listen();
   gulp.watch(paths.scripts.lib, ['scripts-libs']);
   gulp.watch(paths.scripts.app, ['scripts-app']);
+  gulp.watch(paths.scripts.config, ['build']);
   gulp.watch(['index.html'], ['base']);
   gulp.watch(paths.styles, ['styles']);
   gulp.watch(paths.templatesWatch, ['templates']);
