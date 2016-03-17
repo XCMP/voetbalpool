@@ -12,17 +12,6 @@ var gulp       = require('gulp'),
     zip        = require('gulp-zip'),
     del        = require('del');
 
-// ENVIRONMENTS
-var environments = {
-  production: {
-    backend_endpoint: 'http://voetbalpoolbackend-xcmp.rhcloud.com'
-  },
-  development: {
-    backend_endpoint: 'http://localhost:3001'
-  },
-  selected: null
-}
-
 // CONSTANTS
 var paths = {
   scripts: {
@@ -114,26 +103,26 @@ var paths = {
   images: 'src/images/*.*'
 };
 
-// CHECK BUILDING ENVIRONMENT and set environment [production or development]
+// CHECK BUILDING ENVIRONMENT [production or development]
 var production = false;
 process.argv.forEach(function (param, index, array) {
   if (param === '--env') {
     production = array[index + 1] === 'production';
   }
 });
-environments.selected = production ? environments.production : environments.development;
 
-// TASKS
-gulp.task('clean', function() {
-  del(['dist']);
+// CONFIG TASK
+gulp.task('config', function() {
+  var backend_endpoint = (production? 'http://voetbalpoolbackend-xcmp.rhcloud.com' : 'http://localhost:3001');
+  console.log(`Setting backend endpoint to ${backend_endpoint}`);
+  gulp.src(['src/config/config.js'])
+    .pipe(replace('${BACKEND_ENDPOINT}', backend_endpoint))
+    .pipe(gulp.dest('src/app/common'));
 });
 
-gulp.task('config', function() {
-  var env = (production?'production':'development');
-  console.log('configuration: ', environments.selected);
-  gulp.src(['src/config/config.js'])
-    .pipe(replace('${BACKEND_ENDPOINT}', environments.selected.backend_endpoint))
-    .pipe(gulp.dest('src/app/common'));
+// BUILD TASKS
+gulp.task('clean', function() {
+  del(['dist']);
 });
 
 gulp.task('base', function() {
