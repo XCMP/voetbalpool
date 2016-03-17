@@ -129,7 +129,9 @@ gulp.task('clean', function() {
 });
 
 gulp.task('config', function() {
-  return gulp.src(['src/config/config.js'])
+  var env = (production?'production':'development');
+  console.log('configuration: ', environments.selected);
+  gulp.src(['src/config/config.js'])
     .pipe(replace('${BACKEND_ENDPOINT}', environments.selected.backend_endpoint))
     .pipe(gulp.dest('src/app/common'));
 });
@@ -180,10 +182,8 @@ gulp.task('templates', function() {
     .pipe(livereload());
 });
 
-gulp.task('build', ['clean', 'config', 'base', 'scripts-libs', 'scripts-app', 'styles', 'images', 'templates'], function() {
-  var env = (production?'production':'development');
-  console.log('Build for ' + env + ' done.')
-  console.log('configuration: ', environments.selected);
+gulp.task('build', ['clean', 'base', 'scripts-libs', 'scripts-app', 'styles', 'images', 'templates'], function() {
+  console.log('Build done.')
 });
 
 gulp.task('watch', ['build'], function() {
