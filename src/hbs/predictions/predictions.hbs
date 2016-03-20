@@ -23,7 +23,7 @@
         <tr class="prediction" data-id="{{_id}}">
           {{#with game}}
             {{#if first}}
-              <td>{{formatDate matchDay format='ddd DD-MM-YY HH:mm'}}</td>
+              <td>{{formatDate matchDay format='ddd DD MMM YYYY HH:mm'}}</td>
               <td>
                 {{#with homeTeam}}
                   <img class="small" alt="{{name}}" src="{{logoBase64Url}}" /> {{name}}
@@ -33,7 +33,7 @@
                   <img class="small" alt="{{name}}" src="{{logoBase64Url}}" /> {{name}}
                 {{/with}}
               </td>
-              <td>{{homeTeamGoals}}-{{awayTeamGoals}}</td>
+              <td>{{homeTeamGoals}} - {{awayTeamGoals}}</td>
             {{else}}
               <td colspan="3"></td>
             {{/if}}
