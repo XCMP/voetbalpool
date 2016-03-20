@@ -1,0 +1,38 @@
+@media (max-width: 786px) {
+  .content {
+    width: 100%;
+    display: block;
+    text-align: center;
+  }
+  .menu {
+    display: none;
+  }
+}
+
+@media (min-width: 786px) {
+  .content {
+    width: 85%;
+    float: right;
+    display: inline-block;
+  }
+  .menu {
+    width: 15%;
+    display: inline-block;
+  }
+}
+
+body {
+  font-family: Impact;
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  margin: 0em;
+}
+
+.main {
+  width: 100%;
+}
+
+.header {
+  padding-bottom: .5em;
+}
+

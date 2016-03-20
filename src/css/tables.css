@@ -36,5 +36,5 @@ tbody tr:hover td:first-child {
   display: inline-block;
   overflow: scroll;
   overflow-x: hidden;
-  height: 90%;
+  max-height: 90%;
 }

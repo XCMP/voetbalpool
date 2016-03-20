@@ -6,25 +6,6 @@ button:focus {
     outline: none;
 }
 
-body {
-  font-family: Impact;
-  padding: 1em;
-}
-
-.header {
-  padding-bottom: .5em;
-}
-
-.menu {
-  width: 10%;
-  float: left;
-}
-
-.content {
-  width: 89.75%;
-  float: right;
-}
-
 .right {
   text-align: right;
 }
