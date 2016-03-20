@@ -12,11 +12,6 @@
       this.period = VP.Data.selectedYearMonth;
     },
 
-    comparator: function(model) {
-      // sort by matchday ascending
-      return new Date(model.get('game').matchDay).getTime();
-    },
-
     setInitPeriod: function() {
       this.period = VP.Data.selectedYearMonth;
     },
