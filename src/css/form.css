@@ -7,7 +7,7 @@ legend {
 }
 
 input, select, textarea {
-  font-family: Impact;
+  font-family: MarkerFelt-Wide;
   font-size: x-large;
   border-style: groove;
 }
@@ -25,7 +25,7 @@ select.club_select option {
 }
 
 textarea {
-  font-family: Impact;
+  font-family: MarkerFelt-Wide;
   font-size: x-large;
   border-style: groove;
 }
