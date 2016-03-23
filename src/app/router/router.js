@@ -19,6 +19,7 @@
     },
 
     initialize: function() {
+      new VP.Views.OffCanvasMenu();
       this.menuView = new VP.Views.Menu();
     },
 

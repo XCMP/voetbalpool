@@ -1,5 +1,56 @@
 (function() {
 
+  VP.Views.OffCanvasMenu = Backbone.View.extend({
+
+    el: '.main',
+    open: false,
+
+    events: {
+      'click .off-canvas-menu-button' : 'handleRenderingMenu',
+      'click .menu li'                : 'handleCloseMenu'
+    },
+
+    initialize: function() {
+      this.menuButton = $('.off-canvas-menu-button');
+      this.menu = $('.menu');
+    },
+
+    handleRenderingMenu: function(ev) {
+      if (this.open) {
+        this.handleCloseMenu();
+      } else {
+        this.handleOpenMenu();
+      }
+    },
+
+    handleOpenMenu: function(ev) {
+      this.menuButton.hide();
+      this.menu.show(100);
+      this.menu.addClass('off-canvas');
+      this.setGradient();
+      this.open = true;
+    },
+
+    handleCloseMenu: function(ev) {
+      if (this.menu.hasClass('off-canvas')) {
+        this.menuButton.show();
+        this.menu.hide();
+        this.menu.removeClass('off-canvas');
+        this.removeGradient();
+        this.open = false;
+      }
+    },
+
+    setGradient: function() {
+      this.$el.wrap('<div class=\'overlay\'></div>');
+    },
+
+    removeGradient: function() {
+      this.$el.unwrap();
+    }
+
+  });
+
   VP.Views.Menu = Backbone.View.extend({
 
     el: '.menu',
