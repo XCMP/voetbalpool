@@ -8,6 +8,15 @@
     display: none;
     position: fixed;
   }
+  .s-i {
+    display: inline;
+  }
+  .s-b {
+    display: block;
+  }
+  .l-i, .l-b {
+    display: none;
+  }
 }
 
 @media (min-width: 786px) {
@@ -19,6 +28,15 @@
   .menu {
     width: 15%;
     display: inline-block;
+  }
+  .s-i, .s-b {
+    display: none;
+  }
+  .l-i {
+    display: inline;
+  }
+  .l-b {
+    display: block;
   }
 }
 

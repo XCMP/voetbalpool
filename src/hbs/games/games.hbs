@@ -13,20 +13,21 @@
         <th>Datum</th>
         <th>Wedstrijd</th>
         <th>Uitslag</th>
-        <th>Notities</th>
+        <th class="l-b">Notities</th>
       </tr>
     </thead>
     <tbody>
       {{#each games}}
         <tr class="game" data-id="{{_id}}">
-          <td class="right">{{formatDate matchDay format='ddd DD MMM YYYY HH:mm'}}</td>
+          <td class="right l-b">{{formatDate matchDay format='ddd DD MMM YYYY HH:mm'}}</td>
+          <td class="right s-b">{{formatDate matchDay format='DD-MM HH:mm'}}</td>
           <td>
             {{#with homeTeam}}
-              <img class="small" alt="{{name}}" src="{{logoBase64Url}}" /> {{name}}
+              <img class="small" alt="{{name}}" src="{{logoBase64Url}}" /> <span class="l-i">{{name}}</span>
             {{/with}}
             -
             {{#with awayTeam}}
-              <img class="small" alt="{{name}}" src="{{logoBase64Url}}" /> {{name}}
+              <img class="small" alt="{{name}}" src="{{logoBase64Url}}" /> <span class="l-i">{{name}}</span>
             {{/with}}
           </td>
           <td>
@@ -34,7 +35,7 @@
               {{homeTeamGoals}} - {{awayTeamGoals}}
             {{/if}}
           </td>
-          <td>{{notes}}</td>
+          <td class="l-b">{{notes}}</td>
         </tr>
       {{/each}}
     </tbody>
