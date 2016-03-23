@@ -25,7 +25,7 @@
 
     handleOpenMenu: function(ev) {
       this.menuButton.hide();
-      this.menu.show(100);
+      this.menu.show(200);
       this.menu.addClass('off-canvas');
       this.setGradient();
       this.open = true;
@@ -43,9 +43,14 @@
 
     setGradient: function() {
       this.$el.wrap('<div class=\'overlay\'></div>');
+      var self = this;
+      $('.overlay').on('click', function(ev) {
+        self.handleCloseMenu();
+      });
     },
 
     removeGradient: function() {
+      $('.overlay').off('click');
       this.$el.unwrap();
     }
 
