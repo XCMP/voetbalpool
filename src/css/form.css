@@ -28,17 +28,28 @@ textarea {
   font-family: MarkerFelt-Wide;
   font-size: x-large;
   border-style: groove;
+  width: 100%;
 }
 
 div.block {
   padding-bottom: 1em;
 }
 
-.block label {
-  display: inline-block;
-  width: 10em;
-  text-align: right;
-  padding-right: 0.75em;
+@media (max-width: 786px) {
+  .block label {
+    display: block;
+    width: 10em;
+    padding-right: 0.75em;
+  }
+}
+
+@media (min-width: 786px) {
+  .block label {
+    display: inline-block;
+    width: 10em;
+    text-align: right;
+    padding-right: 0.75em;
+  }
 }
 
 .error input,
