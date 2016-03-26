@@ -2,6 +2,7 @@
 
   VP.Views.Predictions = Backbone.View.extend({
 
+    className: 'list',
     template: Handlebars.templates['predictions.hbs'],
     deleteTemplate: Handlebars.templates['prediction_delete.hbs'],
 
