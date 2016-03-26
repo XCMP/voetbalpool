@@ -20,7 +20,7 @@
   .s-b {
     display: block;
   }
-  .l-i, .l-b {
+  .l-i, .l-b, .l-tc {
     display: none;
   }
 }
@@ -43,6 +43,9 @@
   }
   .l-b {
     display: block;
+  }
+  .l-tc {
+    display: table-cell;
   }
 }
 
