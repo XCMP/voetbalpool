@@ -2,6 +2,7 @@
 
   VP.Views.Games = Backbone.View.extend({
 
+    className: 'list',
     template: Handlebars.templates['games.hbs'],
     deleteTemplate: Handlebars.templates['game_delete.hbs'],
 

@@ -2,6 +2,7 @@
 
   VP.Views.AddUpdateGame = Backbone.View.extend({
 
+    className: 'edit',
     template: Handlebars.templates['add_update_game.hbs'],
     events: {
       'submit form': 'saveAddGame',
