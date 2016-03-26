@@ -7,6 +7,13 @@
     display: none;
     position: fixed;
   }
+  .list {
+    text-align: center;
+    padding-bottom: .5em;
+  }
+  .edit {
+    padding-top: .5em;
+  }
   .s-i {
     display: inline;
   }
