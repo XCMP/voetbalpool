@@ -2,6 +2,7 @@
 
   VP.Views.ClubsOverview = Backbone.View.extend({
 
+    className: 'list',
     template: Handlebars.templates['clubsoverview.hbs'],
 
     initialize: function() {
