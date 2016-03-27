@@ -2,6 +2,7 @@
 
   VP.Views.AddUpdatePoolPlayer = Backbone.View.extend({
 
+    className: 'edit',
     template: Handlebars.templates['add_update_poolplayer.hbs'],
     events: {
       'submit form': 'saveAddPoolPlayer',

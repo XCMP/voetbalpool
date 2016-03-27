@@ -2,6 +2,7 @@
 
   VP.Views.PoolPlayers = Backbone.View.extend({
 
+    className: 'list',
     template: Handlebars.templates['poolplayers.hbs'],
     deleteTemplate: Handlebars.templates['poolplayer_delete.hbs'],
 
