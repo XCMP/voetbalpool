@@ -2,6 +2,7 @@
 
   VP.Views.AddUpdatePrediction = Backbone.View.extend({
 
+    className: 'edit',
     template: Handlebars.templates['add_update_prediction.hbs'],
     events: {
       'submit form': 'saveAddPrediction',

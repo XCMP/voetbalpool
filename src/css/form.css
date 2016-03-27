@@ -19,6 +19,12 @@ select.club_select option {
   padding-left:50px;
 }
 
+@media (max-width: 786px) {
+  .game_select {
+    max-width: 275px;
+  }
+}
+
 .form label {
   vertical-align: top;
   display: inline-block;
