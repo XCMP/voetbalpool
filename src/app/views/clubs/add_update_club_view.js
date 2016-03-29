@@ -2,6 +2,7 @@
 
   VP.Views.AddUpdateClub = Backbone.View.extend({
 
+    className:'edit',
     template: Handlebars.templates['add_update_club.hbs'],
     events: {
       'submit form': 'saveAddClub',
