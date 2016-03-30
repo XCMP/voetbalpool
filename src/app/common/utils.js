@@ -25,21 +25,46 @@ VP.utils = {
     return this.MonthTextArray[monthIndex] + ' ' + year;
   },
 
+  // /**
+  //  * input  DD-MM-YYYY HH:MM
+  //  * output MM/DD/YYYY HH:MM
+  // */
+  // ddmmyyyyhhmmToDateTime2: function(dateString) {
+  //   if (dateString == undefined || dateString.length == 0) {
+  //     return null;
+  //   }
+  //   console.log(dateString);
+  //   var parts = dateString.split(/[\s,-]+/);
+  //   if (parts.length == 4) {
+  //     //return this.pad(parts[1], 2) + '/' + this.pad(parts[0],2) + '/' + this.pad(parts[2], 4) + ' ' + parts[3];
+  //     return this.pad(parts[2], 4) + '-' + this.pad(parts[1], 2) + '-' + this.pad(parts[0],2) + 'T' + parts[3] + '+00:00'
+  //   } else {
+  //     return '00/00/0000 00:00'; // invalid date time
+  //   }
+  // },
+
   /**
    * input  DD-MM-YYYY HH:MM
-   * output MM/DD/YYYY HH:MM
+   * output MM/DD/YYYY HH:MM+00:00
   */
   ddmmyyyyhhmmToDateTime: function(dateString) {
-    if (dateString == undefined || dateString.length == 0) {
-      return null;
-    }
-
+    var now = new Date(),
+        tzo = -now.getTimezoneOffset(),
+        dif = tzo >= 0 ? '+' : '-',
+        pad = function(num) {
+            var norm = Math.abs(Math.floor(num));
+            return (norm < 10 ? '0' : '') + norm;
+        };
     var parts = dateString.split(/[\s,-]+/);
-    if (parts.length == 4) { 
-      return this.pad(parts[1], 2) + '/' + this.pad(parts[0],2) + '/' + this.pad(parts[2], 4) + ' ' + parts[3];
-    } else {
-      return '00/00/0000 00:00'; // invalid date time
-    }
+    var result = this.pad(parts[2], 4) 
+        + '-' + this.pad(parts[1], 2)
+        + '-' + this.pad(parts[0],2)
+        + 'T' + parts[3]
+        + ':00'
+        + dif + pad(tzo / 60) 
+        + ':' + pad(tzo % 60);
+    console.log(result);
+    return result;
   },
 
   getCurrentPeriod: function() {
