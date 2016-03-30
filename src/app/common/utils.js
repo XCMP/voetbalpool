@@ -41,7 +41,6 @@ VP.utils = {
         + ':00'
         + dif + this.pad(tzo / 60) 
         + ':' + this.pad(tzo % 60);
-    console.log(result);
     return result;
   },
 
