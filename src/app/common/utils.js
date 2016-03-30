@@ -25,24 +25,6 @@ VP.utils = {
     return this.MonthTextArray[monthIndex] + ' ' + year;
   },
 
-  // /**
-  //  * input  DD-MM-YYYY HH:MM
-  //  * output MM/DD/YYYY HH:MM
-  // */
-  // ddmmyyyyhhmmToDateTime2: function(dateString) {
-  //   if (dateString == undefined || dateString.length == 0) {
-  //     return null;
-  //   }
-  //   console.log(dateString);
-  //   var parts = dateString.split(/[\s,-]+/);
-  //   if (parts.length == 4) {
-  //     //return this.pad(parts[1], 2) + '/' + this.pad(parts[0],2) + '/' + this.pad(parts[2], 4) + ' ' + parts[3];
-  //     return this.pad(parts[2], 4) + '-' + this.pad(parts[1], 2) + '-' + this.pad(parts[0],2) + 'T' + parts[3] + '+00:00'
-  //   } else {
-  //     return '00/00/0000 00:00'; // invalid date time
-  //   }
-  // },
-
   /**
    * input  DD-MM-YYYY HH:MM
    * output MM/DD/YYYY HH:MM+00:00
@@ -50,19 +32,15 @@ VP.utils = {
   ddmmyyyyhhmmToDateTime: function(dateString) {
     var now = new Date(),
         tzo = -now.getTimezoneOffset(),
-        dif = tzo >= 0 ? '+' : '-',
-        pad = function(num) {
-            var norm = Math.abs(Math.floor(num));
-            return (norm < 10 ? '0' : '') + norm;
-        };
+        dif = tzo >= 0 ? '+' : '-';
     var parts = dateString.split(/[\s,-]+/);
     var result = this.pad(parts[2], 4) 
         + '-' + this.pad(parts[1], 2)
         + '-' + this.pad(parts[0],2)
         + 'T' + parts[3]
         + ':00'
-        + dif + pad(tzo / 60) 
-        + ':' + pad(tzo % 60);
+        + dif + this.pad(tzo / 60) 
+        + ':' + this.pad(tzo % 60);
     console.log(result);
     return result;
   },
@@ -99,6 +77,11 @@ VP.utils = {
     z = z || '0';
     n = n + '';
     return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+  },
+
+  pad: function(num) {
+      var norm = Math.abs(Math.floor(num));
+      return (norm < 10 ? '0' : '') + norm;
   },
 
   /**
