@@ -17,7 +17,7 @@
     saveAddGame: function(ev) {
       ev.preventDefault();
       var formData = _utils.formDataToJSON($(ev.currentTarget));
-      formData.matchDay = _utils.ddmmyyyyhhmmToDateTime(formData.matchDay);
+      formData.matchDay = _utils.ddmmyyyyhhmmToDateTimeTimezone(formData.matchDay);
       var options = {
         success: this.handleResult
       };

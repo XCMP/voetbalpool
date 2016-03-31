@@ -29,19 +29,22 @@ VP.utils = {
    * input  DD-MM-YYYY HH:MM
    * output MM/DD/YYYY HH:MM+00:00
   */
-  ddmmyyyyhhmmToDateTime: function(dateString) {
-    var now = new Date(),
-        tzo = -now.getTimezoneOffset(),
-        dif = tzo >= 0 ? '+' : '-';
+  ddmmyyyyhhmmToDateTimeTimezone: function(dateString) {
     var parts = dateString.split(/[\s,-]+/);
-    var result = this.pad(parts[2], 4) 
+    var timezoneOffsetString = this.getTimezoneOffsetString(parts.slice(0, 3));
+    return this.pad(parts[2], 4)
         + '-' + this.pad(parts[1], 2)
-        + '-' + this.pad(parts[0],2)
+        + '-' + this.pad(parts[0], 2)
         + 'T' + parts[3]
         + ':00'
-        + dif + this.pad(tzo / 60) 
-        + ':' + this.pad(tzo % 60);
-    return result;
+        + timezoneOffsetString;
+  },
+
+  getTimezoneOffsetString: function(parts) {
+    var now = new Date(this.pad(parts[2], 4) + '-' + this.pad(parts[1], 2) + '-' + this.pad(parts[0],2)),
+        tzo = -now.getTimezoneOffset(),
+        dif = tzo >= 0 ? '+' : '-';
+    return  dif + this.pad(tzo / 60) + ':' + this.pad(tzo % 60);
   },
 
   getCurrentPeriod: function() {
