@@ -189,7 +189,7 @@ VP.utils = {
   },
 
   getFieldContainer: function(fieldName) {
-    return $('[field*=\'' + fieldName + '\']');
+    return $('[field=\'' + fieldName + '\']');
   },
 
   lineColorClasses: [
