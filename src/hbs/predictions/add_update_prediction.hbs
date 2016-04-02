@@ -12,11 +12,11 @@
       <label for="game">Wedstrijd</label>
       <span class="game"></span>
     </div>
-    <div class="block" field="homeTeamGoals|awayTeamGoals">
+    <div class="block" field="homeTeamGoals">
       <label>Voorspelling</label>
-      <input type="tel" size="2" length="2" name="homeTeamGoals" class="center" value="{{homeTeamGoals}}" />
+      <input type="tel" size="2" maxlength="2" name="homeTeamGoals" class="center" value="{{homeTeamGoals}}" />
       -
-      <input type="tel" size="2" length="2" name="awayTeamGoals" class="center" value="{{awayTeamGoals}}" />
+      <input type="tel" size="2" maxlength="2" name="awayTeamGoals" class="center" value="{{awayTeamGoals}}" />
     </div>
   </fieldset>
   <button type="submit" class="js_button_add">Opslaan</button>
