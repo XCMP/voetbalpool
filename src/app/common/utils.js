@@ -158,9 +158,8 @@ VP.utils = {
   },
 
   getDuplicateErrorMessage: function(errmsg) {
-    return _.find(duplicateErrorMessages, function (message, key) {
+    return _.find(this.duplicateErrorMessages, function(message, key) {
       if (errmsg.indexOf(key) > -1) {
-        console.log(key, message);
         return key;
       }
     });
