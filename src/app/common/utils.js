@@ -158,10 +158,12 @@ VP.utils = {
   },
 
   getDuplicateErrorMessage: function(errmsg) {
-    var start = errmsg.indexOf('.') + 1;
-    var end = errmsg.indexOf(' ', start);
-    var key = errmsg.substring(start, end);
-    return this.duplicateErrorMessages[key];
+    return _.find(duplicateErrorMessages, function (message, key) {
+      if (errmsg.indexOf(key) > -1) {
+        console.log(key, message);
+        return key;
+      }
+    });
   },
 
   displayFieldError: function(errorObject) {
