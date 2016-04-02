@@ -16,12 +16,14 @@
       <label for="awayTeam">Uit team</label>
       <span class="awayTeam"></span>
     </div>
-    <div class="block" field="homeTeamGoals">
-      <label>uitslag</label>
-      <input type="tel" size="2" length="2" name="homeTeamGoals" class="center" value="{{homeTeamGoals}}" />
-      -
-      <input type="tel" size="2" length="2" name="awayTeamGoals" class="center" value="{{awayTeamGoals}}" />
-    </div>
+    {{#if _id}}
+      <div class="block" field="homeTeamGoals">
+        <label>uitslag</label>
+        <input type="tel" size="2" maxlength="2" name="homeTeamGoals" class="center" value="{{homeTeamGoals}}" />
+        -
+        <input type="tel" size="2" maxlength="2" name="awayTeamGoals" class="center" value="{{awayTeamGoals}}" />
+      </div>
+    {{/if}}
     <div field="notes">
       <label for="description">Omschrijving</label>
       <textarea type="text" id="description" name="notes" cols="" rows="5">{{notes}}</textarea>
