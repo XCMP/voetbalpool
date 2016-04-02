@@ -150,7 +150,7 @@ VP.utils = {
     }
   },
 
-  duplicateErrosMessages: {
+  duplicateErrorMessages: {
     'clubs': 'Deze club bestaat al.',
     'games': 'Deze wedstrijd bestaat al.',
     'poolplayers': 'Deze speler bestaat al.',
@@ -161,7 +161,7 @@ VP.utils = {
     var start = errmsg.indexOf('.') + 1;
     var end = errmsg.indexOf(' ', start);
     var key = errmsg.substring(start, end);
-    return this.duplicateErrosMessages[key];
+    return this.duplicateErrorMessages[key];
   },
 
   displayFieldError: function(errorObject) {
