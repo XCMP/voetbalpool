@@ -27,7 +27,7 @@
     showImage: function() {
       this.confirmationView = _utils.showModalWindow({
         header: 'Logo',
-        content: '<img src="'+$('#logoBase64Url').val()+'" />',
+        content: '<img src="/images/logos/' + $('#logoFilename').val() + '" />',
         back: null
       });
     },

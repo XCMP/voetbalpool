@@ -100,7 +100,7 @@ var paths = {
     'clubs/clubs.hbs',
     'clubs/clubsoverview.hbs'
   ],
-  images: 'src/images/*.*'
+  images: 'src/images/**/*.*'
 };
 
 // CHECK BUILDING ENVIRONMENT [production or development]

@@ -7,11 +7,11 @@
 
     defaults: {
       name: null,
-      logoBase64Url: null
+      logoFilename: null
     },
 
-    getLogoUrl: function() {
-      return this.get('logoBase64Url');
+    getLogoFilename: function() {
+      return this.get('logoFilename');
     }
 
   });

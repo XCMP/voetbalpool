@@ -4,5 +4,5 @@
     <option value="{{_id}}" {{#if selected}}selected{{/if}}>{{name}}</option>
   {{/each}}
 </select>
-<img class="logo small {{#unless selected}}hide {{/unless}}padding-left-s {{name}}" src="{{selected.logoBase64Url}}"/>
+<img class="logo small {{#unless selected}}hide {{/unless}}padding-left-s {{name}}" src="/images/logos/{{selected.logoFilename}}"/>
 

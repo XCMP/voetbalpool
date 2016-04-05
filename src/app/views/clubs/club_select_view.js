@@ -43,7 +43,7 @@
       var $el = $(ev.target);
       _utils.removeFieldErrorByName($el.attr('name'));
       var club = this.collection.get(ev.target.value);
-      this.$logoImage.attr('src', club.getLogoUrl());
+      this.$logoImage.attr('src', '/images/logos/' + club.getLogoFilename());
       this.$logoImage.removeClass('hide');
     }
 

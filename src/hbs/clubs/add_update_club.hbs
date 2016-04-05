@@ -8,19 +8,14 @@
       <label for="name">Naam</label>
       <input type="text" id="name" name="name" size="16" value="{{name}}" />
     </div>
-    <div class="block" field="logoBase64Url">
-      <label for="logoBase64Url">Logo ( base64 url )</label>
-      <input type="text" id="logoBase64Url" name="logoBase64Url" size="16" value="{{logoBase64Url}}" />
+    <div class="block" field="logoFilename">
+      <label for="logoFilename">Logo bestandsnaam</label>
+      <input type="text" id="logoFilename" name="logoFilename" value="{{logoFilename}}" />
+      <button type="button" class="previewLogo">preview</button>
     </div>
     <div class="block">
       <label></label>
-      <a href="http://picresize.com/" target="_blank" class="left">
-        <button type="button">resize</button>
-      </a>
-      <a href="https://www.base64-image.de/" target="_blank">
-        <button type="button">base64</button>
-      </a>
-      <button type="button" class="previewLogo">preview</button>
+      <a href="upload/logo/index.html" target="blank">Upload logo tool</a>
     </div>
   </fieldset>
   <button type="submit" class="js_button_add">Opslaan</button>
