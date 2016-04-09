@@ -47,6 +47,9 @@ div.block {
     width: 10em;
     padding-right: 0.75em;
   }
+  .upload {
+    display: none;
+  }
 }
 
 @media (min-width: 786px) {
