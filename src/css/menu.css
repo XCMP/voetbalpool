@@ -2,6 +2,7 @@
   .off-canvas-menu-button {
     float: left;
     position: fixed;
+    padding: 5px;
   }
   .menu {
     background-color: white;

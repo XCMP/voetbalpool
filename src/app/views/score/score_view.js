@@ -6,6 +6,9 @@
     templateLegend: Handlebars.templates['score_legend.hbs'],
     templateNoResults: Handlebars.templates['no_results.hbs'],
 
+    $rotate: null,
+    $graph: null,
+
     data: { labels: [], datasets: [] },
 
     events: {
@@ -15,6 +18,17 @@
     initialize: function() {
       this.initMonths();
       this.getChartData();
+      this.bindEvents();
+    },
+
+    handleViewMode: function() {
+      if(window.innerHeight > window.innerWidth){
+        this.showPortrait();
+        window.orientation = 'portrait';
+      } else {
+        this.showLandscape();
+        window.orientation = 'landscape';
+      }
     },
 
     initMonths: function() {
@@ -39,6 +53,8 @@
         months: this.months.toJSON(),
       }));
       this.setChart();
+      this.cacheElements();
+      this.handleViewMode();
       return this;
     },
 
@@ -120,6 +136,26 @@
     getPoolplayers: function(predictions) {
       var poolplayers = _.pluck(predictions, 'poolplayer');
       return _.uniq(poolplayers, function(poolplayer) { return poolplayer._id; });
+    },
+
+    cacheElements: function() {
+      this.$rotate = $('.rotate');
+      this.$graph = $('.graph');
+    },
+
+    showPortrait: function() {
+      this.$rotate.show();
+      this.$graph.hide();
+    },
+
+    showLandscape: function() {
+      this.$rotate.hide();
+      this.$graph.show();
+    },
+
+    bindEvents: function() {
+      $(window).on('orientationchange', _.bind(this.handleViewMode, this));
+      $(window).on('resize', _.debounce(_.bind(this.handleViewMode, this), 100, true));
     }
 
   });

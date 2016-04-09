@@ -1,13 +1,18 @@
-<div class="score-header">
-  <div class="score-month">
-    Maand
-    <select name="months" class="month_select">
-      {{#each months}}
-        <option value="{{yyyymm}}" {{#if selected}}selected{{/if}}>{{text}}</option>
-      {{/each}}
-    </select>
-  </div>
-  <div class="legend"></div>
-  <div class="message"></div>
+<div class="rotate">
+  <img src="images/rotate.png" />
 </div>
+<div class="graph">
+  <div class="score-header">
+    <div class="score-month">
+      Maand
+      <select name="months" class="month_select">
+        {{#each months}}
+          <option value="{{yyyymm}}" {{#if selected}}selected{{/if}}>{{text}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <div class="legend"></div>
+    <div class="message"></div>
+  </div>
 <canvas id="scoreChart" class="padding-bottom-s"></canvas>
+</div>
