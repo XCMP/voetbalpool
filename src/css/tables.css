@@ -34,7 +34,4 @@ tbody tr:hover td:first-child {
 
 .table {
   display: inline-block;
-  overflow: scroll;
-  overflow-x: hidden;
-  max-height: 90%;
 }
