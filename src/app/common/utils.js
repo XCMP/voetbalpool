@@ -195,20 +195,24 @@ VP.utils = {
 
   lineColorClasses: [
     {
-      color: 'rgba(0, 153, 204, 1)',
-      fill: 'rgba(0, 153, 204, 0.2)'
+      color: 'red',
+      fill: 'rgba(0, 0, 0, 0)'
     },
     {
-      color: 'rgba(51, 51, 204, 1)',
-      fill: 'rgba(51, 51, 204, 0.2)'
+      color: 'green',
+      fill: 'rgba(0, 0, 0, 0)'
     },
     {
-      color: 'rgba(102, 51, 204, 1)',
-      fill: 'rgba(102, 51, 204, 0.2)'
+      color: 'blue',
+      fill: 'rgba(0, 0, 0, 0)'
     },
     {
-      color: 'rgba(153, 51, 204, 1)',
-      fill: 'rgba(153, 51, 204, 0.2)'
+      color: 'purple',
+      fill: 'rgba(0, 0, 0, 0)'
+    },
+    {
+      color: 'black',
+      fill: 'rgba(0, 0, 0, 0)'
     }
   ],
   getColor: function(index) {
