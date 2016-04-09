@@ -207,7 +207,7 @@ VP.utils = {
       fill: 'rgba(0, 0, 0, 0)'
     },
     {
-      color: 'purple',
+      color: 'orange',
       fill: 'rgba(0, 0, 0, 0)'
     },
     {
