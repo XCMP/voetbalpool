@@ -19,6 +19,7 @@
     },
 
     initialize: function() {
+      Handlebars.registerPartial('month_select', Handlebars.templates['month_select.hbs']);
       new VP.Views.OffCanvasMenu();
       this.menuView = new VP.Views.Menu();
     },

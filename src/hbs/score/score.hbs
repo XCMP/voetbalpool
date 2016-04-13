@@ -4,12 +4,7 @@
 <div class="graph">
   <div class="score-header">
     <div class="score-month">
-      Maand
-      <select name="months" class="month_select">
-        {{#each months}}
-          <option value="{{yyyymm}}" {{#if selected}}selected{{/if}}>{{text}}</option>
-        {{/each}}
-      </select>
+    {{> month_select }}
     </div>
     <div class="legend"></div>
     <div class="message"></div>

@@ -1,0 +1,8 @@
+<div class="padding-bottom-s">
+  <span class="month-label">Maand</span>
+  <select name="months" class="month_select">
+    {{#each months}}
+      <option value="{{yyyymm}}" {{#if selected}}selected{{/if}}>{{text}}</option>
+    {{/each}}
+  </select>
+</div>

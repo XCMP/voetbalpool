@@ -73,6 +73,8 @@ var paths = {
   styles: 'src/css/*.css',
   templatesWatch: 'src/hbs/**/*.hbs',
   templates: [ '',
+    'partials/month_select.hbs',
+
     'common/menu.hbs',
     'common/modal_window.hbs',
 
