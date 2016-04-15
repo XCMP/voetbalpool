@@ -44,12 +44,11 @@ li {
 
 li:hover {
   background-color: lightgrey;
-  padding-left: 1em;
+  padding-left: .5em;
 }
 
 li.active {
   background-color: lightgrey;
-  padding-left: 1em;
 }
 
 a {
