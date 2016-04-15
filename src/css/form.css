@@ -23,6 +23,9 @@ select.club_select option {
   .game_select {
     max-width: 275px;
   }
+  .club_select {
+    width: 85%
+  }
 }
 
 .form label {
