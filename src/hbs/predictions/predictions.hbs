@@ -6,19 +6,22 @@
         <th>Datum</th>
         <th>Wedstrijd</th>
         <th>Uitslag</th>
-        <th>Speler</th>
+        <th>
+          <span class="l-b">Speler</span>
+          <span class="s-b">Score</span>
+        </th>
         <th class="l-tc">Voorspelling</th>
         <th class="l-tc">Score</th>
       </tr>
     </thead>
     <tbody>
       {{#each predictions}}
-        <tr class="prediction" data-id="{{_id}}">
+        {{! LARGE}}
+        <tr class="prediction l-tr" data-id="{{_id}}">
           {{#with game}}
             {{#if first}}
               <td>
-                <span class="right l-b">{{formatDate matchDay format='ddd DD MMM YYYY HH:mm'}}</span>
-                <span class="right s-b">{{formatDate matchDay format='DD-MM HH:mm'}}</span>
+                <span class="right">{{formatDate matchDay format='ddd DD MMM YYYY HH:mm'}}</span>
               </td>
               <td>
                 {{#with homeTeam}}
@@ -34,14 +37,35 @@
               <td colspan="3"></td>
             {{/if}}
           {{/with}}
-          <td>
-            {{poolplayer.name}}
-            <span class="s-b">
-              {{homeTeamGoals}}-{{awayTeamGoals}} / {{score}}
-            </span>
-          </td>
-          <td class="l-b">{{homeTeamGoals}}-{{awayTeamGoals}}</td>
-          <td class="l-b">{{score}}</td>
+          <td>{{poolplayer.name}}</td>
+          <td>{{homeTeamGoals}} - {{awayTeamGoals}}</td>
+          <td>{{score}}</td>
+        </tr>
+        {{! SMALL}}
+        {{#with game}}
+          {{#if first}}
+            <tr class="game s-tr">
+              <td>
+                <span class="right">{{formatDate matchDay format='DD-MM HH:mm'}}</span>
+              </td>
+              <td>
+                {{#with homeTeam}}
+                  <img class="small" alt="{{name}}" src="images/logos/{{logoFilename}}" /> <span class="l-i">{{name}}</span>
+                {{/with}}
+                -
+                {{#with awayTeam}}
+                  <img class="small" alt="{{name}}" src="images/logos/{{logoFilename}}" /> <span class="l-i">{{name}}</span>
+                {{/with}}
+              </td>
+              <td>{{homeTeamGoals}} - {{awayTeamGoals}}</td>
+            </tr>
+          {{/if}}
+        {{/with}}
+        <tr class="prediction s-tr" data-id="{{_id}}">
+          <td>&nbsp;</td>
+          <td>{{poolplayer.name}}</td>
+          <td>{{homeTeamGoals}} - {{awayTeamGoals}}</td>
+          <td>{{score}}</td>
         </tr>
       {{/each}}
     </tbody>

@@ -20,7 +20,13 @@
   .s-b {
     display: block;
   }
-  .l-i, .l-b, .l-tc {
+  .s-tr {
+    display: table-row;
+  }
+  .s-tc {
+    display: table-cell;
+  }
+  .l-i, .l-b, .l-tc, .l-tr {
     display: none;
   }
 }
@@ -35,7 +41,7 @@
     width: 15%;
     display: inline-block;
   }
-  .s-i, .s-b {
+  .s-i, .s-b, .s-tr, .s-tc {
     display: none;
   }
   .l-i {
@@ -43,6 +49,9 @@
   }
   .l-b {
     display: block;
+  }
+  .l-tr {
+    display: table-row;
   }
   .l-tc {
     display: table-cell;
