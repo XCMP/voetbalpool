@@ -16,8 +16,10 @@
         <tr class="prediction" data-id="{{_id}}">
           {{#with game}}
             {{#if first}}
-              <td class="right l-b">{{formatDate matchDay format='ddd DD MMM YYYY HH:mm'}}</td>
-              <td class="right s-b">{{formatDate matchDay format='DD-MM HH:mm'}}</td>
+              <td>
+                <span class="right l-b">{{formatDate matchDay format='ddd DD MMM YYYY HH:mm'}}</span>
+                <span class="right s-b">{{formatDate matchDay format='DD-MM HH:mm'}}</span>
+              </td>
               <td>
                 {{#with homeTeam}}
                   <img class="small" alt="{{name}}" src="images/logos/{{logoFilename}}" /> <span class="l-i">{{name}}</span>
