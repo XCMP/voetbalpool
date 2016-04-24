@@ -46,6 +46,7 @@ var paths = {
       'src/app/collections/predictions.js',
       'src/app/collections/months.js',
 
+      'src/app/views/common/about.js',
       'src/app/views/common/menu.js',
       'src/app/views/common/modal_window.js',
 
@@ -75,6 +76,7 @@ var paths = {
   templates: [ '',
     'partials/month_select.hbs',
 
+    'common/about.hbs',
     'common/menu.hbs',
     'common/modal_window.hbs',
 
