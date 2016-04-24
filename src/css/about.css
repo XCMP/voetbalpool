@@ -36,8 +36,11 @@
   border-left: 3px solid white;
 }
 
+.uitleg li {
+  padding: 0px;
+}
+
 .uitleg li:hover {
   background-color: white;
-  padding-left: 0px;
   cursor: default;
 }
