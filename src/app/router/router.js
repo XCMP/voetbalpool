@@ -13,6 +13,7 @@
 
       // other routes
       'show/score'             : 'handleRouteShowScore',
+      'show/about'             : 'handleRouteShowAbout',
       'list/:viewid'           : 'handleRouteList',
       'add/:viewid'            : 'handleRouteAdd',
       'update/:viewid/:modelid': 'handleRouteUpdate',
@@ -40,6 +41,13 @@
 
       this.showScore();
       this.renderMenu('score');
+    },
+
+    handleRouteShowAbout: function() {
+      this.clearPreviousView();
+
+      this.showAbout();
+      this.renderMenu('about');
     },
 
     handleRouteList: function(viewid) {
@@ -104,6 +112,11 @@
 
     showScore: function() {
       this.currentView = new VP.Views.Score();
+      $('div.content').html(this.currentView.$el);
+    },
+
+    showAbout: function() {
+      this.currentView = new VP.Views.About();
       $('div.content').html(this.currentView.$el);
     },
 

@@ -66,7 +66,8 @@
       'click li.games'       : 'showGames',
       'click li.predictions' : 'showPredictions',
       'click li.poolplayers' : 'showPoolPlayers',
-      'click li.clubs'       : 'showClubs'
+      'click li.clubs'       : 'showClubs',
+      'click li.about'       : 'showAbout'
     },
 
     initialize: function() {
@@ -91,6 +92,10 @@
 
     showClubs: function(ev) {
       VP.router.navigate('list/clubs',  {trigger: true});
+    },
+
+    showAbout: function(ev) {
+      VP.router.navigate('show/about',  {trigger: true});
     },
 
     setMenuItemActive: function(menuItemClass) {
