@@ -61,7 +61,7 @@
       var id = this.$selectedClub.data('id');
       var model = this.collection.get(id);
       this.confirmationView = _utils.showConfirmDialog({
-        header: 'Club verwijderen',
+        header: 'Team verwijderen',
         content: this.deleteTemplate({model: model.toJSON()}),
         yes: _.bind(this.deleteClub, this)
       });
