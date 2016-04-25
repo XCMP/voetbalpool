@@ -153,8 +153,8 @@ VP.utils = {
   duplicateErrorMessages: {
     'clubs': 'Dit team bestaat al.',
     'games': 'Deze wedstrijd bestaat al.',
-    'poolplayers': 'Deze speler bestaat al.',
-    'predictions': 'Deze speler heeft al een voorspelling voor deze wedstrijd.'
+    'poolplayers': 'Deze deelnemer bestaat al.',
+    'predictions': 'Deze deelnemer heeft al een voorspelling voor deze wedstrijd.'
   },
 
   getDuplicateErrorMessage: function(errmsg) {
