@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "prestart": "npm install",
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "gulp config; gulp",
+    "pro": "gulp config --env production; gulp build --env production"
   },
   "repository": {
     "type": "git",
