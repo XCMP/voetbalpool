@@ -2,7 +2,7 @@
 
   VP.Views.About = Backbone.View.extend({
 
-    className: 'uitleg',
+    className: 'about',
     template: Handlebars.templates['about.hbs'],
 
     events: {
