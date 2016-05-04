@@ -1,0 +1,13 @@
+<div class="upload">
+  <form id="upload" action="/upload/logo" method="POST" enctype="multipart/form-data">
+    <label for="logoFilename">Kies een logo</label>
+    <input type="file" name="logos" multiple>
+    <button type="submit">Upload Logo</button>
+  </form>
+</div>
+<script>
+  $('form#upload').submit(function() {
+    var filename = $('form#upload').find('input').val().split('\\').pop();
+    $(window).trigger('filename', filename);
+  });
+</script>

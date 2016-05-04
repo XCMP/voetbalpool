@@ -1,4 +1,4 @@
-(function(express, path, multer, fs) {
+(function(express, bodyParser, path, multer, fs) {
 
   var PORT = process.env.OPENSHIFT_NODEJS_PORT || 3000;
   var IP = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
@@ -8,14 +8,10 @@
   var server = express();
   var router = express.Router();
 
-  var uploadMenu = '<div><a href="/logos/index.html">list of logos</a> <a href="/upload/logo/index.html">add logos</a></div>';
-  var uploadTemplate = '<form action="/upload/logo" method="POST" enctype="multipart/form-data">'+
-                          '<label for="logoFilename">Kies een logo</label>'+
-                          '<input type="file" name="logos" multiple>'+
-                          '<input type="submit" value="Upload Logo">'+
-                        '</form>';
-
   server.use(express.static('dist'));
+  server.use(bodyParser.urlencoded({
+    extended: true
+  })); 
 
   // index.html of voetbalpool app
   router.get('/',function(req,res){
@@ -29,48 +25,54 @@
       if (err) {
           throw err;
       }
-      var result = '<ul>';
+      var result = '<table>';
       files.forEach(function(file, i, arr) {
-        result += '<li>' + file + '</li>';
+        result += `<tr>
+          <td>${file}</td>
+          <td>
+            <form method="POST" action="/delete/logo/index.html" style="margin-bottom: 0px;">
+              <input type="hidden" name="logoFileName" value="${file}"/>
+              <input type="submit" value="delete">
+            </form>
+          </td>
+        </tr>`;
       });
-      result += '</ul>';
-      res.send(uploadMenu + result);
+      result += '</table>';
+      res.send(result);
     });
   });
 
-  // upload logo page
-  router.get('/upload/logo/index.html', function(req,res){
-      res.send(uploadMenu + uploadTemplate);
-  });
-
-  // upload logo end point
+  // upload logos end point
   router.post('/upload/logo', upload.array('logos', 50), function(req,res,next){
-    var result = '<ul>';
-    req.files.forEach(function(e, i, arr) {
-      result += '<li>renamed from ' + e.path + ' to ' + e.destination + e.originalname + '</li>';
-      fs.rename(e.path, e.destination+e.originalname, function(err) {
-        if (err) {
-          console.log(err);
-        }
+    if (req.files.length > 0) {
+      var logoFilename = req.files.pop().originalname;
+      req.files.forEach(function(e, i, arr) {
+        fs.rename(e.path, e.destination+e.originalname, function(err) {
+          if (err) {
+            console.log(err);
+          }
+        });
       });
-    });
-    result += '</ul>';
-    res.send(uploadMenu + result);
+      res.redirect('/#add/club?logoFilename=' + logoFilename);
+    } else {
+      res.redirect('/#add/club');
+    }
   });
 
   // delete logo image
-  router.delete('/upload/logo/index.html', function(req,res){
-    if (req.query.logoFileName.indexOf('..') >= 0) {
+  router.post('/delete/logo/index.html', function(req,res){
+    var logoFileName = req.body.logoFileName;
+    if (logoFileName && logoFileName.indexOf('..') >= 0) {
       res.status(200).send('OK.');
       return;
     }
-    var fileToRemove = LOGO_DESTINATION_DIR + req.query.logoFileName;
+    var fileToRemove = LOGO_DESTINATION_DIR + logoFileName;
     fs.exists(fileToRemove, (exists) => {
       if (exists) {
         fs.unlink(fileToRemove, (err) => {
           if (err) throw err;
         });
-        res.send('OK. File ' + fileToRemove + ' is deleted.');
+        res.redirect('/logos/index.html');
       } else {
         res.status(404).send('Not found');
       }
@@ -83,4 +85,4 @@
 
   console.log('Voetbalpool frontend server running on %s:%s', IP, PORT);
 
-})(require('express'), require('path'), require('multer'), require('fs'));
+})(require('express'), require('body-parser'), require('path'), require('multer'), require('fs'));

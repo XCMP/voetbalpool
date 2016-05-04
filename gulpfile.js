@@ -99,6 +99,7 @@ var paths = {
     'predictions/prediction_delete.hbs',
 
     'clubs/add_update_club.hbs',
+    'clubs/upload_club_logo.hbs',
     'clubs/club_delete.hbs',
     'clubs/club_select.hbs',
     'clubs/clubs.hbs',

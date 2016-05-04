@@ -10,6 +10,7 @@
 
       // specific routes
       'add/prediction?type=:type&id=:id&returnTo=:returnTo': 'handleRouteAddPredictionForType',
+      'add/club?logoFilename=:logoFilename': 'handleRouteAddClubWithLogoFilename',
 
       // other routes
       'show/score'             : 'handleRouteShowScore',
@@ -34,6 +35,13 @@
 
       this.addPrediction(type, id, returnTo);
       this.renderMenu('predictions');
+    },
+
+    handleRouteAddClubWithLogoFilename: function(logoFilename) {
+      this.clearPreviousView();
+
+      this.addClub(logoFilename);
+      this.renderMenu('club');
     },
 
     handleRouteShowScore: function() {
@@ -180,8 +188,8 @@
       $('div.content').html(this.currentView.$el);
     },
 
-    addClub: function() {
-      var club = new VP.Models.Club({});
+    addClub: function(logoFilename) {
+      var club = new VP.Models.Club({logoFilename: logoFilename});
       this.currentView = new VP.Views.AddUpdateClub({
         model: club
       });

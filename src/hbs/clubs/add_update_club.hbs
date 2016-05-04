@@ -1,4 +1,5 @@
 <form class="form">
+  {{#with club}}
   <fieldset>
     <legend>Team {{#if _id}}wijzigen{{else}}toevoegen{{/if}}</legend>
     <div class="block" field="general">
@@ -11,13 +12,11 @@
     <div class="block" field="logoFilename">
       <label for="logoFilename">Logo bestandsnaam</label>
       <input type="text" id="logoFilename" name="logoFilename" size="16" value="{{logoFilename}}" />
-      <button type="button" class="previewLogo">preview</button>
-    </div>
-    <div class="block upload">
-      <label></label>
-      <a href="upload/logo/index.html" target="blank">Upload logo tool</a>
+      <button type="button" class="l-i js_upload_logo">Upload logo</button>
+      <button type="button" class="l-i js_previewLogo"{{#if ../previewDisabled}} disabled="true"{{/if}}>Preview logo</button>
     </div>
   </fieldset>
+  {{/with}}
   <button type="submit" class="js_button_add">Opslaan</button>
   <button type="button" class="js_button_back">Terug</button>
 </form>
