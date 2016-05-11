@@ -50,7 +50,7 @@ VP.utils = {
   getCurrentPeriod: function() {
     var period = {};
     var currentDate = new Date();
-    period.year = currentDate.getFullYear();
+    period.year = currentDate.getFullYear().toString();
     period.month = this.pad(currentDate.getMonth() + 1, 2);
     return period;
   },
