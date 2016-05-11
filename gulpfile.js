@@ -24,7 +24,7 @@ var paths = {
       'node_modules/backbone/backbone.js',
       'node_modules/handlebars/dist/handlebars.runtime.js',
       'node_modules/moment/moment.js',
-      'node_modules/chart.js/Chart.min.js'
+      'node_modules/chart.js/dist/Chart.min.js'
     ],
     app: [
       'src/app/voetbalpool-app.js',
@@ -81,7 +81,6 @@ var paths = {
     'common/modal_window.hbs',
 
     'score/score.hbs',
-    'score/score_legend.hbs',
     'score/no_results.hbs',
 
     'games/add_update_game.hbs',

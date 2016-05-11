@@ -3,7 +3,6 @@
   VP.Views.Score = Backbone.View.extend({
 
     template: Handlebars.templates['score.hbs'],
-    templateLegend: Handlebars.templates['score_legend.hbs'],
     templateNoResults: Handlebars.templates['no_results.hbs'],
 
     $rotate: null,
@@ -97,12 +96,8 @@
       } else {
         this.data.datasets.push({
           label: name,
-          fillColor: _utils.getFillColor(this.data.datasets.length),
-          strokeColor: _utils.getColor(this.data.datasets.length),
-          pointColor: _utils.getColor(this.data.datasets.length),
-          pointStrokeColor: "#fff",
-          pointHighlightFill: "#fff",
-          pointHighlightStroke: _utils.getColor(this.data.datasets.length),
+          backgroundColor: 'rgba(0, 0, 0, 0)',
+          borderColor: _utils.getColor(this.data.datasets.length),
           data: [score]
         });
       }
@@ -112,8 +107,10 @@
       var $scoreChart = $('#scoreChart');
       if ($scoreChart.length > 0 && this.data.datasets.length > 0) {
         var ctx = $scoreChart.get(0).getContext('2d');
-        var scoreChart = new Chart(ctx).Line(this.data, { responsive: true});
-        this.$el.find('.legend').html(this.getLegend());
+        var scoreChart = new Chart(ctx, {
+          type: 'line',
+          data: this.data
+        });
       } else {
         this.$el.find('.message').html(this.templateNoResults());
       }
