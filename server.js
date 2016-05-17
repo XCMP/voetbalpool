@@ -45,8 +45,9 @@
   // upload logos end point
   router.post('/upload/logo', upload.array('logos', 50), function(req,res,next){
     if (req.files.length > 0) {
-      var logoFilename = req.files.pop().originalname;
-      req.files.forEach(function(e, i, arr) {
+      var logoFilename;
+      req.files.forEach(function(e) {
+        logoFilename = e.originalname;
         fs.rename(e.path, e.destination+e.originalname, function(err) {
           if (err) {
             console.log(err);
