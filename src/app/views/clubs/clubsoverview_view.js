@@ -15,10 +15,17 @@
       this.render();
     },
 
+    getUniqueLogosJSON: function() {
+      return _.chain(this.collection.models)
+              .map(function(o) {
+                return o.attributes.logoFilename;
+              })
+              .uniq()
+              .toJSON();
+    },
+
     render: function() {
-      this.$el.html(this.template({
-        clubs: this.collection.toJSON()
-      }));
+      this.$el.html(this.template(this.getUniqueLogosJSON()));
       return this;
     }
 
