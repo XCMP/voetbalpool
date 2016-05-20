@@ -101,6 +101,7 @@
     setMenuItemActive: function(menuItemClass) {
       this.removeMenuItemActive();
       this.$el.find('li.'+menuItemClass).addClass('active');
+      this.$el.find('li[class^='+menuItemClass+']').addClass('active');
     },
 
     removeMenuItemActive: function() {

@@ -63,19 +63,17 @@
 
       if (viewid == 'poolplayers') {
         this.listPoolPlayers();
-        this.renderMenu('poolplayers');
       } else if (viewid == 'games') {
         this.listGames();
-        this.renderMenu('games');
       } else if (viewid == 'clubs') {
         this.listClubs();
-        this.renderMenu('clubs');
       } else if (viewid == 'predictions') {
         this.listPredictions();
-        this.renderMenu('predictions');
       } else {
         console.log('list route ' + viewid + ' not handled');
       }
+
+      this.renderMenu(viewid);
     },
 
     handleRouteAdd: function(viewid) {
@@ -83,19 +81,17 @@
 
       if (viewid == 'poolplayer') {
         this.addPoolPlayer();
-        this.renderMenu('poolplayers');
       } else if (viewid == 'game') {
         this.addGame();
-        this.renderMenu('games');
       } else if (viewid == 'club') {
         this.addClub();
-        this.renderMenu('clubs');
       } else if (viewid == 'prediction') {
         this.addPrediction();
-        this.renderMenu('predictions');
       } else {
         console.log('add route ' + viewid + ' not handled');
       }
+
+      this.renderMenu(viewid);
     },
 
     handleRouteUpdate: function(viewid, modelid) {
@@ -103,19 +99,17 @@
 
       if (viewid == 'poolplayer') {
         this.updatePoolPlayer(modelid);
-        this.renderMenu('poolplayers');
       } else if (viewid == 'game') {
         this.updateGame(modelid);
-        this.renderMenu('games');
       } else if (viewid == 'club') {
         this.updateClub(modelid);
-        this.renderMenu('clubs');
       } else if (viewid == 'prediction') {
         this.updatePrediction(modelid);
-        this.renderMenu('predictions');
       } else {
         console.log('update route ' + viewid + ' not handled');
       }
+
+      this.renderMenu(viewid);
     },
 
     showScore: function() {
