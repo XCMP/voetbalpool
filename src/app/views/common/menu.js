@@ -11,8 +11,9 @@
     },
 
     initialize: function() {
-      this.menuButton = $('.off-canvas-menu-button');
-      this.menu = $('.menu');
+      this.$menuButton = $('.off-canvas-menu-button');
+      this.$menu = $('.menu');
+      this.$content = $('.content');
     },
 
     handleRenderingMenu: function(ev) {
@@ -24,25 +25,25 @@
     },
 
     handleOpenMenu: function(ev) {
-      this.menuButton.hide();
-      this.menu.show(200);
-      this.menu.addClass('off-canvas');
+      this.$menuButton.hide();
+      this.$menu.show(200);
+      this.$menu.addClass('off-canvas');
       this.setGradient();
       this.open = true;
     },
 
     handleCloseMenu: function(ev) {
-      if (this.menu.hasClass('off-canvas')) {
-        this.menuButton.show();
-        this.menu.hide();
-        this.menu.removeClass('off-canvas');
+      if (this.$menu.hasClass('off-canvas')) {
+        this.$menuButton.show();
+        this.$menu.hide();
+        this.$menu.removeClass('off-canvas');
         this.removeGradient();
         this.open = false;
       }
     },
 
     setGradient: function() {
-      this.$el.wrap('<div class=\'overlay\'></div>');
+      this.$content.wrap('<div class=\'overlay\'></div>');
       var self = this;
       $('.overlay').on('click', function(ev) {
         self.handleCloseMenu();
@@ -51,7 +52,7 @@
 
     removeGradient: function() {
       $('.overlay').off('click');
-      this.$el.unwrap();
+      this.$content.unwrap();
     }
 
   });
