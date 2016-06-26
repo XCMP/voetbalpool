@@ -64,12 +64,6 @@ div.block {
   }
 }
 
-@media (max-width: 786px) {
-  .month-label {
-    display: none;
-  }
-}
-
 .error input,
 .error select {
   border: 2px solid red;

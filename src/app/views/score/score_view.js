@@ -2,6 +2,7 @@
 
   VP.Views.Score = Backbone.View.extend({
 
+    className: 'score',
     template: Handlebars.templates['score.hbs'],
     templateNoResults: Handlebars.templates['no_results.hbs'],
 

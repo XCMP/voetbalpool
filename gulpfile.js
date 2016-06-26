@@ -1,6 +1,7 @@
 
 // USED MODULES
 var gulp       = require('gulp'),
+    sass       = require('gulp-sass'),
     gulpif     = require('gulp-if'),
     concat     = require('gulp-concat'),
     replace    = require('gulp-replace'),
@@ -71,7 +72,8 @@ var paths = {
       'src/app/router/router.js'
     ]
   },
-  styles: 'src/css/*.css',
+  sassRootFile: 'src/sass/voetbalpool.scss',
+  sassFiles: 'src/sass/*.scss',
   templatesWatch: 'src/hbs/**/*.hbs',
   templates: [ '',
     'partials/month_select.hbs',
@@ -150,12 +152,13 @@ gulp.task('scripts-app', function() {
     .pipe(livereload());
 });
 
-gulp.task('styles', function() {
-  return gulp.src(paths.styles)
-    .pipe(concat('voetbalpool-app.css'))
-    .pipe(gulpif(production,minifiycss()))
-    .pipe(gulp.dest('dist/css'))
-    .pipe(livereload());
+gulp.task('sass', function() {
+  return gulp.src(paths.sassRootFile)
+      .pipe(sass().on('error', sass.logError))
+      .pipe(concat('voetbalpool-app.css'))
+      .pipe(gulpif(production, minifiycss()))
+      .pipe(gulp.dest('dist/css'))
+      .pipe(livereload());
 });
 
 gulp.task('images', function() {
@@ -175,7 +178,7 @@ gulp.task('templates', function() {
     .pipe(livereload());
 });
 
-gulp.task('build', ['clean', 'base', 'scripts-libs', 'scripts-app', 'styles', 'images', 'templates'], function() {
+gulp.task('build', ['clean', 'base', 'scripts-libs', 'scripts-app', 'sass', 'images', 'templates'], function() {
   console.log('Build done.')
 });
 
@@ -185,7 +188,7 @@ gulp.task('watch', ['build'], function() {
   gulp.watch(paths.scripts.app, ['scripts-app']);
   gulp.watch(paths.scripts.config, ['build']);
   gulp.watch(['index.html'], ['base']);
-  gulp.watch(paths.styles, ['styles']);
+  gulp.watch(paths.sassFiles, ['sass']);
   gulp.watch(paths.templatesWatch, ['templates']);
   gulp.watch(paths.images, ['images']);
 });

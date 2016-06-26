@@ -1,3 +1,3 @@
 VP.Config = {
-  BACKEND_HOSTNAME_PORT: 'http://voetbalpoolbackend-xcmp.rhcloud.com'
+  BACKEND_HOSTNAME_PORT: 'http://localhost:3001'
 };

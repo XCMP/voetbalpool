@@ -2,7 +2,7 @@
 
   VP.Views.Clubs = Backbone.View.extend({
 
-    className: 'list',
+    className: 'list clubs',
     template: Handlebars.templates['clubs.hbs'],
     deleteTemplate: Handlebars.templates['club_delete.hbs'],
 

@@ -1,0 +1,12 @@
+.months {
+
+  padding-bottom: 0.5em;
+
+  @media (max-width: 786px) {
+    .month-label {
+      display: none;
+    }
+  }
+
+}
+
