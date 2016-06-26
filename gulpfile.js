@@ -73,7 +73,7 @@ var paths = {
     ]
   },
   sassRootFile: 'src/sass/voetbalpool.scss',
-  sassFiles: 'src/sass/*.scss',
+  sassFiles: 'src/sass/**/*.scss',
   templatesWatch: 'src/hbs/**/*.hbs',
   templates: [ '',
     'partials/month_select.hbs',
