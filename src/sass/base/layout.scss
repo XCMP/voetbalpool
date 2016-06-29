@@ -1,4 +1,4 @@
-@media (max-width: 786px) {
+@media (max-width: $break-max-small) {
   .content {
     width: 100%;
     display: block;
@@ -31,7 +31,7 @@
   }
 }
 
-@media (min-width: 786px) {
+@media (min-width: $break-min-large) {
   .content {
     width: 85%;
     float: right;

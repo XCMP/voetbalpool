@@ -20,3 +20,17 @@ button:active {
   top: 1px;
   border: none;
 }
+
+.buttons {
+  width: 100%;
+  background-color: white;
+  padding-bottom: 3px;
+  position: fixed;
+  bottom: 0px;
+}
+
+@media (max-width: $break-max-small) {
+  .buttons {
+    text-align: center;
+  }
+}

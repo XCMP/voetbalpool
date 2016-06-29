@@ -2,13 +2,13 @@
 
 .score {
 
-  @media (max-width: $break-large) {
+  @media (max-width: $break-max-small) {
     .score-header {
       margin-left: 3em;
     }
   }
 
-  @media (min-width: $break-large) {
+  @media (min-width: $break-min-large) {
     .score-header {
       padding-bottom: .5em;
     }

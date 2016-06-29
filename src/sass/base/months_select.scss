@@ -2,7 +2,7 @@
 
   padding-bottom: 0.5em;
 
-  @media (max-width: 786px) {
+  @media (max-width: $break-max-small) {
     .month-label {
       display: none;
     }

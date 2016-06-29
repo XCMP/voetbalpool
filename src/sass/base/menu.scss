@@ -1,4 +1,4 @@
-@media (max-width: 786px) {
+@media (max-width: $break-max-small) {
   .off-canvas-menu-button {
     float: left;
     position: fixed;
@@ -18,7 +18,7 @@
   }
 }
 
-@media (min-width: 786px) {
+@media (min-width: $break-min-large) {
   .off-canvas-menu-button {
     display: none;
   }
