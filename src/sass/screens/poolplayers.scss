@@ -1,3 +1,7 @@
 .poolplayers {
-
+  @media (max-width: $break-max-small) {
+    &.list {
+      margin-bottom: 2.5em;
+    }
+  }
 }
