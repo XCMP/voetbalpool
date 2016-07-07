@@ -31,6 +31,7 @@ var paths = {
       'src/app/voetbalpool-app.js',
 
       'src/app/common/config.js',
+      'src/app/common/months.js',
       'src/app/common/utils.js',
       'src/app/common/helpers.js',
 
@@ -38,14 +39,12 @@ var paths = {
       'src/app/models/club.js',
       'src/app/models/game.js',
       'src/app/models/prediction.js',
-      'src/app/models/month.js',
 
       'src/app/collections/score.js',
       'src/app/collections/poolplayers.js',
       'src/app/collections/games.js',
       'src/app/collections/clubs.js',
       'src/app/collections/predictions.js',
-      'src/app/collections/months.js',
 
       'src/app/views/common/about.js',
       'src/app/views/common/menu.js',

@@ -1,4 +1,4 @@
-(function(_utils) {
+(function(_utils, _months) {
 
   VP.Views.Score = Backbone.View.extend({
 
@@ -16,7 +16,6 @@
     },
 
     initialize: function() {
-      this.initMonths();
       this.getChartData();
       this.bindEvents();
     },
@@ -31,26 +30,15 @@
       }
     },
 
-    initMonths: function() {
-      this.months = new VP.Collections.Months({});
-      var self = this;
-      this.months.fetch().done(
-        function(){
-          self.months.setPeriod(VP.Data.selectedYearMonth);
-        }
-      );
-    },
-
     yearMonthSelected: function(ev) {
       var selectedYearMonth = ev.currentTarget.value;
-      VP.Data.selectedYearMonth = _utils.getPeriod(selectedYearMonth);
-      this.months.setPeriod();
+      _months.setSelectedPeriod(selectedYearMonth);
       this.getChartData();
     },
 
     render: function() {
       this.$el.html(this.template({
-        months: this.months.toJSON(),
+        months: _months.getData()
       }));
       this.setChart();
       this.cacheElements();
@@ -158,4 +146,4 @@
 
   });
 
-})(VP.utils);
+})(VP.utils, VP.Data.months);

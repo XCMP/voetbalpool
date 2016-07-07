@@ -17,14 +17,6 @@ VP.utils = {
     }
   },
 
-  MonthTextArray: ['Jan', 'Feb', 'Maa', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'], 
-  getMonthYearText: function(yyyymm) {
-    var yearMonthArray = yyyymm.split('-');
-    var year = yearMonthArray[0];
-    var monthIndex = parseInt(yearMonthArray[1], 10) - 1;
-    return this.MonthTextArray[monthIndex] + ' ' + year;
-  },
-
   /**
    * input  DD-MM-YYYY HH:MM
    * output MM/DD/YYYY HH:MM+00:00
@@ -45,34 +37,6 @@ VP.utils = {
         tzo = -now.getTimezoneOffset(),
         dif = tzo >= 0 ? '+' : '-';
     return  dif + this.pad(tzo / 60) + ':' + this.pad(tzo % 60);
-  },
-
-  getCurrentPeriod: function() {
-    var period = {};
-    var currentDate = new Date();
-    period.year = currentDate.getFullYear().toString();
-    period.month = this.pad(currentDate.getMonth() + 1, 2);
-    return period;
-  },
-
-  getCurrentPeriodAsString: function() {
-    var period = {};
-    var currentDate = new Date();
-    period.year = currentDate.getFullYear();
-    period.month = this.pad(currentDate.getMonth() + 1, 2);
-    return period.year+'-'+period.month;
-  },
-
-  getPeriod: function(periodString) {
-    var period = {};
-    var periodArray = periodString.split('-');
-    period.year = periodArray[0];
-    period.month = periodArray[1];
-    return period;
-  },
-
-  getPeriodAsString: function(period) {
-    return period.year + '-' + period.month;
   },
 
   pad: function(n, width, z) {
@@ -100,7 +64,7 @@ VP.utils = {
   },
   
   showModalWindow: function(data) {
-    var modalWindow = new VP.Views.ModalWindow({
+    new VP.Views.ModalWindow({
         header: data.header,
         content: data.content,
         back: data.back
@@ -108,7 +72,7 @@ VP.utils = {
     },
 
   showConfirmDialog: function(data) {
-    var modalWindow = new VP.Views.ModalWindow({
+    new VP.Views.ModalWindow({
         confirmDialog: true,
         header: data.header,
         content: data.content,

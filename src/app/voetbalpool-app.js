@@ -17,7 +17,7 @@ var VP = {
 
 $(document).ready(function() {
 
-  VP.Data.selectedYearMonth = VP.utils.getCurrentPeriod();
+  VP.Data.months.init();
   VP.router = new VP.Router();
   Backbone.history.start();
 

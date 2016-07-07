@@ -1,4 +1,4 @@
-(function(_utils) {
+(function(_utils, _months) {
 
   VP.Views.Games = Backbone.View.extend({
 
@@ -19,28 +19,14 @@
     },
 
     initialize: function() {
-      this.initMonths();
-
       this.listenTo(this.collection, 'sync', this.render);
       this.listenTo(this.collection, 'remove', this.render);
       this.collection.fetch();
     },
 
-    initMonths: function() {
-      this.months = new VP.Collections.Months({});
-      var self = this;
-      this.months.fetch().done(
-        function(){
-          self.months.setPeriod(VP.Data.selectedYearMonth);
-        }
-      );
-    },
-
     yearMonthSelected: function(ev) {
-      var selectedYearMonth = ev.currentTarget.value
-      VP.Data.selectedYearMonth = _utils.getPeriod(selectedYearMonth);
-      this.months.setPeriod();
-      this.collection.setPeriod();
+      var selectedYearMonth = ev.currentTarget.value;
+      _months.setSelectedPeriod(selectedYearMonth);
       this.collection.fetch();
     },
 
@@ -111,7 +97,7 @@
 
     render: function() {
       this.$el.html(this.template({
-        months: this.months.toJSON(),
+        months: _months.getData(),
         games: this.collection.toJSON()
       }));
       return this;
@@ -138,4 +124,4 @@
 
   });
 
-})(VP.utils);
+})(VP.utils, VP.Data.months);
