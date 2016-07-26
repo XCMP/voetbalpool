@@ -12,8 +12,10 @@
     <tbody>
       {{#each games}}
         <tr class="game" data-id="{{_id}}">
-          <td class="right l-b">{{formatDate matchDay format='ddd DD MMM YYYY HH:mm'}}</td>
-          <td class="right s-b">{{formatDate matchDay format='DD-MM HH:mm'}}</td>
+          <td class="right">
+            <span class="l-tc">{{formatDate matchDay format='ddd DD MMM YYYY HH:mm'}}</span>
+            <span class="s-tc">{{formatDate matchDay format='DD-MM HH:mm'}}</span>
+          </td>
           <td>
             {{#with homeTeam}}
               <img class="small" alt="{{name}}" src="/images/logos/{{logoFilename}}" /> <span class="l-i">{{name}}</span>
@@ -28,7 +30,7 @@
               {{homeTeamGoals}} - {{awayTeamGoals}}
             {{/if}}
           </td>
-          <td class="l-b wrap">{{notes}}</td>
+          <td class="l-tc wrap">{{notes}}</td>
         </tr>
       {{/each}}
     </tbody>
