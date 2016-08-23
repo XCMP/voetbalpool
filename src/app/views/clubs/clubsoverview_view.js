@@ -20,6 +20,9 @@
               .map(function(o) {
                 return o.attributes.logoFilename;
               })
+              .filter(function(o) {
+                return o !== 'nologo.png';
+              })
               .uniq()
               .toJSON();
     },
