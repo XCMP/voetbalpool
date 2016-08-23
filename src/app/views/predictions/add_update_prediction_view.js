@@ -13,7 +13,7 @@
       this.returnTo = options.returnTo;
       this.poolplayers = new VP.Collections.PoolPlayers();
       this.poolplayers.fetch();
-      this.games = new VP.Collections.Games({});
+      this.games = new VP.Collections.FutureGames({});
       this.games.fetch();
       this.render();
       _.bindAll(this, 'handleResult');
@@ -71,7 +71,7 @@
     },
 
     getGameSelectView: function(name, selected) {
-      var games = new VP.Collections.Games({all: true});
+      var games = new VP.Collections.FutureGames();
       var view = new VP.Views.GameSelect({
         name: name,
         collection: games,

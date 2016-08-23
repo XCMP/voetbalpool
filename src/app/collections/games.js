@@ -15,4 +15,14 @@
 
   });
 
+  VP.Collections.FutureGames = Backbone.Collection.extend({
+
+    model: VP.Models.Game,
+
+    url: function() {
+      return _config.BACKEND_HOSTNAME_PORT + '/vp/games';
+    }
+
+  });
+
 })(VP.Config);
