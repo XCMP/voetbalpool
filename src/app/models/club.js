@@ -1,8 +1,8 @@
-(function(_config) {
+(function() {
 
   VP.Models.Club = Backbone.Model.extend({
 
-    urlRoot: _config.BACKEND_HOSTNAME_PORT + '/vp/clubs',
+    urlRoot: '/api/vp/clubs',
     idAttribute: '_id',
 
     defaults: {
@@ -16,4 +16,4 @@
 
   });
 
-})(VP.Config);
+})();

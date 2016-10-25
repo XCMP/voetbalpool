@@ -1,18 +1,20 @@
-(function(express, bodyParser, path, multer, fs) {
+(function(express, proxy, bodyParser, path, multer, fs) {
 
   var PORT = process.env.OPENSHIFT_NODEJS_PORT || 3000;
   var IP = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
   var LOGO_DESTINATION_DIR = 'dist/images/logos/';
+  var BACKEND_HOST = process.env.OPENSHIFT_APP_DNS || 'localhost:3001';
 
   var upload = multer({ dest: LOGO_DESTINATION_DIR });
   var server = express();
   var router = express.Router();
 
   server.use(express.static('dist'));
+  // proxy for api calls to back-end server
+  server.use('/api', proxy(BACKEND_HOST));
   server.use(bodyParser.urlencoded({
     extended: true
-  })); 
-
+  }));
   // index.html of voetbalpool app
   router.get('/',function(req,res){
       res.send(path.join(__dirname + '/index.html'));
@@ -86,4 +88,4 @@
 
   console.log('Voetbalpool frontend server running on %s:%s', IP, PORT);
 
-})(require('express'), require('body-parser'), require('path'), require('multer'), require('fs'));
+})(require('express'), require('express-http-proxy'), require('body-parser'), require('path'), require('multer'), require('fs'));

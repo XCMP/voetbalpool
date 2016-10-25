@@ -1,4 +1,4 @@
-(function(_config) {
+(function() {
 
   VP.Collections.Predictions = Backbone.Collection.extend({
 
@@ -6,9 +6,9 @@
 
     url: function() {
       const period = VP.Data.months.getSelectedPeriod();
-      return _config.BACKEND_HOSTNAME_PORT + '/vp/predictions/' + period.year + '/' + period.month;
+      return '/api/vp/predictions/' + period.year + '/' + period.month;
     }
 
   });
 
-})(VP.Config);
+})();

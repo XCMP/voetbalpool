@@ -1,11 +1,11 @@
-(function(_config) {
+(function() {
 
   VP.Collections.Clubs = Backbone.Collection.extend({
 
     model: VP.Models.Club,
 
-    url: _config.BACKEND_HOSTNAME_PORT + '/vp/clubs'
+    url: '/api/vp/clubs'
 
   });
 
-})(VP.Config);
+})();

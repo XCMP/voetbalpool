@@ -1,11 +1,11 @@
-(function(_config) {
+(function() {
 
   VP.Collections.Games = Backbone.Collection.extend({
 
     model: VP.Models.Game,
 
     url: function() {
-      const url = _config.BACKEND_HOSTNAME_PORT + '/vp/games';
+      const url = '/api/vp/games';
       const period = VP.Data.months.getSelectedPeriod();
       if (period) {
         return url + '/' + period.year + '/' + period.month;
@@ -20,9 +20,9 @@
     model: VP.Models.Game,
 
     url: function() {
-      return _config.BACKEND_HOSTNAME_PORT + '/vp/games';
+      return '/api/vp/games';
     }
 
   });
 
-})(VP.Config);
+})();

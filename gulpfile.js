@@ -16,9 +16,6 @@ var gulp       = require('gulp'),
 // CONSTANTS
 var paths = {
   scripts: {
-    config: [
-      'src/config/config.js'
-    ],
     libs: [
       'node_modules/jquery/dist/jquery.min.js',
       'node_modules/underscore/underscore.js',
@@ -30,7 +27,6 @@ var paths = {
     app: [
       'src/app/voetbalpool-app.js',
 
-      'src/app/common/config.js',
       'src/app/common/months.js',
       'src/app/common/utils.js',
       'src/app/common/helpers.js',
@@ -116,15 +112,6 @@ process.argv.forEach(function (param, index, array) {
   }
 });
 
-// CONFIG TASK
-gulp.task('config', function() {
-  var backend_endpoint = (production? 'http://voetbalpoolbackend-xcmp.rhcloud.com' : 'http://localhost:3001');
-  console.log(`Setting backend endpoint to ${backend_endpoint}`);
-  gulp.src(['src/config/config.js'])
-    .pipe(replace('${BACKEND_ENDPOINT}', backend_endpoint))
-    .pipe(gulp.dest('src/app/common'));
-});
-
 // BUILD TASKS
 gulp.task('clean', function() {
   del(['dist']);
@@ -185,7 +172,6 @@ gulp.task('watch', ['build'], function() {
   livereload.listen();
   gulp.watch(paths.scripts.lib, ['scripts-libs']);
   gulp.watch(paths.scripts.app, ['scripts-app']);
-  gulp.watch(paths.scripts.config, ['build']);
   gulp.watch(['index.html'], ['base']);
   gulp.watch(paths.sassFiles, ['sass']);
   gulp.watch(paths.templatesWatch, ['templates']);
