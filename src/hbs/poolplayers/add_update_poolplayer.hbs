@@ -12,6 +12,11 @@
       <label for="birthday">Geboortedatum</label>
       <input type="text" id="birthday" name="birthday" placeholder="dd-mm-jjjj" size="10" value="{{formatDate birthday format='DD-MM-YYYY'}}" />
     </div>
+    <div class="block" field="color">
+      <label for="description">Kleur</label>
+      <input type="text" id="color" name="color" class="js_color_input" size="16" value="{{color}}" />
+      <input type="button" class="js_color_label js_color_picker" size="4" style="background-color: {{color}}" value="Kies je kleur"/>
+    </div>
     <div class="block" field="notes">
       <label for="description">Omschrijving</label>
       <textarea type="text" id="description" name="notes" cols="50" rows="5">{{notes}}</textarea>

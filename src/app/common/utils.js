@@ -117,7 +117,8 @@ VP.utils = {
   duplicateErrorMessages: {
     'clubs': 'Dit team bestaat al.',
     'games': 'Deze wedstrijd bestaat al.',
-    'poolplayers': 'Deze deelnemer bestaat al.',
+    'poolplayers index: name_1': 'Deze deelnemer bestaat al.',
+    'poolplayers index: color_1': 'Een andere deelnemer heeft deze kleur al',
     'predictions': 'Deze deelnemer heeft al een voorspelling voor deze wedstrijd.'
   },
 
@@ -155,35 +156,6 @@ VP.utils = {
 
   getFieldContainer: function(fieldName) {
     return $('[field=\'' + fieldName + '\']');
-  },
-
-  lineColorClasses: [
-    {
-      color: 'red',
-      fill: 'rgba(0, 0, 0, 0)'
-    },
-    {
-      color: 'green',
-      fill: 'rgba(0, 0, 0, 0)'
-    },
-    {
-      color: 'blue',
-      fill: 'rgba(0, 0, 0, 0)'
-    },
-    {
-      color: 'orange',
-      fill: 'rgba(0, 0, 0, 0)'
-    },
-    {
-      color: 'black',
-      fill: 'rgba(0, 0, 0, 0)'
-    }
-  ],
-  getColor: function(index) {
-    return this.lineColorClasses[index].color;
-  },
-  getFillColor: function(index) {
-    return this.lineColorClasses[index].fill;
   }
 
 };

@@ -6,12 +6,24 @@
     template: Handlebars.templates['add_update_poolplayer.hbs'],
     events: {
       'submit form': 'saveAddPoolPlayer',
-      'click button.js_button_back': 'toPoolPlayerList'
+      'click button.js_button_back': 'toPoolPlayerList',
+      'blur .js_color_input': 'setColor',
+      'click .js_color_picker': 'showColorPicker'
     },
 
     initialize: function() {
       _.bindAll(this, 'handleResult');
       this.render();
+    },
+
+    showColorPicker: function() {
+      window.open('https://www.google.nl/search?q=color+picker', 'color_picker');
+    },
+
+    setColor: function(ev) {
+      const $colorInput = $(ev.currentTarget);
+      const $colorLabel = this.$el.find('.js_color_label');
+      $colorLabel.css('background-color', $colorInput.val());
     },
 
     saveAddPoolPlayer: function(ev) {

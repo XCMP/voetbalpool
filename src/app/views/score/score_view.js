@@ -63,7 +63,7 @@
               return prediction.game._id == game._id && prediction.poolplayer._id == poolplayer._id;
             });
             var score = (predictionOfPoolplayer.length > 0) ? predictionOfPoolplayer[0].score : 0;
-            self.addScore(poolplayer.name, score);
+            self.addScore(poolplayer, score);
           });
 
         });
@@ -77,16 +77,16 @@
       this.data.labels.push(gameLabel);
     },
 
-    addScore: function(name, score) {
-      var poolplayerData = _.findWhere(this.data.datasets, {label: name});
-      if (poolplayerData) {
-        var lastScore = poolplayerData.data[poolplayerData.data.length-1];
-        poolplayerData.data.push(lastScore + (score));
+    addScore: function(poolPlayer, score) {
+      var poolPlayerData = _.findWhere(this.data.datasets, {label: poolPlayer.name});
+      if (poolPlayerData) {
+        var lastScore = poolPlayerData.data[poolPlayerData.data.length-1];
+        poolPlayerData.data.push(lastScore + (score));
       } else {
         this.data.datasets.push({
-          label: name,
+          label: poolPlayer.name,
           backgroundColor: 'rgba(0, 0, 0, 0)',
-          borderColor: _utils.getColor(this.data.datasets.length),
+          borderColor: poolPlayer.color,
           data: [score]
         });
       }
