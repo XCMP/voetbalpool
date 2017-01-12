@@ -7,7 +7,7 @@
     events: {
       'submit form': 'saveAddPoolPlayer',
       'click button.js_button_back': 'toPoolPlayerList',
-      'blur .js_color_input': 'setColor',
+      'keyup .js_color_input': 'setColor',
       'click .js_color_picker': 'showColorPicker'
     },
 
