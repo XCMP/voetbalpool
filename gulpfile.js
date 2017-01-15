@@ -114,7 +114,7 @@ process.argv.forEach(function (param, index, array) {
 
 // BUILD TASKS
 gulp.task('clean', function() {
-  del(['dist']);
+  del.sync(['dist']);
 });
 
 gulp.task('base', function() {
