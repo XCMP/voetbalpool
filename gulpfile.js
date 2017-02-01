@@ -30,6 +30,7 @@ var paths = {
       'src/app/common/months.js',
       'src/app/common/utils.js',
       'src/app/common/helpers.js',
+      'src/app/common/translation.js',
 
       'src/app/models/poolplayer.js',
       'src/app/models/club.js',

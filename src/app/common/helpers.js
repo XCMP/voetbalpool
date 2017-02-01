@@ -6,7 +6,11 @@
 */
 Handlebars.registerHelper('formatDate', function(context, block) {
   if (window.moment && context) {
-    return moment(context).format(block.hash.format);
+    if (block.hash.translate) {
+      return VP.Translation.translate(moment(context).format(block.hash.format));
+    } else {
+      return moment(context).format(block.hash.format);
+    }
   } else {
     return context;
   };

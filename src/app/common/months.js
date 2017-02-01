@@ -1,6 +1,6 @@
 VP.Data.months = {
 
-  MONTH_TEXT_ARRAY: ['Jan', 'Feb', 'Maa', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'],
+  MONTH_TEXT_ARRAY: ['jan', 'feb', 'maa', 'apr', 'mei', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'],
   months: null,
 
   init: function() {
