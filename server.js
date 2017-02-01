@@ -1,4 +1,4 @@
-(function(express, proxy, bodyParser, path, multer, fs) {
+(function(express, proxy, bodyParser, path, multer, fs, http) {
 
   var PORT = process.env.OPENSHIFT_NODEJS_PORT || 3000;
   var IP = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
@@ -19,6 +19,55 @@
   router.get('/',function(req,res){
       res.send(path.join(__dirname + '/index.html'));
   });
+
+  // LOGIN
+  router.get('/login/index.html', function(req,res) {
+    res.send('<h1>LOGIN</h1>'
+           + '<form action="/login/index.html" method="POST">'
+           +   '<label>gebruikersnaam</label><input type="text" name="userId" value="56883c40423b7bb35b744b23"><br>'
+           +   '<label>wachtwoord</label><input type="text" name="password">'
+           +   '<input type="submit" value="login">'
+           + '</form>'
+    );
+  });
+
+  router.post('/login/index.html', function(req,postResponse) {
+    console.log('userId: ' + req.body.userId);
+    console.log('password: ' + req.body.password);
+
+    var callback = function (data) {
+      var result = JSON.parse(data);
+      console.log('ondata', result);
+      if (result.status === 401) {
+        console.log('login error');
+        postResponse.send('<h1>LOGIN ERROR</h1>');
+      } else {
+        console.log('login success');
+        postResponse.send('<h1>LOGIN SUCCESS</h1>');
+      }
+      return {result: result.status};
+    }
+    var authResult = auth(req.body.userId, req.body.password, callback);
+    console.log('authResult', authResult);
+
+  });
+
+
+  var auth = function(userId, password, callback) {
+    var request = http.request({
+      hostname: 'localhost'
+      , port: 3001
+      , path: '/vp/auth/' + userId + '/' + password
+      , method: 'GET'
+      , headers: { 'Content-Type': 'application/json' }
+    }, function(authResponse) {
+      authResponse.on('data', callback);
+    });
+    request.on('error', function(e) {
+      console.log('AUTH ERROR');
+    });
+    request.end();
+  };
 
   // LOGOS
   // get list of logo files
@@ -88,4 +137,4 @@
 
   console.log('Voetbalpool frontend server running on %s:%s', IP, PORT);
 
-})(require('express'), require('express-http-proxy'), require('body-parser'), require('path'), require('multer'), require('fs'));
+})(require('express'), require('express-http-proxy'), require('body-parser'), require('path'), require('multer'), require('fs'), require('http'));
