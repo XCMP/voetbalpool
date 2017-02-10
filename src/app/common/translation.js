@@ -26,14 +26,14 @@ VP.Translation = {
   ],
 
   translate: function(date) {
-    this.DAYS.some(d => {
+    this.DAYS.some(function (d) {
       if (date.indexOf(d[0]) >= 0) {
         date = date.replace(d[0], d[1]);
         return true;
       }
     });
 
-    this.MONTHS.some(d => {
+    this.MONTHS.some(function(d) {
       if (date.indexOf(d[0]) >= 0) {
         date = date.replace(d[0], d[1]);
         return true;
