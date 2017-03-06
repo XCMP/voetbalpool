@@ -105,12 +105,6 @@
       }
     },
 
-    getLegend: function() {
-      return this.templateLegend({
-        datasets: this.data.datasets
-      });
-    },
-
     getPlayedGames: function(predictions) {
       var games = _.pluck(predictions, 'game')
         .filter(function(game) {
