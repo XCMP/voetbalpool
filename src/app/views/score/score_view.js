@@ -68,6 +68,11 @@
 
         });
 
+        _.each(self.data.datasets, function(dataset) {
+          var totalScore = dataset.data[dataset.data.length - 1];
+          dataset.label = dataset.label + ' (' + totalScore + ')'
+        });
+
         self.render();
       });
     },
