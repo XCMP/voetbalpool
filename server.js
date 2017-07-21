@@ -9,7 +9,7 @@
   var server = express();
   var router = express.Router();
 
-  server.use(express.static('dist'));
+  server.use(express.static('dist', { maxAge: '1h' } ));
   // proxy for api calls to back-end server
   server.use('/api', proxy(BACKEND_HOST));
   server.use(bodyParser.urlencoded({
