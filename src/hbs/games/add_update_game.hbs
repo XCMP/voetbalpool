@@ -6,15 +6,18 @@
     </div>
     <div class="block" field="matchDay">
       <label for="matchDay">Speeldatum</label>
-      <input type="text" id="matchDay" name="matchDay" size="16" placeholder="dd-mm-jjjj hh:mm" value="{{formatDate matchDay format='DD-MM-YYYY HH:mm'}}" />
+      <input id="matchDay" name="matchDay" size="16" placeholder="dd-mm-jjjj hh:mm" value="{{formatDate matchDay format='DD-MM-YYYY HH:mm'}}" />
+      <br><label />
     </div>
     <div class="block" field="homeTeam">
       <label for="homeTeam">Thuis team</label>
       <span class="homeTeam"></span>
+      <br><label />
     </div>
     <div class="block" field="awayTeam">
       <label for="awayTeam">Uit team</label>
       <span class="awayTeam"></span>
+      <br><label />
     </div>
     {{#if _id}}
       <div class="block" field="homeTeamGoals">
@@ -22,6 +25,7 @@
         <input type="tel" size="2" maxlength="2" name="homeTeamGoals" class="center" value="{{homeTeamGoals}}" />
         -
         <input type="tel" size="2" maxlength="2" name="awayTeamGoals" class="center" value="{{awayTeamGoals}}" />
+        <br><label />
       </div>
     {{/if}}
     <div field="notes">
@@ -29,6 +33,6 @@
       <textarea type="text" id="description" name="notes" cols="" rows="5">{{notes}}</textarea>
     </div>
   </fieldset>
-  <button type="submit" class="js_button_add">Opslaan</button>
+  <button class="js_button_add">Opslaan</button>
   <button type="button" class="js_button_back">Terug</button>
 </form>

@@ -6,22 +6,25 @@
     </div>
     <div class="block" field="name">
       <label for="name">Naam</label>
-      <input type="text" id="name" name="name" size="16" value="{{name}}" />
+      <input id="name" name="name" size="16" value="{{name}}" />
+      <br><label />
     </div>
     <div class="block" field="birthday">
       <label for="birthday">Geboortedatum</label>
-      <input type="text" id="birthday" name="birthday" placeholder="dd-mm-jjjj" size="10" value="{{formatDate birthday format='DD-MM-YYYY'}}" />
+      <input id="birthday" name="birthday" placeholder="dd-mm-jjjj" size="10" value="{{formatDate birthday format='DD-MM-YYYY'}}" />
+      <br><label />
     </div>
     <div class="block" field="color">
       <label for="description">Kleur</label>
-      <input type="text" id="color" name="color" class="js_color_input" size="16" value="{{color}}" />
+      <input id="color" name="color" class="js_color_input" size="16" value="{{color}}" />
       <input type="button" class="js_color_label js_color_picker" size="4" style="background-color: {{color}}" value="Kies je kleur"/>
+      <br><label />
     </div>
     <div class="block" field="notes">
       <label for="description">Omschrijving</label>
       <textarea type="text" id="description" name="notes" cols="50" rows="5">{{notes}}</textarea>
     </div>
   </fieldset>
-  <button type="submit" class="js_button_add">Opslaan</button>
+  <button class="js_button_add">Opslaan</button>
   <button type="button" class="js_button_back">Terug</button>
 </form>

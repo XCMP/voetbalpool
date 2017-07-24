@@ -7,16 +7,18 @@
     </div>
     <div class="block" field="name">
       <label for="name">Naam</label>
-      <input type="text" id="name" name="name" size="16" value="{{name}}" />
+      <input id="name" name="name" size="16" value="{{name}}" />
+      <br><label />
     </div>
     <div class="block" field="logoFilename">
       <label for="logoFilename">Logo bestandsnaam</label>
-      <input type="text" id="logoFilename" name="logoFilename" size="16" value="{{logoFilename}}" />
+      <input id="logoFilename" name="logoFilename" size="16" value="{{logoFilename}}" />
       <button type="button" class="l-i js_upload_logo">Upload logo</button>
       <button type="button" class="l-i js_previewLogo"{{#if ../previewDisabled}} disabled="true"{{/if}}>Preview logo</button>
+      <br><label />
     </div>
   </fieldset>
   {{/with}}
-  <button type="submit" class="js_button_add">Opslaan</button>
+  <button class="js_button_add">Opslaan</button>
   <button type="button" class="js_button_back">Terug</button>
 </form>
